@@ -1,0 +1,49 @@
+.wrapper {
+  width: 800px;
+  height: 800px;
+  background-color: oldlace;
+  margin: 0px;
+  /* inline-block 사용시 발생하는 공백 제거하는 방법중 한가지 */
+  font-size: 0px;
+}
+.header {
+  width: 100%;
+  height: 100px;
+  background-color: aquamarine ;
+}
+.left-menu {
+  width: 30%;
+  height: 600px;
+  background-color: palevioletred;
+  float: left;
+}
+.right-menu {
+  width: 70%;
+  height: 600px;
+  background-color: rebeccapurple;
+  float: right;
+}
+.footer {
+  width: 100%;
+  height: 100px;
+  background-color: gray;
+  clear: both;
+  float: none;
+}
+.in-left-menu {
+  width: 30%;
+  height: 600px;
+  background-color: palevioletred;
+  display: inline-block;
+}
+.in-right-menu {
+  width: 70%;
+  height: 600px;
+  background-color: purple;
+  display: inline-block;
+  /* inline 또는 table-cell box에서의 수직 정렬을 지정  */
+  vertical-align: top;
+}
+p {
+  color: black;
+}

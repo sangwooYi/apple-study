@@ -1,0 +1,59 @@
+/* 
+그냥 쓰면 해당 태그 전체에 대해 해당 
+ex)
+ p {
+  ..
+}
+
+# 는 id style
+. 는 class style
+
+# > 를 통해 하위 태그를 지정, 클래스1 스타일 하위에 p 태그에만 해당 스타일 적용
+.클래스1 > p {
+}
+
+우선순위는 !important > 태그 내부 style 속성(인라인) > id > class > 전체 태그
+
+inline : 특정 폭만큼만 차지하며, 상하 값 지정 불가
+inline-block : inline과 동일하나 , 상하 값 까지 지정 가능
+block : 무조건 한줄 다 차지
+*/
+
+img{
+  height: 300px;
+}
+.profile-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#profile-header {
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: blue;
+}
+.text-content{
+  /* border width, style color 이렇게 한번에 입력 가능 */
+  border: 3px solid brown;
+  border-radius: 10px;
+  width: 40vh;
+  height: 20vh;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: mediumaquamarine;
+  /* x 포지션, y포지션, 흐림정도, 확장도 (흐림정도, 확장도는 생략해도 됨) 색상 */
+  box-shadow: 5px 5px black;
+}
+a {
+  text-decoration: none;
+  margin: 10px;
+
+}
+a:hover {
+  color:aquamarine;
+}
+a:visited {
+  color: purple;
+}

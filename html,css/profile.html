@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- 이렇게 link 걸어주어야 함 -->
+  <link rel="stylesheet" href="./profile.css">
+</head>
+<body>
+  <!-- text-align: center; 와  margin-right:auto; margin-left:auto; display: block; 은 같은효과
+    (이미지 중앙정렬은 위 margin / display를 이용)
+  추후에 display: flex 에서 jusitfy-content: center도 마찬가지 -->
+  <div style="margin-top: 50px;" class="profile-content">
+    <img 
+    src="https://yt3.ggpht.com/ytc/AKedOLQLPklSujLwog2Ahm8pXExrZkVLqMVkQevxWkrF=s900-c-k-c0x00ffffff-no-rj" 
+    alt="프로필 img">
+    <!-- style 속성들은 MDN 공식문서 / 구글링을 통해 찾으면 된다!, 중요한건 자동으로 외워짐 -->
+    <div class="text-content">
+      <h3 id="profile-header">상우 Profile</h3>
+      <p><span style="color: tomato;">REAL </span>Frontend-developer</p>
+      <div>
+        정말 열심히 공부하겠습니다 다람쥐 😊
+      </div>
+      <a href="https://github.com/sangwooYi/Baekjoon" target="_blank">About Me!</a>
+    </div>
+  </div>
+</body>
+</html>
