@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      background-color: gray;
+    }
+    .container {
+      background-color: rgb(255, 255, 255);
+      height: 500px;
+      width: 400px;
+      padding: 30px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 50px;
+    }
+    /* 
+    input 태그 중에 type이 email인 태그들만 스타일링
+    input 태그에서 유용하게 쓰임!
+    input[type=email] {
+
+    }
+    */
+    /* 최대한 재활용이 가능한 방향으로 연습! */
+    input {
+      padding: 6px;
+      margin-top: 5px;
+      border-radius: 4px;
+      border-width: 1px;
+    }
+    label {
+      font-size: 15px;
+    }
+    .email-tag {
+      margin: 10px;
+    }
+    .email-tag input {
+      width: 350px;
+    }
+    .name-tag div {
+      display: inline-block;
+      width: 40%;
+      margin: 10px;
+    }
+    .send-btn {
+      background-color: #ffbf35;
+      border-radius: 3px;
+      color: white;
+      font-size: 15px;
+      border-width: 0px;
+      padding: 5px 20px;
+      position: relative;
+      left: 180px;
+    }
+    .message-tag {
+      display: inline-block;
+      width: 50%;
+      margin: 10px;
+    }
+    .message-tag textarea {
+      width: 350px;
+      height: 150px;
+      padding: 6px;
+      border-width: 1px;
+      border-radius: 3px;
+    }
+    .footer-tag {
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <form action="#">
+      <h3 style="margin-left: 10px; margin-bottom: 20px;">Contact Us</h3>
+      <div class="email-tag">
+        <label for="my-email">Your Email</label>
+        <br>
+        <!-- name속성은 서버에 전달할때 key값을 지정해주는 것! my-email: 데이터 이런식으로 전달 됨 -->
+        <input type="email" id="my-email" placeholder="email@example.com" name="my-email">
+      </div>
+      <div class="name-tag">
+        <div>
+          <label for="f-name">First name</label>
+          <input type="text" id="f-name">
+        </div>
+        <div>
+          <label for="l-name">Last name</label>
+          <input type="text" id="l-name">
+        </div>
+      </div>
+      <div class="message-tag">
+        <label for="message">Message</label>
+        <textarea name="message" id="message" style="margin-top: 8px"></textarea>
+      </div>
+      <div class="footer-tag">
+        <input type="checkbox" id="check">
+        <label for="check">Subscribe</label>
+        <button type="submit" class="send-btn">SEND</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

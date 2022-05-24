@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 반복을 피하기 위해서 어떻게 하면 효율적인지에 대한 고민 / 최적화가 필요 
+      특히, 브라우저간 차이 없는 균일한 디자인을 위해서는
+      normalize.css를 미리 작성하고 시작하는게 매우 좋다! (구글링 ㄱㄱ or 애플코딩에 12강에 링크 걸어 줌)
+    */
+    body {
+      margin: 0px;
+    }
+    div {
+      box-sizing: border-box;
+    }
+    .main-background {
+      margin: 0px;
+      width: 100%;
+      height: 500px;
+      /* 이미지 넣는 법 , + linear-gradient로 배경 틴트 주기 \
+        그냥 filter: brightness(%)로도 편하게 가능*/ 
+      /* filter: brightness(80%); */
+      background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(./img/practice1.jpg);
+      background-size: cover;
+      /* 얘는 스크롤시 이미지 위치 */
+      /* background-attachment: fixed; */
+
+      /* 박스가 겹치면 마진 collapse 버그 발생, 따라서 이런식으로 안겹치게 만들어 준다 */
+      padding: 1px;
+      position: relative;
+    }
+    .main-title {
+      font-size: 50px;
+      color: white;
+      text-align: center;
+    }
+    .main-content {
+      color: white;
+      text-align: center;
+    }
+    .main-content button {
+      display: block;
+      padding: 8px;
+      border-radius: 5px;
+      /* 부모 태그 중 position: relative를 찾아 감 */
+      position: absolute;
+      bottom: 20vh;
+      width: 5vw;
+      left: 0px;
+      right: 0px;
+      margin-right: auto;
+      margin-left: auto;
+      z-index: 5;
+      /* 
+      반응형 구현할 때
+      width % max-width, min-width
+      height % max-height, min-height
+
+      근데 그냥 vw , vh 쓰는것도 좋은 방법임!
+      */
+    }
+    .main-content button a {
+      text-decoration: none;
+    }
+    .homework {
+      position: relative;
+      width: 500px;
+      height: 300px;
+      background-color: gray;
+      left: 0px;
+      right: 0px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 1px;
+      margin-top: 70px;
+      z-index: 0;
+      width: 80%;
+      max-width: 600px;
+      /* border-box / content-box  디폴트값은 content-box임! */
+    }
+    .homework-content {
+      text-align: center;
+      margin-top: 50px;
+    }
+    /* position
+      static : 기준 없음 좌표 적용 안됨
+      relative : 그냥 원래 내 위치가 기준
+      absolute : 부모 태그가 기준, 따라서 부모태그안에 뭔가를 잡고싶을때, 부모를 relative , 원하는걸 absoulte
+                  (부모 태그 중 position : relative 갖는 애를 기준으로 잡는다.)
+      fixed : viewport 브라우저 화면이 기준
+      sticky
+    */
+  </style>
+</head>
+<body>
+  <!-- 배경 이쁘게 만드는 tip -->
+  <div class="main-background">
+    <h4 class="main-title">World of Warcraft</h4>
+    <div class="main-content">
+      숙제가 있어서 해보는건데 나름 재미있네 
+      <button>
+        <a href="https://google.com" target="_blank">여기로 이동</a>
+      </button>
+    </div>
+    <div class="homework">
+      <div class="homework-content">
+        뭔데이거 ㅡㅜㅡ?
+        아니? 왜 이따구야?
+        <p>하하하하하</p>
+      </div>
+    </div>
+    <br>
+    <div class="homework">
+      <div class="homework-content">
+        뭔데이거 ㅡㅜㅡ?
+        아니? 왜 이따구야?
+        <p>하하하하하</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

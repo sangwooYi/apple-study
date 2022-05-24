@@ -15,7 +15,7 @@
       width: 60%;
       height: 100%;
       float: left;
-      margin-top: 30px
+      margin-top: 0px
     }
     .right {
       width: 40%;
@@ -27,7 +27,8 @@
     }
     .name {
       margin: 0px;
-      display: inline-block;
+      float: left;
+      margin-top: 20px;
     }
     .name p {
       margin-top: 0px;
@@ -36,12 +37,47 @@
     .profile img {
       height: 80px;
       border-radius: 40px;
-      display: inline-block;
+      float: left;
     }
+    .text-content {
+      /* float 사용할 경우, float 무효화하고 싶을 때 */
+      clear: both;
+    }
+    /* 자식 컴퍼넌트를 선택 
+      a b  a 하위에 모든 b를 선택
+      a > b a 하위에 직계자식 b 만 선택 ex) 오른쪽 태그같은 경우 바깥 b만 적용  
+      <a>
+        <b>
+          <b>
+          </b>
+        </b>
+      </a>
+    */
+    .navbar li {
+      display: inline-block;
+      list-style: none;
+      padding: 12px;
+      margin: 3px;
+      font-weight: 800;
+    }
+    .navbar li:hover {
+      background-color: rgb(194, 194, 194);
+      border-radius: 5px;
+      cursor: pointer;
+    }    
   </style>
 
 </head>
 <body>
+  <!-- 시멘틱 태그 -->
+  <nav>
+    <ul class="navbar">
+      <li>영화</li>
+      <li>맛집</li>
+      <li>IT</li>
+      <li>컴퓨터</li>
+    </ul>
+  </nav>
   <div class="container">
     <div class="left">
       <div class="profile">
@@ -51,11 +87,13 @@
           <p>1시간전</p>
         </div>
       </div>
-      <h3>4k빔프로젝터 가성비최강으로 선택했어요.</h3>
-      <div>
-        어쩌구저쩌구ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ
-        ㅁㄴ엄네어ㅔㅂ재ㅓ애ㅔ버에ㅐㅂ정
-        ㅒㅖㄴ어ㅔㅐㄴ어ㅔㅐㄴ멍ㅂ내ㅔㅇ버제ㅐ업재ㅔ어ㅐㅔㅈㅂ
+      <div class="text-content">
+        <h3>4k빔프로젝터 가성비최강으로 선택했어요.</h3>
+        <div>
+          어쩌구저쩌구ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ
+          ㅁㄴ엄네어ㅔㅂ재ㅓ애ㅔ버에ㅐㅂ정
+          ㅒㅖㄴ어ㅔㅐㄴ어ㅔㅐㄴ멍ㅂ내ㅔㅇ버제ㅐ업재ㅔ어ㅐㅔㅈㅂ
+        </div>
       </div>
     </div>
     <div class="right">

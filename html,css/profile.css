@@ -51,9 +51,11 @@ a {
   margin: 10px;
 
 }
+/* 마우스 호버 */
 a:hover {
   color:aquamarine;
 }
+/* 이미 방문한 링크 */
 a:visited {
   color: purple;
 }
