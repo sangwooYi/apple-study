@@ -1,14 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- head 태그에 들어가는 내용
+  1. 문서 제목 <title>
+  2. 여러 meta 데이터들 (UTF-8, viewport 설정, http-equiv 설정 .. etc)
+  3. style태그 (필요시)
+  4. link 들 (CSS파일들)
+  5. open graph (링크보낼때 이미지까지 같이 보여주는 기능) 
+  / 파비콘(상단에 조그맣게 나오는 이미지) Favicon .ico가 가장 호환성 좋음
+    
+  -->
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
+    /* 보통은 그냥 이렇게 font 해도 된다
+      직접 폴더로 갖고있으면 @font-face로 써도 됨
+      한글 폰트는 폰트 자체의 사이즈가 크므로 1 ~ 2폰트 이상 사용하는건 사이트가 느려질 우려가 있다!
+      용량 줄이려면 .woff 확장자를 쓰자
+      google Font를 쓰는것도 좋은 옵션
+    */
+    @import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css);
     img {
       height: 200px;
       cursor: pointer;
+    }
+    body {
+      font-family: "NanumSquare";
     }
   </style>
 </head>
@@ -45,5 +64,42 @@
     <img src="https://yt3.ggpht.com/ytc/AKedOLQLPklSujLwog2Ahm8pXExrZkVLqMVkQevxWkrF=s900-c-k-c0x00ffffff-no-rj" alt="">
   </a>
   
+  <!-- 참고 CSS 클래스 작명법!!
+      본인한테 맞는 방식으로 그냥 쓰자!
+      
+      작명법1
+      OOCSS Object Orientes CSS 
+      최대한 재사용성이 높아지는 방향으로 클래스들을 작성
+      ex) 버튼을 만들때
+      .btn {
+        공통적인 class
+      }
+      .bg-red {
+        색깔 설정만
+      }
+      .f-large{
+        크기 설정만
+      }
+      위와같은식으로 쪼개서 만들것! 
+      최대한 코드의 중복이 사라지는 방향으로 클래스를 생성!
+      bootstrap 라이브러리가 이걸 극단적으로 사용한 case!
+      
+      클래스 작명법 2
+      BEM 
+      Block_Element-Modifier
+
+      ex)
+      아래처럼 덩어리_요소--modifier (수식어?) 규칙으로 이름을 지정하는것
+      즉 덩어리_역할--세부특징
+      .container {
+
+      }
+      .container__btn {
+
+      }
+      .container__btn--red{
+
+      }
+  -->
 </body>
 </html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    @import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css);
+
+    body {
+      margin: 0px;
+      font-family: 'NanumSquare';
+    }
+
+    .nav {
+      width: 100vw;
+      height: 100px;
+      display: flex;
+      background-color: #ff4949bd;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      color: white;
+      font-size: 30px;
+      font-weight: 800;
+      cursor: pointer;
+      text-align: center;
+      width: 8vw;
+    }
+
+    .nav-menu {
+      width: 15vw;
+      color: white;
+      display: flex;
+      justify-content: space-around;
+      font-size: 25px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .flex-container {
+      margin-top: 200px;
+      width: 600px;
+      height: 600px;
+      background-color: aliceblue;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap-reverse;
+    }
+
+    .flex-item {
+      width: 200px;
+      height: 100px;
+      background-color: grey;
+      margin: 5px
+    }
+
+    /* 
+    flex 관련 속성들
+    display: flex
+    flex-direction (기본이 row) row row-reverse coloumn column-reverse
+    justify-content
+    alignt-items
+    flex-wrap
+    flex-grow
+    */
+  </style>
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="nav-logo">
+      Logo
+    </div>
+    <div class="nav-menu">
+      <span>products</span>
+      <span>services</span>
+    </div>
+  </nav>
+  <div class="flex-container">
+    <div class="flex-item">1</div>
+    <div class="flex-item" style="flex-grow: 2;">2</div>
+    <div class="flex-item">3</div>
+    <div class="flex-item">4</div>
+    <div class="flex-item">5</div>
+  </div>
+  <!-- Emmet문법 연습하자!!
+  아래와같이 3행 5열 테이블 만들때 아래처럼 쓰면 알아서 만들어줌!
+   생산성에 완전 캡숑짱! -->
+  <!-- table>tr*3>td*5 -->
+  <!-- div.container  => class="container" 를 갖는 div 태그를 만들어 줌 -->
+</body>
+
+</html>

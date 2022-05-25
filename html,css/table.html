@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./normalize.css">
+  <style>
+    body {
+      background-color: #b2ccd6;
+    }
+    .text-blue {
+      color: #133761;
+    }
+    table {
+      background-color: white;
+      border: none;
+      border-radius: 5px;
+      border-collapse: collapse;
+    }
+    .border-bottom {
+      border-bottom: 1px solid #133761;
+    }
+    td {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    .table-body {
+      width: 600px;
+    }
+    .table-body td {
+      padding: 15px 20px;
+    }
+    .row-50 {
+      height: 50px;
+    }
+    .column-55 {
+      width: 55%;
+    }
+    .align-center {
+      margin-top: 100px;
+      margin-left: 200px;
+    }
+    .text-align-center {
+      text-align: center;
+    }
+    .text-align-end {
+      text-align: right;
+    }
+    .footer {
+      margin-top: 20px;
+      width: 100%;
+    }
+    .footer-btn {
+      margin-left: 195px;
+      padding: 20px;
+      border-radius: 4px;
+      border: none;
+      background-color: #133761;
+      color: white;
+      cursor: pointer;
+    }
+    /* pseudo-class http://www.tcpschool.com/css/css_selector_pseudoClass 참고 */
+    .footer-btn:hover {
+      background-color: #2f5f97;
+    }
+    /* 이건 input 태그 같은곳에 많이 활용 됨  hover focus active는 같이쓸꺼면 이 순서대로 써야한다!*/
+    .footer-btn:focus {
+      background-color: chocolate;
+    }
+    .table-img {
+      width: 50px;
+      height: 40px;
+      margin-top: 4px;
+    }
+    table p {
+      margin: 0px;
+      font-size: 12px;
+    }
+
+    /* 강의때 코드 */
+    .cart-table {
+      width: 100%;
+      max-width: 700px;
+      margin: auto;
+      margin-top: 20px;
+      background-color: white;
+      border-radius: 10px;
+    }
+    .cart-table td, th {
+      border-bottom: 1px solid #c2d3de;
+    }
+    /* nth-child 셀렉터!  아래처럼하면 2번째 이후부터 모든 자식을 셀렉트
+      2n, 2n+1 이런식으로 선택 규칙 생성 가능
+    */
+    .cart-table th:nth-child(n+2) {
+      width: 400px;
+    }
+    .test-input {
+      margin-left: 50px;
+      width: 200px;
+      border-radius: 5px;
+      padding: 5px;
+      border: none;
+    }
+    .test-input:focus {
+      background-color: #c2d3de;
+      border: 2px solid brown;
+    }
+    .custom-link {
+      text-decoration: none;
+    }
+    /* 링크 방문 전 */
+    .custom-link:link {
+      color: violet;
+    }
+    /* 링크 방문 후 */
+    .custom-link:visited {
+      color: black;
+    }
+  </style>
+</head>
+<body>
+  <div class="align-center">
+    <h3>Your shopping cart</h3>
+    <table class="table-body">
+      <!-- tr 행 td 열 th 제목 (열에 해당) 
+      td/th 의 경우는 colspan , rowspan으로 해당 칸이 차지할 row, col 칸수를 지정할 수 있다-->
+      <tr class="text-align-center border-bottom">
+        <td colspan="2" class="column-55">ITEM</td>
+        <td>AMOUNT</td>
+        <td>PRICE</td>
+        <td>TOTAL</td>
+      </tr>
+      <tr class="border-bottom row-50">
+        <td><img src="./img/practice1.jpg" alt="" class="table-img"></td>
+        <td style="text-align: start;">
+          <p>SONY</p>
+          <p>블라블라</p>
+        </td>
+        <td class="text-align-end">3</td>
+        <td class="text-align-end">4</td>
+        <td class="text-align-end">5</td>
+      </tr>
+      <tr class="border-bottom row-50">
+        <td><img src="./img/practice1.jpg" alt="" class="table-img"></td>
+        <td style="text-align: start;">
+          <p>SONY</p>
+          <p>블라블라</p>
+        </td>
+        <td class="text-align-end">3</td>
+        <td class="text-align-end">4</td>
+        <td class="text-align-end">5</td>
+      </tr>
+      <tr class="text-align-end row-50">
+        <td colspan="5">€ 2968.00</td>
+      </tr>
+    </table>
+    <div class="footer">
+      <a href="#" style="vertical-align: center;">Edit your shopping cart</a>
+      <button class="footer-btn">Choose payment method</button>
+    </div>
+  </div>
+
+  <!-- 강의때 코드 -->
+  <div class="cart-background">
+    <table class="cart-table">
+      <thead>
+        <td colspan="2">ITEM</td>
+        <td>AMOUNT</td>
+        <td>PRICE</td>
+        <td>TOTAL</td>
+      </thead>
+      <tbody>
+        <td><img src=""></td>
+        <td>카메라</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+      </tbody>
+    </table>
+  </div>
+  <input type="text" class="test-input">
+</body>
+</html>
