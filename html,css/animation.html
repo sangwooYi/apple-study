@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .shop-bg {
+      background-color: #eee;
+      padding: 20px;
+    }
+    .shop-container {
+      display: flex;
+    }
+    .shop-item {
+      width: 20%;
+      margin: 10px;
+      cursor: pointer;
+      position: relative;
+      /* 해당영역에 벗어난 내부 요소는 다 hidden처리, 애니메이션 쓸때 매우 유용 */
+      overflow: hidden;
+    }
+    .shop-item img{
+      width: 100%
+    }
+    .overlay {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 30px;
+      transition: transform 1s;
+      transform: translate(0, 100%);
+      background-color: rgba(0, 0, 0, 0.5);
+      font-size: 20px;
+      color: white;
+      /* 변화 속도를 linear하지 않게 주는 방법 */
+      /* transition-timing-function: cubic-bezier(); */
+    }
+    /* absolute는 부모태그중에 가장 가까운 relative를 찾아 기준을 삼는다!  */
+    /* hover 줄때 조심해야한다, 이미지에 직접 주면 overflow:hidden으로 인해 선택이 안됨 ㅠ 
+    아래처럼 짜야지 이미지 어디에 hover를 하던 내가 원하는 애니메이션이 구현 됨*/
+    .shop-item:hover .overlay {
+      transform: translate(0, 50%);
+  
+    }
+    /* 애니메이션 만드는 Tip. 시작화면 / 최종화면을 설계하고 디자인 
+       그 과정을 transition 을 이용해서 smooth하게 변하도록 설정  
+    */
+  </style>
+</head>
+<body>
+  <div class="shop-bg">
+    <div class="shop-container">
+      <div class="shop-item">
+        <div class="overlay">
+          <p>가격: 60만원</p>
+        </div>
+        <img src="./img/shopping.jpg" alt="img1">
+      </div>
+      <div class="shop-item">
+        <img src="./img/shopping.jpg" alt="img2">
+      </div>
+      <div class="shop-item">
+        <img src="./img/shopping.jpg" alt="img3">
+      </div>
+    </div>
+  </div>
+</body>
+</html>

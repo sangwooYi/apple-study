@@ -12,11 +12,12 @@
     body {
       margin: 0px;
       font-family: 'NanumSquare';
+      background-color: rgb(217, 209, 209);
     }
 
     .nav {
       width: 100vw;
-      height: 100px;
+      height: 100px;  
       display: flex;
       background-color: #ff4949bd;
       justify-content: space-between;
@@ -69,31 +70,141 @@
     flex-wrap
     flex-grow
     */
+    .test {
+
+      /* 
+      vh vw
+      rem : 기본 폰트 사이즈의 비례 (기본 설정은 16px)
+      em : 내가 설정한 폰트사이즈의 비례 / rem em 은 요새는 잘 안쓴다
+      */
+      margin-top: 2vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 80vw;
+      height: 15vw;
+      background-color: white;
+      flex-wrap: wrap;
+    }
+    .test-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 20%;
+    }
+    .test-content p {
+      margin: 3px;
+    }
+    .test-content i {
+      background-color: aquamarine;
+      width: 90px;
+      height: 90px;
+      border-radius: 50px;
+      padding: 20px;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    /* 반응형 설정하는 법 아래의 경우는 해당 설정은 1200px까지만 적용
+      min-witdh: 500px 이건, 500px에서부터 적용!
+      max-wdth: 1200px 1200px 까지만 적용
+      따라서 만약 500 ~ 1000px 까지만 설정하고 싶은 css가 있다면
+      @media screen and (min-width:500px) and (max-width: 1000px){
+        여기에 적용하고싶은 클래스 설정
+      }
+
+      만약 아래처럼 짜면, 1200px 이하에서는 1번이, 768px이하에서는 2번이 적용됨
+      if / else if 개념으로 이해하면 됨!
+      @media screen and (max-width: 1200px) {
+
+      }
+      @media screen and (max-width: 768px) {
+
+      }                             태블릿            모바일
+      기준은 bootstrap 권장 설정은 1200px / 992px / 768px / 576px
+      screen은 현재 보이는 화면을 뜻함, 생략 가능// 현재 보이는 화면에만 적용하고 싶으면 필수 적용
+      print는 프린트 미리보기 화면에 적용함을 뜻함ㄴ
+    */
+    @media screen and (max-width: 1200px) {
+      .test {
+        width: 40vw;
+        height: 30vw;
+        font-size: 0.9rem;
+      }
+      .test-content {
+        width: 50%;
+      }
+    }
+    @media screen and (max-width: 768px) {
+      .test {
+        width: 20vw;
+        height: 50vw;
+        font-size: 0.8rem;
+      }
+      .test-content {
+        width: 100%;
+      }
+    }
   </style>
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
   <nav class="nav">
     <div class="nav-logo">
-      Logo
+      <i class="fa-solid fa-brush fa-2x"></i>
     </div>
     <div class="nav-menu">
       <span>products</span>
       <span>services</span>
     </div>
   </nav>
-  <div class="flex-container">
+  <!-- <div class="flex-container">
     <div class="flex-item">1</div>
     <div class="flex-item" style="flex-grow: 2;">2</div>
     <div class="flex-item">3</div>
     <div class="flex-item">4</div>
     <div class="flex-item">5</div>
+  </div> -->
+
+  <div class="test">
+    <div class="test-content">
+      <i class="fa-brands fa-youtube fa-3x"></i>
+      <h4>Fast Shipping</h4>
+      <p>lorem ipsum</p>
+    </div>
+    <div class="test-content">
+      <i class="fa-brands fa-aws fa-3x"></i>
+      <h4>Good Service</h4>
+      <p>lorem ipsum</p>
+    </div>
+    <div class="test-content">
+      <i class="fa-solid fa-taxi fa-3x"></i>
+      <h4>Free Coupons</h4>
+      <p>lorem ipsum</p>
+    </div>
+    <div class="test-content">
+      <i class="fa-duotone fa-bell-concierge fa-3x"></i>
+      <h4>New Products</h4>
+      <p>lorem ipsum</p>
+    </div>
   </div>
+
   <!-- Emmet문법 연습하자!!
   아래와같이 3행 5열 테이블 만들때 아래처럼 쓰면 알아서 만들어줌!
    생산성에 완전 캡숑짱! -->
+   <!-- 꼭 알아두면 매우매우 유용한 emmet 문법 정리 -->
+  <!-- 하위 레벨 태그 -->
   <!-- table>tr*3>td*5 -->
+   <!--동위 레벨 태그  p, h 태그는 같은 레벨에서 생성됨 -->
+   <!-- div>p+h -->
   <!-- div.container  => class="container" 를 갖는 div 태그를 만들어 줌 -->
+  <!-- p{lorem ipsume} p태그 내부 innerText에 lorem ipsume 대입
+    <p>lorem ipsume</p> 이렇게 생성됨
+  -->
 </body>
 
 </html>

@@ -30,6 +30,11 @@
       font-family: "NanumSquare";
     }
   </style>
+  <!-- IE 호환성으로 인해서, 조건부로 css걸려면 아래 태그로 감싸서 새로운 css 파일을 만들어야 함 -->
+
+  <!--[if lt IE 9]>
+  <link rel="stylesheet" type="text/css" href="css/ie8.css" />
+  <![endif]-->
 </head>
 <body>
   <h3>하하하</h3>
@@ -100,6 +105,12 @@
       .container__btn--red{
 
       }
+
+      디버깅 할때 브라우저에서 f12 키면 개발자도구,
+      ctrl + shift + c 를 누르면, 특정 요소에 대한 정보를 바로 볼 수 도 있다.
   -->
+
+  <!-- 라이브러리 CDN 받을떄 https://cdnjs.com/libraries/이사이트 참고하자 
+  https://cdnjs.com/libraries/font-awesome 이런식으로 제대로 CDN 링크 가능-->
 </body>
 </html>
