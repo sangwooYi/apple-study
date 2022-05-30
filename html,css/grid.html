@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* display: grid 
+       => 레이아웃 잡는데 요긴한 속성중 한가지!
+       모눈종이를 그리는 개념이라 생각하면 편함
+       따라서 특정 영역에 조밀하게 레이아웃을 짜야할 때 유용함
+       전체적인 레이아웃은 그냥 flex가 제일 좋음
+    */
+    .grid-container {
+      display: grid;
+      /* fr으로 하면 비율을 설정해주며 px, vh vm 처럼 절대적인 수치도 사용 가능 */
+      grid-template-columns: 100px 100px 100px;
+      grid-template-rows: 100px 100px 100px;
+    }
+    .base-img {
+      width: 100px;
+    }
+    .img-2x {
+      width: 200px;
+    }
+    .grid-2x {
+      /* grid-row / grid-column 둘다 사용법은 똑같다
+      a / b => a부터 b까지를 차지하라는 뜻
+      아랫처럼 모눈종이 선 번호라 생각하면 된다!
+      가장 첫번째 선 (row면 좌측선분 col이면 윗선분)
+      1  2  3  4 
+       ㅁ ㅁ ㅁ 
+       ㅁ ㅁ ㅁ
+       ㅁ ㅁ ㅁ
+      */
+      /* column 1 부터 3까지 */
+      grid-row: 1 / 3;
+      /* row 1부터 3까지 */
+      grid-column: 1 / 3;  
+
+      /* grid-row: 1 이런식으로 하면 그냥 해당 위치에 1칸만 차지하겠다는 의미임!
+         grid-row: 3 == grid-row: 3 / 4 임!
+      */
+    }
+
+    .grid-container2 {
+      display: grid;
+      grid-template-columns: 100px 100px 100px 100px;
+      grid-template-rows: 100px 100px 100px;
+    }
+    .grid-container2 div {
+      border: 0.5px solid black;
+    }
+    .header {
+      grid-column: 1 / 5;
+      grid-row: 1 / 2;
+    }
+    .left-side {
+      grid-column: 1 / 2;
+      grid-row: 2 / 4;
+    }
+    .right-side {
+      grid-column: 2 / 5;
+      grid-row: 2 / 4;
+    }
+    /* @media Tip
+      max-width => 탑다운 방식으로 만들때 편함
+      min-width => 바텀업 방식으로 만들때 편함
+    */
+    /* 모바일 화면 이하에서는 grid 변경 */
+    @media screen and (max-width: 768px) {
+      .grid-container {
+        grid-template-columns: 100px;
+        grid-template-rows: repeat(6, 100px);
+      }
+      .grid-container2 {
+        grid-template-columns: 100px;
+        grid-template-rows: repeat(3, 100px);
+      }
+      .grid-2x img {
+        width: 100px;
+      }
+      .grid-2x {
+        grid-row: 1;
+        grid-column: 1;
+      }
+      .header {
+        grid-column: 1;
+        grid-row: 1;
+      }
+      .left-side {
+        grid-column: 1;
+        grid-row: 2;
+      }
+      .right-side {
+        grid-column: 1;
+        grid-row: 3
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-container">
+    <div class="grid-2x"><img src="https://placeimg.com/500/500/any" class="img-2x"></div>
+    <div><img src="https://placeimg.com/500/500/arch" class="base-img"></div>
+    <div><img src="https://placeimg.com/500/500/nature" class="base-img"></div>
+    <div><img src="https://placeimg.com/500/500/people" class="base-img"></div>
+    <div><img src="https://placeimg.com/500/500/tech" class="base-img"></div>
+    <div><img src="https://placeimg.com/600/600/people" class="base-img"></div>
+  </div>
+
+  <div class="grid-container2" style="margin-top: 10px;">
+    <div class="header"></div>
+    <div class="left-side"></div>
+    <div class="right-side"></div>
+  </div>
+</body>
+</html>

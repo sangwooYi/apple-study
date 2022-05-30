@@ -21,6 +21,7 @@
       animation-iteration-count : 애니메이션 반복 횟수를 설정 (자연수 or infiite)
       animation-play-state : 애니메이션을 멈추거나 시작 
       animation-fill-mode : 애니메이션 시작 전,후 상태값을 설정
+      => forward: 마지막 프레임 상태를 유지, backward: 첫번쨰 프레임 상태를 유지 .. 등등
     */
 
     /* transfrom - transition으로만 가능하면 굳이 keyframes 안써도 된다! 
@@ -55,13 +56,13 @@
         transform: rotate(-10deg);
       }
       100% {
-        transform: rotate(10deg) scale(1.5);
+        transform: rotate(20deg) scale(1.5);
       }
     }
     @keyframes menu-animation {
       50% {
         /* skew는 +값은 \ 방향으로 찢고, -값은 / 방향으로 찢는다 */
-        transform: translate(120px) skew(-20deg);
+        transform: translate(120px) skew(-25deg);
       }
       100% {
         transform: translate(0px) skew(0deg);
@@ -100,11 +101,14 @@
     }
     .plus {
       position: absolute;
+      left: 500px;
+      top: 200px;
       margin: 10px;
     } 
     .plus:hover {
       animation-name: rot-bigger;
       animation-duration: 1s;
+      animation-fill-mode: forwards;
     }
     .menu {
       position: relative;

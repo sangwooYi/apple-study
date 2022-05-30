@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 
+    position: sticky 
+    Edge 이상에서만 가능, fixed와는 다르게 특정 요소가 화면에 나오는 동안 고정시키는 개념
+    */
+    body {
+      background-color: rgb(150, 141, 141);
+      height: 500vh;
+    }
+    .gray {
+      background-color: rgb(197, 146, 146);
+      height: 1500px;
+      width: 400px;
+      margin-top: 450px;
+      margin-left: 20px;
+    }
+    .text {
+      float: left;
+      width: 40%;
+    }
+    .img-sticky {
+      float: right;
+      position: sticky;
+      /* 이렇게 속성을 추가로 주어야 적용된다! */
+      top: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div class="gray">
+    <div class="text">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad necessitatibus voluptatibus magni doloribus adipisci quos rem error dignissimos architecto voluptatem asperiores 
+      minima expedita pariatur, neque dolorem enim, repudiandae, officia laborum.
+    </div>
+    <div class="img-sticky">
+      <img src="./img/iphone.png" alt="" width="150px">
+    </div>
+  </div>
+</body>
+</html>
