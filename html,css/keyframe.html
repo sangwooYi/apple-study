@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    body {
+      margin: 0px;
+    }
+    /* keyframe은 애니메이션을 커스텀 하는것 */
+    /* 
+      animation-name : 내가 커스텀한 애니메이션 이름
+      animation-duration : 애니메이션 효과가 몇초동안 실행될지, 
+      animation-delay : 애니메이션 효과가 몇초 지난 후 실행될지 delay
+      animation-timingfunction : 애니메이션이 적용되는 속도를 설정
+      animation-direaction : 애니메이션 진행방향을 설정 (역방향 설정 가능) normal, reverse,.. 
+      animation-iteration-count : 애니메이션 반복 횟수를 설정 (자연수 or infiite)
+      animation-play-state : 애니메이션을 멈추거나 시작 
+      animation-fill-mode : 애니메이션 시작 전,후 상태값을 설정
+    */
+
+    /* transfrom - transition으로만 가능하면 굳이 keyframes 안써도 된다! 
+       (즉. 특정 한두가지 애니메이션만 시행되는거면 굳이 안써도됨)
+       keyframes는 특정 loop에 여러가지 애니메이션을 복합적으로 집어넣고 싶을 때 쓰면 유용!
+    */
+    @keyframes move-left-right {
+      50% {
+        transform: translateX(200px);
+      }
+      100% {
+        transform: translateX(0px);
+      }
+    }
+    @keyframes btn-animation {
+      25% {
+        /* +방향이 시계방향, -방향이 반시계방향 */
+        transform: rotate(4deg);
+      }
+      50% {
+        transform: rotate(-4deg);
+      }
+      75% {
+        transform: rotate(4deg);
+      }
+      100% {
+        transform: rotate(0deg);
+      }
+    }
+    @keyframes rot-bigger {
+      25% {
+        transform: rotate(-10deg);
+      }
+      100% {
+        transform: rotate(10deg) scale(1.5);
+      }
+    }
+    @keyframes menu-animation {
+      50% {
+        /* skew는 +값은 \ 방향으로 찢고, -값은 / 방향으로 찢는다 */
+        transform: translate(120px) skew(-20deg);
+      }
+      100% {
+        transform: translate(0px) skew(0deg);
+      }
+    }
+    .box {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background-color: antiquewhite;
+      margin: 10px;
+    }
+    .box:hover {
+      /* keyframse로 선언한 애니메이션 적용 */
+      animation-name: move-left-right;
+      /* 애니메이션 진행 total 시간 */
+      animation-duration: 2s;
+      /* 반복 횟수 */
+      animation-iteration-count: infinite;
+    }
+    .btn {
+      position: absolute;
+      width: 100px;
+      height: 50px;
+      padding: 5px;
+      border-radius: 5px;
+      background-color: rgb(228, 157, 145);
+      cursor: pointer;
+      border: none;
+      margin: 10px;
+    }
+    .btn:hover {
+      animation-name: btn-animation;
+      animation-duration: 0.5s;
+      animation-iteration-count: infinite;
+    }
+    .plus {
+      position: absolute;
+      margin: 10px;
+    } 
+    .plus:hover {
+      animation-name: rot-bigger;
+      animation-duration: 1s;
+    }
+    .menu {
+      position: relative;
+      background-color: black;
+      height: 1000px;
+      width: 500px;
+      transform: translate(-300px);
+      transition: 0.8s;
+    }
+    .content1 {
+      position: absolute;
+      color: white;
+      top: 100px;
+      left: 370px;
+      font-size: 20px;
+      transition: 0.8s;
+      cursor: pointer;
+    }
+    .content2 {
+      position: absolute;
+      color: white;
+      top: 150px;
+      left: 200px;
+      transition: 0.8s;
+      cursor: pointer;
+    }
+    .menu:hover {
+      transform: translate(0px);
+    }
+    .menu:hover .content1 {
+      transform: translate(-180px);
+    }
+    .menu:hover .content2 {
+      animation-name: menu-animation;
+      animation-duration: 1s;
+    }
+  </style>
+</head>
+<body>
+  <div class="box"></div>
+  <button class="btn">버튼버튼!</button>
+  <div>
+    <i class="fa-solid fa-plus fa-3x plus"></i>
+  </div>
+  <div class="menu">
+    <div class="content1">Menu</div>
+    <div class="content2">Item</div>
+  </div>
+</body>
+</html>

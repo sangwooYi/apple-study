@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <!-- controls는 컨트롤바 표출 여부 
+      autoplay 는 muted와 항상 같이 써야 함
+      preload="none" 미리 다운 X
+      preload="auto" 미리 전부 다운
+      preload="metadata" 적당한 부분만 미리 다운
+      poster="경로" : 이게 썸네일 이미지!!
+  -->
+  <video controls poster="./img/author.png">
+    <source src="./img/bridge.mp4" type="video/mp4">
+  </video>
+
+  <audio src="./img/bass.mp3" controls></audio>
+</body>
+</html>

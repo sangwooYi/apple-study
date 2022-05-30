@@ -1,1 +1,79 @@
-// 하하
+$active-blue: #007bff;
+
+.li-style {
+  list-style: none;
+  height: 50px;
+  width: 300px;
+  border: 0.5px solid rgb(158, 153, 153);
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+  border-collapse: collapse;
+  // 겹침 해결 방법! collapse 설정 후 border-width 만큼 margin을 거꾸로 주면, 정확히 포개진다.
+  margin-top: -0.5px;
+
+}
+.li-style:hover {
+  background-color: $active-blue;
+  color: white;
+  cursor: pointer;
+}
+.li-active {
+  @extend .li-style;
+  background-color: $active-blue;
+  color: white;
+}
+
+@mixin base-alert($color1, $color2) {
+  width: 500px;
+  height: 40px;
+  padding: 5px 20px;
+  margin: 20px;
+  border-radius: 5px;
+  background-color: $color1;
+  color: $color2;
+  display: flex;
+  align-items: center;
+}
+
+.alert-green {
+  @include base-alert(#dff0d8, #5c7555);
+}
+.alert-blue {
+  @include base-alert(#c6e9f2, #556b74);
+}
+.alert-orange {
+  @include base-alert(#fbf7e3, #7c764f);
+}
+
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100px;
+  background-color: #dff0d8;
+}
+// 실제 bootstrap도 이거와 유사하게 작성한다!
+.row .col-3 {
+  @extend .row;
+  width: 25%;
+}
+.row .col-4 {
+  @extend .row;
+  width: 33.33%;
+}
+.row .col-6 {
+  @extend .row;
+  width: 50%;
+}
+
+.row .col-md-4 {
+  @extend .row;
+}
+
+@media screen and (min-width: 768px) {
+  .row .col-md-4 {
+    width: 33.33%;
+  }
+}
