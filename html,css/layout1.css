@@ -1,3 +1,16 @@
+/* Sass에서 지원하는 변수 / 사칙연산도 현재 CSS에서 지원해준다! */
+
+/* CSS에서 변수 선언해서 사용하는법 */
+:root {
+  --main-color: #2a2a2a;
+}
+.test-var {
+  /* 선언한 변수 사용법 */
+  background-color: var(--main-color);
+  /* CSS도 calc()이용 사칙연산 가능 */
+  font-size: calc(16px - 12px);
+}
+
 .wrapper {
   width: 800px;
   height: 800px;

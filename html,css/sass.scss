@@ -1,0 +1,117 @@
+// 웹브라우저는 CSS밖에 모름 따라서, Sass 로 짠 코드는 CSS로 변환하는 과정이 필수로 필요함
+// Sass의 장점은, 변수를 지정해서 사용하는것이 가능함!
+// 거기에 사칙연산이 가능 (기본font-2px 이런식으로 선언이 가능한것!) 단  
+// +- 는같은 단위 끼리만 가능! */는 해당값을 정수로 나누는것만 가능
+
+//.scss와 .sass 는 사실상 같은 Sass이다. 차이는 중괄호 생략 가능 여부 후자를 사용하면 중괄호 없이 사용 가능함.
+
+// 변수 지정방법  
+// $변수명 : 값;
+$main-color: #2a4cb2;
+$main-font-size: 16px;
+.box {
+  // 변수 사용 법
+  background-color: $main-color;
+  width: 300px;
+  height: 300px;
+}
+
+// .main-content h4 {} 요거랑 똑같은거! Nesting
+.main-content {
+  h4 {
+    font-size: $main-font-size;
+  }
+}
+// extends 문법 @
+.base-btn {
+  width: 100px;
+  height: 50px;
+  border-radius: 20px;
+  padding: 5px 10px;
+}
+// 이런식으로  @extends를 활용 OOCSS 측면으로 코드를 짜기가 편하다!!
+// 만약 @extends할 클래스는 컴파일 하기 싫으면 . 대신 % 로선언하면된다.
+// %base-btn {}   쓸떄는 @extends %base-btn; 이런식으로
+.blue-btn {
+  @extend .base-btn;
+  background-color: blue;
+}
+
+%base-box {
+  width: 200px;
+  height: 200px;
+  padding: 20px;
+}
+.green-box {
+  @extend %base-box;
+  background-color: green;
+}
+.red-box {
+  @extend %base-box;
+  background-color: red;
+}
+.blue-box {
+  @extend %base-box;
+  background-color: blue;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+.m-5 {
+  margin: 5px;
+}
+.mx-5 {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+// @mixin / @include
+// 클래스에서 필드 선언처럼 @mixin 명칭(){} 으로 여러 속성들을 한번에 선언한 뒤
+// @include 명칭(); 으로 사용이 가능하다
+@mixin test-btn() {
+  font-size: 16px;
+  padding: 10px;
+}
+.btn-green {
+  @include test-btn();
+  background-color: green;
+}
+
+// 이 방법의 장점은, 인자 전달이 가능하다는 것!!!!! 메서드처럼 쓸 수 있는것
+// 아래처럼 진짜 메서드 선언하는 형식도 존재한다!
+// @function shade-color($color, $weight) {
+//   @return mix(black, $color, $weight);
+// }
+
+
+// 인자는 여러개 선언이 가능함 $인자1, $인자2 ...
+// 심지어 속성 명을 인자로 전달도 가능하다
+@mixin test-box($color, $args1) {
+  width: 300px;
+  height: 300px;
+  margin: 10px;
+  background-color: $color;
+  //args1에 만약 padding을 전달하면 padding: 10px가 되는것 (알아만 두자 별로 쓸곳은 X)
+  #{ $args1 }: 10px;
+}
+// 버튼 / 뱃지 / 박스 등등에 굉장히 유용하게 쓰인다
+.green-box-mixin-pract {
+  @include test-box(green);
+}
+
+
+// import 문법 @import @use 가 존재하나, @use 사용을 권장함 
+// import의 경우 import를 여러개를 중복해서 할 경우, 동일한 변수명은 캐스캐이딩이 적용되어버림
+// @use를 사용할 경우에는 클래스 필드처럼 파일명.변수; 이렇게 정확하게 명시해서 호출이 가능함!!!!
+// @use '파일명.확장자' or 그냥 '파일명'
+
+//@use 'sass-practice' 
+// sass-practice.변수명;   
+// sass-practice.mixin명칭(); 
+// 이렇게 import한 scss/sass 파일의 변수와 mixin을 가져다 쓸 수 있다!

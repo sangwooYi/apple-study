@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    /* 
+      pseudo-class는 :hover, :active, :link, :visited 같은 요소들!
+      얘는 특정 event에 대해서 css로만 변화를 줄 수 있는 방법
+
+      pseudo-element는 아래 정도만 알고 있으면 된다! 
+      (요소 내부에 뭔가 변경을 주는 방법)
+      
+    */
+    /* 첫글자만 변경 */
+    .pseudo::first-letter {
+      color: red;
+      font-size: 20px;
+    }
+    /* 첫줄만 변경 */
+    .pseudo::first-line {
+      color: aquamarine;
+    }
+    /* 해당 요소 앞에 추가 */
+    .pseudo::before {
+      content: "바보냐";
+    }
+    /* 해당 요소 뒤에 추가 */
+    .pseudo::after {
+      content: "멍청아";
+    }
+    /* 요런것도 가능
+      ::file-selector-button
+      ::placeholder
+      ::selection 
+      등등이 있다! 
+      https://docs.w3cub.com/css 여기 참고 할 것!
+      추가적으로
+      -webkit- ~~ 를 이용해서 크롬/엣지에서만 적용되는 peseduo-element도 적용 가능
+      파이어폭스는 -moz 임!
+
+      아래처럼, input[type=타입]:: 형태 확인하는방법은
+      f12 => 설정에서 shadow DOM 보기 체크
+      그러면 shadow DOM을 확인할 수 있게 되며,
+      pseudo= 속성에 설정된 값을 통해 아래처럼, CSS 변경이 가능함!
+      (직접 확인 or 구글링!)
+    */
+    input[type=file]::-webkit-file-upload-button {
+      background-color: skyblue;
+    }
+    .file-test::file-selector-button {
+      background-color: aqua;
+    }
+    progress {
+      /* 기본 설정을 없애달라는 요청 */
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background-color: white;
+      color: red;
+    }
+    /* edge도 크롬엔진 썼기때문에 -webkit 적용 되는것 */
+    progress::-webkit-progress-bar {
+      background-color: #eee;
+      border-radius: 2px;
+    }
+    progress::-webkit-progress-value {
+      background-color: red;
+      border-radius: 2px;
+    }
+    /* 파이어폭스 호환성 */
+    progress::-moz-progress-bar {
+      background-color: red;
+      border-radius: 2px;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <h4>HAHAHAHAH</h4>
+    <p class="pseudo">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, mollitia excepturi? Facere voluptas, eius iure omnis repellat soluta nam neque similique ratione nemo rem minima id ipsum eveniet voluptates suscipit.
+    </p>
+    <input type="file" class="file-test">
+
+    <input type="file">
+  </div>
+  <progress value="0.4"></progress>
+</body>
+</html>

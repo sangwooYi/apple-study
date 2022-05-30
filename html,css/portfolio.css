@@ -100,6 +100,12 @@ body {
 }
 .menu-bar-icon {
   width: 100px;
+  /* margin / padding 연습 동일하므로 marign으로만 쓴다
+    margin: 5px;   상,하,좌,우 모두 5px
+    margin: 5px 10px;  상하 5px  좌우 10px
+    margin: 5px 10px 15px;  상 5px 좌우 10px 하 15px;
+    margin: 5px 10px 15px 20px;  상 5px 우 10px 하 15px 좌 20px
+  */
   margin: 10px 40px;
   display: flex;
   flex-direction: column;
