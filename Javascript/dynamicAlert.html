@@ -34,36 +34,30 @@
 </head>
 <body>
   <div class="alert-box" id="alert">
-    <span style="margin-left: 5px;">
+    <span style="margin-left: 5px;" id="inner-tag">
       아이디를 입력해라 제발
     </span>
     <span style="float: right; cursor: pointer;" onClick="modAlert('none')">X</span>
   </div>
-  <div class="alert-box" id="alert2">
-    <span style="margin-left: 5px;">
-      비밀번호 입력해라 제발
-    </span>
-    <span style="float: right; cursor: pointer;" onClick="modAlert2('none')">X</span>
-  </div>
 
-  <button onclick="modAlert('block')">클릭클릭1</button>
-  <button onclick="modAlert2('block')">클릭클릭2</button>
+
+  <button onclick="modAlert('block', 0)">클릭클릭1</button>
+  <button onclick="modAlert('block', 1)">클릭클릭2</button>
   <script>
     // UI 만드는 step
     // HTML/CSS 미리 짜놓고 => 필요할때 보여달라는 코드 작성(eventListener)
-    function modAlert(event) {
+    function modAlert(event, oper) {
       let alert = document.getElementById("alert");
       // style 속성들은 그냥 이렇게 하는게 편하다
       alert.style.display = event;
-
+      if (oper) {
+        document.getElementById("inner-tag").innerText = "비밀번호 입력해라 좋은말 할 때";
+      } else {
+        document.getElementById("inner-tag").innerText = "아이디를 입력해라 제발";
+      }
     }
-    function modAlert2(event) {
-      let alert = document.getElementById("alert2");
-      // style 속성들은 그냥 이렇게 하는게 편하다
-      alert.style.display = event;
 
-
-    }
+ 
     // 자바스크립트 함수 선언 방법, 총 6가지이나 주요한거 세개만 정리했음
     // 1. 명명 선언
     function 함수명() {
