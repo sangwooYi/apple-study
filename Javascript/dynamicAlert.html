@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .alert-box {
+      margin: 20px;
+      width: 600px;
+      padding: 20px;
+      background-color: antiquewhite;
+      border-radius: 8px;
+      color: rgb(141, 104, 56);
+      letter-spacing: 0.3px;
+      /* display: none , block or hidden  , visible*/
+      /* display: none; */
+      display: none;
+    }
+    .text-bold {
+      font-weight: 700;
+    }
+    button {
+      margin-left: 20px;
+      padding: 8px;
+      border: none;
+      background-color: rgb(236, 86, 86);
+      border-radius: 3px;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="alert-box" id="alert">
+    <span style="margin-left: 5px;">
+      아이디를 입력해라 제발
+    </span>
+    <span style="float: right; cursor: pointer;" onClick="modAlert('none')">X</span>
+  </div>
+  <div class="alert-box" id="alert2">
+    <span style="margin-left: 5px;">
+      비밀번호 입력해라 제발
+    </span>
+    <span style="float: right; cursor: pointer;" onClick="modAlert2('none')">X</span>
+  </div>
+
+  <button onclick="modAlert('block')">클릭클릭1</button>
+  <button onclick="modAlert2('block')">클릭클릭2</button>
+  <script>
+    // UI 만드는 step
+    // HTML/CSS 미리 짜놓고 => 필요할때 보여달라는 코드 작성(eventListener)
+    function modAlert(event) {
+      let alert = document.getElementById("alert");
+      // style 속성들은 그냥 이렇게 하는게 편하다
+      alert.style.display = event;
+
+    }
+    function modAlert2(event) {
+      let alert = document.getElementById("alert2");
+      // style 속성들은 그냥 이렇게 하는게 편하다
+      alert.style.display = event;
+
+
+    }
+    // 자바스크립트 함수 선언 방법, 총 6가지이나 주요한거 세개만 정리했음
+    // 1. 명명 선언
+    function 함수명() {
+
+    }
+    // 2. 익명 표현
+    const some = function() {
+
+    }
+    // 3. 화살표 함수
+    const fxxx = () => {
+
+    }
+
+  </script>
+</body>
+</html>

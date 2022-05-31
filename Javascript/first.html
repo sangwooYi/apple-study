@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1 id="hello">하이하이</h1>
+  <h1 id="hi">JS 초보에요</h1>
+  <script>
+    // querySelector  // getElementById, getElementByClassName
+    // querySelector는 #를 통해 id를 그냥 쓰면 class를 지정할 수 있다.
+    // document.querySelector("#hello")와 동일
+
+    // 1. 조작하고 싶은 태그 선택
+    let tag = document.getElementById("hello");
+    // 2. 선택한 태그에 대해 적절한 조작 수행
+    tag.innerText = "바보야";
+    // 기본적으로 구글링하는게 제일 편하다!
+    // JS는 카멜케이스!
+    tag.style.fontSize = "16px";
+    tag.style.color = "red";
+    // innerHTML, innerText
+    // innerText vs innerHTML
+    // 전자의 경우는 text만 가져오지만 후자는 element 안의 HTML을 통째로 가져온다
+    // 따라서 후자는 해당 요소의 속성 + 요소 내부 태그들도 함께 가져옴
+    document.getElementById("hi").innerText = "JS 고수가 되고 싶슴다.";
+  </script>
+</body>
+</html>

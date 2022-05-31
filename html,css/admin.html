@@ -12,13 +12,11 @@
   <link rel="stylesheet" href="./admin.css">
 </head>
 <body>
-  <div class="d-flex flex-column position-relative ps-5">
-    <nav class="nav-bar d-flex justify-content-between align-items-center ps-5 pe-3">
-      <form class="d-flex ms-4">
+  <div class="d-flex flex-column position-relative ps-5 flex-wrap">
+    <nav class="nav-bar d-flex justify-content-between align-items-center ps-5 pe-3 coontaie">
+      <form class="ms-4">
         <input class="search-input" type="search" placeholder="Search">
-        <div class="search-btn">
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </div>
+        <i class="fa-solid fa-magnifying-glass"></i>
       </form>
       <div class="d-flex justify-content-around align-items-center col-2">
         <i class="fa-solid fa-bell position-relative">
@@ -36,7 +34,7 @@
     </nav>
     <div class="d-flex flex-column mt-4 ms-5">
       <h4 style="margin-left: 25px;">Dashboard</h4>
-      <div class="d-flex justify-content-start align-items-center ms-4">
+      <div class="d-flex flex-column flex-md-row justify-content-md-start align-items-md-center ms-4">
         <div class="card d-flex flex-row align-items-center justify-content-between px-4">
           <div class="left-deco bg-info"></div>
           <div class="d-flex flex-column">
@@ -71,14 +69,14 @@
         </div>
       </div>
     </div>
-    <div class="d-flex justify-content-between px-5 pt-5">
+    <div class="d-flex flex-column flex-md-row justify-content-md-between px-5 pt-5">
       <div class="d-flex flex-column chart-box">
         <ul>
           <li class="chart-header">
             Earnings Overview
           </li>
           <li>
-            <canvas id="myChart" height="300px" width="800px"></canvas>
+            <canvas id="myChart"></canvas>
           </li>
         </ul>
       </div>
