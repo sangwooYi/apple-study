@@ -37,10 +37,14 @@
     <span style="margin-left: 5px;" id="inner-tag">
       아이디를 입력해라 제발
     </span>
-    <span style="float: right; cursor: pointer;" onClick="modAlert('none')">X</span>
+    <!-- 여러 이벤트를 동시에 지정 가능함. 따라서 이벤트끼리 충돌나는 경우 없도록 조심 -->
+    <span style="float: right; cursor: pointer;" id="close" onclick="console.log('haha')">X</span>
+  </div>
+  <div class="alert-box">
+
   </div>
 
-
+  <!-- 이렇게 태그에 바로 이벤트 걸수도 있지만, addEventListener를 사실 더 자주 사용함 -->
   <button onclick="modAlert('block', 0)">클릭클릭1</button>
   <button onclick="modAlert('block', 1)">클릭클릭2</button>
   <script>
@@ -57,7 +61,30 @@
       }
     }
 
- 
+    const closeTag = document.getElementById("close");
+    // event 명들은 구글링 or doc 참고 click, scroll, keyup, keydown, submit 등등이 존재
+    closeTag.addEventListener("click", (event) => {
+      // event.target은 이벤트가 발생한 요소를 담고있음
+      console.log(event.target);
+      document.getElementById("alert").style.display = "none";
+    })
+
+    const hi = document.getElementsByClassName("alert-box");
+    // querySelector 는 css 선택자처럼 id 는 #붙여서, class는 .붙여줘야함
+    // querySelector로 class를 지목할경우에는 첫번째 요소를
+    // 전부 체크하고싶으면 querySelectorAll 써야 함
+    const hihi = document.querySelector(".alert-box");
+    const hihihi = document.querySelectorAll(".alert-box");
+    // class로 가져올 경우에는, 해당 클래스명을 갖는 요소를 전부 가져온다
+    // 따라서 hi[0] 이런식으로 진짜 원하는애를 지목해 줘야 함
+    // getElementsByClassName()은 HTMLCollection이란 오브젝트 형태로 반환해준다.
+    console.log(hi);
+    // querySelector 해당 class 명을 갖는 애중 첫번째 요소만 가져옴
+    console.log(hihi);
+    // querySelectorAll()은 NodeList란 오브젝트 형태로 반환해준다.
+    console.log(hihihi);
+    console.log(hi[0]);
+    console.log(hihihi[0]);
     // 자바스크립트 함수 선언 방법, 총 6가지이나 주요한거 세개만 정리했음
     // 1. 명명 선언
     function 함수명() {
@@ -72,6 +99,8 @@
 
     }
 
+    // getElementById("아이디") == querySelector("#아이디");
+    // getElementsByClassName("클래스") == querySelectorAll(".클래스"); 
   </script>
 </body>
 </html>

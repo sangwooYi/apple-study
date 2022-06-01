@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />   
+  <style>
+    body {
+      margin: 0px;
+    }
+    .modal-wrapper {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.6s;
+    }
+    .show-modal {
+      visibility: visible;
+      opacity: 1;
+    }
+    .modal-box {
+      width: 500px;
+      height: 320px;
+      border-radius: 10px;
+      margin-top: 200px;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .modal-form {
+      padding: 0px 10px 20px 10px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      align-items: center;
+    }
+    .input-div {
+      width: 70%;
+      height: 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .modal-input {
+      width: 200px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      padding: 5px;
+      border: 1px solid rgb(36, 34, 34);
+      border-radius: 5px;
+    }
+    .modal-input:focus {
+      background-color: rgb(221, 250, 240);
+    }
+    .modal-close {
+      opacity: 0;
+    }
+    .modal-btn {
+      margin-left: 50px;
+      margin-top: 50px;
+      background-color: rgb(104, 104, 233);
+      color: white;
+      border: none;
+      padding: 6px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #send-btn {
+      width: 80px;
+      padding: 5px;
+      margin: 5px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      color: white;
+      background-color: rgb(104, 104, 233);
+    }
+    #send-btn:hover {
+      background-color: rgb(123, 123, 245);
+    }
+    #close-btn {
+      width: 80px;
+      padding: 5px;
+      margin: 5px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      color: white;
+      background-color: rgb(244, 92, 92);
+    }
+    #close-btn:hover {
+      background-color: rgb(249, 117, 117);
+    }
+    .modal-header {
+      text-align: end;
+      cursor: pointer;
+    }
+    #close {
+      padding: 5px 10px;
+      margin: 10px 20px;
+      font-size: 16px;
+      background-color: rgb(245, 104, 104);
+      border-radius: 5px;
+      color: white;
+    }
+    #close:hover {
+      background-color: rgb(241, 122, 122);
+    }
+  </style>
+</head>
+<body>
+  <!-- 모달창은 상단에 작성하는 습관 들이자 -->
+  <div class="modal-wrapper" id="modal-wrapper">
+    <div class="modal-box">
+      <div class="modal-header"><span id="close">X</span></div>
+      <form action="#" class="modal-form" id="form">
+        <div style="margin-top: 30px;" class="input-div">
+          <label for="id-in">아이디: </label>
+          <input type="text" id="id-in" class="modal-input">
+        </div>
+        <div class="input-div">
+          <label for="pass-in">비밀번호: </label>
+          <input type="text" id="pass-in" class="modal-input">
+        </div>
+        <!-- 이렇게 버튼 뺴는거 싫으면 input 태그 type="button"으로 해결해야한다고 함
+          form을 제출할 버튼만 type="submit"으로 !!!
+        -->
+        <div style="display: flex;">
+          <!-- form을 제출할 버튼만 type="submit"으로 만들 것! -->
+          <input type="submit" id="send-btn" value="전송"></input>
+          <input type="button" id="close-btn" value="닫기"></input>
+        </div>
+      </form>
+    </div>
+  </div>
+  <button class="modal-btn" id="modal-btn">버튼</button>
+
+  <!-- jQuery CDN 하단에 script를 작성해야 jquery가 적용된다 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> 
+  <script>
+    const modalBtn = document.getElementById('modal-btn');
+    modalBtn.addEventListener('click', () => {
+      // 그냥 할때는 .classList 반드시 붙여줘야함
+      document.getElementById('modal-wrapper').classList.add('show-modal');
+    })
+    const sendBtn = document.getElementById('send-btn');
+    const closeBtn = document.getElementById('close-btn');
+    const form = document.getElementById('form');
+
+    form.addEventListener('submit', (event) => {
+
+      // 자바스크립트만으로 submit한 input 태그 값 가져오는방법
+      const id = document.getElementById('id-in');
+      const pw = document.getElementById('pass-in');
+      console.log(id.value, pw.value);
+
+      if (id.value.trim() === "" && pw.value.trim() === "") {
+        event.preventDefault();
+        // alert창 자체 custom은 불가능하다
+        // 만약 라이브러리 없이
+        // 경고창을 이쁘게 꾸미고싶으면, 모달창으로 내가 직접 만들어야 함
+        alert("장난하냐 ㅡㅡ>>???");
+      } else if (id.value.trim() === "") {
+        event.preventDefault();
+        alert("아이디 없다고");
+      } else if (pw.value.trim() === "") {
+        event.preventDefault();
+        alert("비번 없다고 ㅡㅡ");
+      } else if (pw.value.length < 6) {
+        alert("6자는 넘어야지 비번이");
+      }
+    });
+
+    closeBtn.addEventListener('click', () => {
+      closeModal();
+    });
+
+    document.getElementById('close').addEventListener('click', () => {
+      closeModal();
+    });
+
+    function closeModal() {
+      document.getElementById('modal-wrapper').classList.remove('show-modal');
+    }
+  </script>
+</body>
+</html>

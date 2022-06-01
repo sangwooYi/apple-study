@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />   
+  <style>
+    body {
+      margin: 0px;
+    }
+    /* 기본값 */
+    .modal-wrapper {
+      transform: translate(0, -750px);
+      transition: all 0.5s;
+    }
+    .show-modal {
+      transform: translate(0, 0);
+      visibility: visible;
+    }
+    .bg-black {
+      top: 0px;
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+      background-color: black;
+      opacity: 0.5;
+    }
+    .modal {
+      position: absolute;
+      top: 200px;
+      left: 500px;
+      width: 500px;
+      height: 250px;
+      background-color: white;
+      border-radius: 5px;
+      text-align: center;
+    }
+    .inner {
+      margin-top: 80px;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      height: 80px;
+      background-color: rgb(234, 226, 226);
+    }
+    .menu-btn {
+      margin-right: 30px;
+      cursor: pointer;
+      transform: 0.5s;
+    }
+    .menu-btn:hover {
+      transform: scale(1.05);
+    }
+
+    /* submenu 관련 */
+    .sub-menu{
+      /* 다른 요소들 방해 안주고 레이아웃 덮고 싶으면 position: fixed  or absolute */
+      position: fixed;
+      width: 100%;
+      margin: 0px;
+      padding: 0px;
+      transition: 0.6s;
+      /* 영역 밖의 부분은 아예 가려버리는것, 애니메이션 줄 때 매우 유용하다 */
+      overflow: hidden;
+      height: 0px;
+    }
+    .show-sub {
+      height: 100%;
+    }
+    li {
+      list-style: none;
+      background-color: rgba(235, 245, 253, 0.5);
+      text-align: end;
+      padding-right: 30px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+    <div class="modal-wrapper"> 
+      <div class="bg-black">
+      </div>
+      <div class="modal">
+        <div class="inner">
+          <p>헤헤헤헤헤</p>
+          <button id="close-btn">닫아닫아</button>  
+        </div>
+      </div>
+    </div>
+    <nav class="navbar">
+      <span style="margin-left: 30px;">NavBar</span>
+      <i class="fa-solid fa-bars fa-2x menu-btn" id="menu-btn"></i>
+    </nav>
+    <ul class="sub-menu" id="sub-menu">
+      <li>메뉴1</li>
+      <li>메뉴2</li>
+      <li>메뉴3</li>
+      <li>메뉴4</li>
+    </ul>
+
+    <p class="hello" id="hello">하</p>
+    <p class="hello" id="hello2">하</p>
+    <p class="hello">하</p>
+    <p class="hello">하</p>
+    <button id="btn">사라져</button>
+    <button id="btn2">나타나</button>
+    
+    <button id="modal-btn">모달모달</button>
+
+  <!-- jQuery CDN 하단에 script를 작성해야 jquery가 적용된다 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> 
+  <script>
+    // $ == querySelector , .html == innerHTML .text == innerText
+    // 이렇게 jqeury는 그냥 자바스크립트 라이브러리이다! 
+    $('.hello').text('안녕');
+    // .style.~~~  는 .css(style속성명, 값); 이렇게
+    $('#hello').css('color', 'tomato');
+    // 카멜케이스로 써야한다!
+    $('#hello').css('fontWeight', '700');
+
+    // 이 외에도 .addClass() .toggleClass() .removeClass() 존재
+    // .classList.add()  .classList.toggle()  .classList.remove()
+
+
+    // 여러 class가 선택되도 반복문 없이 한번에 변경 가능! 
+    $('.hello').text('천재');
+
+    // addEventListner() == .on()
+    $('#hello2').on('click', () => {
+      console.log('클릭클릭');
+    })
+
+    // 애니메이션을 간편하게 작성 가능 .hide, .fadeIn, fadeOut, .slideUp , .slideDown 등
+    $('#btn').on('click', () => {
+      $('.hello').slideUp();
+    })
+    $('#btn2').on('click', () => {
+      $('.hello').slideDown();
+    })
+
+    // 간단한 애니메이션은 최대한 CSS로 처리하자! (모든걸 JS로만 처리하려고하면 
+    // JS 성능 저하가 발생할 수 있다)
+    $('#modal-btn').on('click', () => {
+      $('.modal-wrapper').addClass('show-modal');
+    })
+
+    // submenu 관련
+    $('#close-btn').on('click', () => {
+      $('.modal-wrapper').removeClass('show-modal');
+    })
+
+    $('#menu-btn').on('click', () => {
+      $('#sub-menu').toggleClass('show-sub')
+    })
+  </script>
+
+</body>
+</html>
