@@ -62,6 +62,8 @@
     }
     .modal-input:focus {
       background-color: rgb(221, 250, 240);
+      /* input 태그에 검은 테두리 없애려면 이 속성 넣어 주어야 함 */
+      outline: none;
     }
     .modal-close {
       opacity: 0;
@@ -117,6 +119,12 @@
     #close:hover {
       background-color: rgb(241, 122, 122);
     }
+    .border-red {
+      border-color: red;
+    }
+    .border-blue {
+      border-color: blue;
+    }
   </style>
 </head>
 <body>
@@ -158,12 +166,32 @@
     const closeBtn = document.getElementById('close-btn');
     const form = document.getElementById('form');
 
+    // 얘는 input창에 값이 변할때마다 매번 발생하는 event (Vue에서 v-model)
+    document.getElementById('id-in').addEventListener('input', () => {
+      const idInp = document.getElementById('id-in');
+      if (idInp.value.length < 6) {
+        idInp.classList.add('border-red');
+        idInp.classList.remove('border-blue');
+      } else {
+        idInp.classList.add('border-blue');
+        idInp.classList.remove('border-red');
+      }
+    });
+
+    // 얘는 input 창이 변했다면 input창 focus가 해제 되는 타이밍에 발생하는 event
+    // vue.js 에서 v-model .lazy 속성과 같다.
+    document.getElementById('id-in').addEventListener('change', () => {
+      console.log("홀리쉬이이");
+    })
+
+
     form.addEventListener('submit', (event) => {
 
       // 자바스크립트만으로 submit한 input 태그 값 가져오는방법
       const id = document.getElementById('id-in');
       const pw = document.getElementById('pass-in');
       console.log(id.value, pw.value);
+
 
       if (id.value.trim() === "" && pw.value.trim() === "") {
         event.preventDefault();

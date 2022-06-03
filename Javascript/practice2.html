@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <form action="#" id="form-tag">
+    <label for="deposit">예금액 입력 gogo</label>
+    <input type="number" id="money">
+    <button id="calc">계산</button>
+  </form>
+  <p>
+    나의 2년후 예금 총액은? : 
+    <span id="result"></span>
+  </p>
+
+  <p>이성계 태어난 년도?</p>
+  <form action="#" id="quiz">
+    <input type="text" id="answer">
+    <button>제출</button>
+  </form>
+
+  <script>
+    
+    const form = document.getElementById('form-tag');
+    form.addEventListener('submit', () => {
+      const inputValue = document.getElementById('money').value;
+      const result = calcDeposit(inputValue);
+
+      document.getElementById('result').innerText = `${result} 원`;
+    });
+
+
+    function calcDeposit(amount) {
+      let interestRate = 0.15;
+      if (amount >= 50000) {
+        interestRate = 0.2;
+      }
+      total = 0;
+      year = 0;
+      amount = Number(amount);
+      while (year < 2) {
+        total += amount;
+        total *= (1+interestRate);
+        year++;
+      }
+      return total;
+    }
+    console.log(calcCoffee(360));
+    function calcCoffee(amount) {
+      i = 0;
+      total = amount;
+      while (i < 2) {
+        amount = (amount * (2/3));
+        total += amount;
+        i += 1;
+      }
+      return total;
+    }
+
+    let chance = 3;
+    document.getElementById('quiz').addEventListener('submit', () => {
+      console.log("??");
+      const answer = document.getElementById('answer').value;
+      checkAnswer(answer);
+    })
+
+    function checkAnswer(year) {
+      if (year == 1335) {
+        alert('good');
+      } else {
+        chance -= 1
+        if (chance > 0) {
+          alert(`기회가 ${chance}번 남았따`);
+        } else {
+          alert('개멍청인가??');
+        }
+      }
+    }
+  </script>
+</body>
+</html>

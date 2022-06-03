@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <form action="#" id="test-form">
+
+    <p>숫자 입력해봐</p>
+    <input type="number" id="input-tag">
+    <button>입력</button>
+
+  </form>
+
+  <form action="#" id="test-form2">
+
+    <p>시험성적 입력해봐</p>
+    <label for="input-tag2">개론</label>
+    <input type="number" id="input-tag2">
+    <label for="input-tag3">민법</label>
+    <input type="number" id="input-tag3">
+
+    <button>입력</button>
+  </form>
+
+
+  <script>
+
+      const form = document.getElementById('test-form')
+      form.addEventListener('submit', () => {
+        const now = document.getElementById('input-tag').value;
+        tsn(now);
+      });
+
+      const form2 = document.getElementById('test-form2')
+      form2.addEventListener('submit', () => {
+        const score1 = document.getElementById('input-tag2').value;
+        const score2 = document.getElementById('input-tag3').value;
+        testResult(score1, score2);
+      });
+
+    function tsn(number) {
+      // 하드코딩으로 n번째 자리 숫자를 알려면 10^1  ~ 10^n 까지 계속 나머지를 구하면 됨
+      const lnum = number % 10;
+      if (lnum === 3 || lnum === 6 || lnum === 9) {
+        console.log("박수박수");
+      } else {
+        console.log("통과");
+      }
+     }
+
+     function testResult(score1, score2) {
+      const sum = score1 + score2;
+      if (!checkRange(score1) || !checkRange(score2)) {
+        alert("디진다 ㅡㅡ 😒");
+      } else{
+        if (sum >= 120 && score1 >= 40 && score2 >= 40) {
+          console.log("축축");
+        } else {
+          console.log("공부나 더해와라");
+        }
+      }
+     }
+     function checkRange(number) {
+       if (number < 0 || number > 100) {
+         return false;
+       }
+       return true;
+     }
+  </script>
+</body>
+</html>

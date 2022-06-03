@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0px;
+    }
+    .content-light {
+      height: 500px;
+      width: 500px;
+      color: black;
+    }
+    .content-black {
+      color: white;
+      background-color: black;
+    }
+  </style>
+</head>
+<body>
+  <div class="content-light" id="content">
+    <p>하하하하하하</p>
+  </div>
+  <button id="mode-btn">라이트 모드로~~~! 😁</button>
+
+  <script>
+    const btn = document.getElementById('mode-btn')
+    // 자바스크립트는 기본적으로 한 태그 안에 있는 변수 상태가 계속 유지된다! 
+    let flag = false;
+    let numnum = 0;
+    let age = 31;
+    const from = "경기도 안양시 동안구"
+    btn.addEventListener('click', () => {
+      document.getElementById('content').classList.toggle('content-black');
+      flag = !flag;
+      if (flag) {
+        btn.innerText = "라이트 모드로~~~! 😁"
+      } else {
+        btn.innerText = "다크모드로~~! 😊";
+      }
+      console.log(++numnum);
+    })
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <style>
+
+  </style>
+</head>
+<body>  
+
+  <div class="alert alert-danger" id="alert">
+    <span id="inner"></span>초이내 구매시 사은품 증정!
+  </div>
+
+
+  <script>
+
+    // 얘는 특정 초 이후에 딱 한번만 실행
+    setTimeout(() => {
+      console.log("히히");
+      // document.getElementById('alert').style.display = 'none';
+    }, 5000);
+    // 얘는 주기적으로 계속 실행 얜 사실상 while (true) { setTimeOut(()=>{}, 시간)} 걍 용거임
+    // setInterval(() => {
+    //   console.log("하히");
+    // }, 2000)
+    let res = 5;
+    document.getElementById('inner').innerText = res;
+    
+    let limitTime = setInterval(() => {
+      res--;
+      document.getElementById('inner').innerText = res; 
+      console.log(res);
+      if (res === 0) {
+        document.getElementById('alert').style.display = 'none';
+        // 그냥 변수선언한거 바로 쓸 수 있다.
+        clearInterval(limitTime);
+      }
+    }, 1000);
+
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>
