@@ -138,6 +138,12 @@
       let btn = document.createElement('button');
       btn.id = `btn-${containerChild}`;
       btn.innerText = containerChild;
+      // 동적 버튼 이벤트 추가하려면 이렇게 생성할때 onclick = functionRef
+      // 이런식으로 추가해 주어야 한다!
+      btn.onclick = () => {
+        const n = btn.innerText;
+        transX(n);
+      }
       // 한번에 추가하려면 그냥 className = '' 이렇게 하면된다.
       btn.className = 'btn btn-primary m-1';
       btnGroup.appendChild(btn);

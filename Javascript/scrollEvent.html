@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0px;
+    }
+    .navbar {
+      display: flex;
+      position: fixed;
+      align-items: center;
+      height: 120px;
+      width: 100%;
+      z-index: 5;
+      background-color: rgb(139, 184, 241);
+    }
+    #logo {
+      margin-left: 20px;
+      font-size: 30px;
+    }
+    #container {
+      width: 300px;
+      height: 400px;
+      background-color: beige;
+      position: relative;
+      transform: translate(200px, 300px);
+      /* overflow: hidden은 넘는 영역은 아예 없애버리는것, 
+        overflow: scroll은 넘는 영역을 스크롤로 표기해주는 것
+      */
+      overflow: scroll;
+    }
+    #progress-bar {
+      width: 100%;
+      height: 20px;
+      background-color: rgb(168, 167, 167);
+      position: fixed;
+      top: 150px;
+      border-radius: 5px;
+    }
+    #progress {
+      border-radius: 5px;
+      position: absolute;
+      width: 0%;
+      height: 20px;
+      background-color: blueviolet;
+      transition: 0.1s;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <h4 id="logo">TESTSHOP</h4>
+  </nav>
+  <div id="progress-bar">
+    <div id="progress"></div>
+  </div>
+  <div style="height: 1800px;" id="test">
+
+    <div id="container">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam beatae in, 
+      voluptatem debitis suscipit dolor, eum minus doloremque vero 
+      laboriosam harum consequuntur labore autem, omnis nesciunt amet voluptas
+      non iste.
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam beatae in, 
+      voluptatem debitis suscipit dolor, eum minus doloremque vero 
+      laboriosam harum consequuntur labore autem, omnis nesciunt amet voluptas
+      non iste.
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam beatae in, 
+      voluptatem debitis suscipit dolor, eum minus doloremque vero 
+      laboriosam harum consequuntur labore autem, omnis nesciunt amet voluptas
+      non iste.
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam beatae in, 
+      voluptatem debitis suscipit dolor, eum minus doloremque vero 
+      laboriosam harum consequuntur labore autem, omnis nesciunt amet voluptas
+      non iste.
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam beatae in, 
+      voluptatem debitis suscipit dolor, eum minus doloremque vero 
+      laboriosam harum consequuntur labore autem, omnis nesciunt amet voluptas
+      non iste.
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam beatae in, 
+      voluptatem debitis suscipit dolor, eum minus doloremque vero 
+      laboriosam harum consequuntur labore autem, omnis nesciunt amet voluptas
+      non iste.
+    </div>
+
+
+  </div>
+
+
+  <script>
+
+    // document.addEventListener로 해도 되는데
+    // scroll 이벤트는 통상적으로 window이용 (둘다 전체페이지를 의미하나 window가 더 상위)
+    // document 는 문서 객체모델(DOM)의 최상위 모델 (HTML 문서 객체)
+    // document == window.document
+    // window는 브라우저의 창, BOM 상위 모델 
+    // 따라서, 브라우저 자체의 관련된 조작들을 할때는 window 객체를 쓰자!
+    window.addEventListener('scroll', () => {
+      if (window.scrollY >= 300) {
+        document.getElementById('logo').style.fontSize = '20px';
+      } else {
+        document.getElementById('logo').style.fontSize = '30px';
+      }
+      // 브라우저 전체 스크롤 맨아래 감지 방법
+      // document.body.scrollHeight == 현재 문서의 전체 높이 
+
+      // window.scrollY == 스크롤 내린 양  window.innerHeight == 브라우저 화면 높이
+      const scHeight = document.body.scrollHeight;
+      // window.scrollY == 스크롤 내린 양  window.innerHeight == 브라우저 화면 높이
+      const scY = window.scrollY;
+      const scInner = window.innerHeight;
+
+      // 현재 브라우저창의 진행도 체크하는 방법!
+      const complete = scHeight - scInner;
+      const progress = (scY / complete) * 100;
+      document.getElementById('progress').style.width = `${progress}%`;
+      // 따라서 스크롤 내린 양 + 브라우저 화면 높이 >= 현재 문서 전체 높이 인 순간이 맨아래!
+      // console.log(scY, scInner, scHeight);
+      if (scY + scInner >= scHeight-0.1) {
+        console.log("끝!");
+        // 무한 스크롤 연습! 그냥 맨 아래 감지 될 때마다 
+        // 전체 컨테이너 height 키워주면 됨 + 데이터 있는경우 설정된 양만큼 데이터 호출
+
+      }
+
+      // 따라서 스크롤 내린 양 + 브라우저 화면 높이 >= 현재 문서 전체 높이 인 순간이 맨아래!
+      
+    })
+    
+    // 스크롤 이벤트는 1초에 60회 이상발생 따라서, 너무 자주 쓰면 안된다.
+
+    // scroll 이벤트는 왠만하면 스크롤 1개당 1개까지만 설정할것!
+    const box = document.getElementById('container');
+    box.addEventListener('scroll', () => {
+      // 내부 컨텐츠에서의 스크롤 맨 밑 감지는 요쇼.scrollTop + 요소.clientHeight >= 요소.scrollHeight
+      // 할때 구글링보고 챙기자
+      // 전체 브라우저 화면에서의 스크롤 맨 아래 감지는 또 조금 다름!
+      // console.log(box.scrollTop, box.clientHeight, box.scrollHeight);
+          // 스크롤 내린 높이 + 화면에 보이는 요소 높이 >= 실제 요소 높이, 
+          ///오차 고려해서 어느정도 여유 둘 것!
+      if (box.scrollTop + box.clientHeight >= box.scrollHeight-0.1) {
+        alert("다읽음!");
+      }
+    });
+    // window.scrollTo(0, 100) 각각 x 좌표, y좌표이며, 해당위치로 강제로 스크롤 이동 가능 (절댓값)
+    // window.scrollBy(x, y) 이건 현재 위치에서부터 +x +y 만큼 이동 (상대위치)
+
+    // 스크롤 맨 아래 감지!! (이거 이용해서 무한 스크롤도 생성 가능)
+    // 브라우저 화면에서는 window.scrollY + window.innerHeight >= document.body.scrollHeight
+    // 특정 요소 (div 박스) 내부에서는 요소.scrollTop + 요소.clientHeight >= 요소.scrollHeight
+  </script>
+</body>
+</html>
