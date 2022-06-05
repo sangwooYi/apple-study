@@ -207,6 +207,11 @@
         alert("비번 없다고 ㅡㅡ");
       } else if (pw.value.length < 6) {
         alert("6자는 넘어야지 비번이");
+        // regular expression!
+      } else if (!(/\S+@\S+\.\S/.test(id.value))) {
+        alert("이메일 형식이어야 함")
+      } else if (!(/[A-Z]/.test(pw.value))) {
+        alert("최소한 1개이상 비번 대문자 필요")
       }
     });
 

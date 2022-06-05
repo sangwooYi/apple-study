@@ -27,6 +27,42 @@
     // 전자의 경우는 text만 가져오지만 후자는 element 안의 HTML을 통째로 가져온다
     // 따라서 후자는 해당 요소의 속성 + 요소 내부 태그들도 함께 가져옴
     document.getElementById("hi").innerText = "JS 고수가 되고 싶슴다.";
+
+
+    // type  , 소수점 처리하기
+    a = 5555555555;
+    
+    console.log(a*1.1);
+    // .toFixed(n) n번재 소숫점까지만 출력하기 (소수 n+1번째자리 숫자 반올림) (근데 이건 string 타입임)
+    // 얘는 기본적으로 반올림해준다1
+    temp =(a*1.1).toFixed(1);
+    console.log(temp);
+    // string!
+    console.log(typeof(temp));
+    // 따라서 소숫점 처리할때는 처리 이후, 다시 변환해주어야함
+    console.log(parseFloat(temp), typeof(parseFloat(temp)));
+    // parseInt, parseFloat, toString   // 그냥 Number, String 을 쓰기도 함
+    // 후자와 전자의 차이는 후자는 강제 변환, 전자는 parsing
+
+    // 명시적 함수 선언법1
+    function calcMilliSecond(min, sec) {
+      totalSec = 60*min + sec;
+      
+      return totalSec*1000;
+    } 
+
+    console.log(calcMilliSecond(2, 40));
+
+    // 명시적 함수 선언법2
+    const calcCost = function(cost, isFirst) {
+      saleCost = parseFloat((cost*0.9).toFixed(1));
+      if (isFirst) {
+        saleCost -= 1.5;
+      }
+      return saleCost;
+    }
+    console.log(calcCost(70, false));
+    
   </script>
 </body>
 </html>

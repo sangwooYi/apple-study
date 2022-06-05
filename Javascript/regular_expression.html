@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    // 정규식(Regular Expression)? 문자를 검사하는 식
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions 
+
+    // 이렇게 특정 chr 범위를 한번에 체크하기가 편함
+    // 알파벳 여부 검사
+    console.log(/[a-zA-Z]/.test('A'));
+    // 한국어 문자 있는지 여부
+    console.log(/[ㄱ-ㅎ가-힣ㅏ-ㅣ]/.test("하하"))
+
+    // 아무 문자 하나라도 있으면 T
+    console.log(/\S/.test())
+
+    // ^a  ^는 특정 문자로 시작여부 체크  a$  %는 특정문자로 끝나는지 체크
+    console.log(/^a/.test('abc'))
+    console.log(/b$/.test('bac'))
+
+    // a+ 에서 +는 앞의 문자가 여러번 연속으로 나온것도 체크 가능해짐
+    console.log(/a+/.test('aaab'))
+    // 얘는 그냥 특정 문자 덩어리를 체크 가능
+    console.log(/\S+/.test('asfas'))
+
+    // 이메일 형식 맞는지 체크 여부 뭉탱이1@뭉탱이2.뭉탱이3 이런 구조여야 한다.
+    // 따라서 여기에 맞게 체크하면 됨 (뭉탱이는 \S로 대체된다고 이해하면 됨)
+    console.log(/\S+@\S+\.\S+/.test('okqwaszx12@naver.com'))
+
+    // 이메일, 비밀번호에 대한 엄격한 정규식은 필요하면 구글링해서 찾아쓸 것!
+  </script>
+</body>
+</html>
