@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #container {
+      display: flex;
+      margin: 50px;
+    }
+    .card {
+      margin: 10px;
+      width: 200px;
+      height: 280px;
+      border: 1px solid gray;
+      border-radius: 10px;
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+    }
+    .inform {
+      display: flex;
+      flex-direction: column;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div class="card">
+      <div>
+        이미지
+      </div>
+      <div class="inform">
+        <span style="margin-bottom: 10px;"></span>
+        <span></span>
+      </div>
+    </div>
+    <div class="card">
+      <div>
+        이미지
+      </div>
+      <div class="inform">
+        <span style="margin-bottom: 10px;"></span>
+        <span></span>
+      </div>
+    </div>
+    <div class="card">
+      <div>
+        이미지
+      </div>
+      <div class="inform">
+        <span style="margin-bottom: 10px;"></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    var car1 = ['할리라예', '$38000', 'white'];
+    console.log(car1);
+    car1[1] = '$5000';
+    console.log(car1);
+    let car2 = {'name': '할리라예', 'price': ['$38,000', '$5,000', '$3,000']};
+    // object에서 없는 key값은 자동으로 추가, 있으면 value값 변경
+    car2.color = 'white';
+    console.log(car2);
+    // document.getElementById('name').innerText = `이름: ${car2.name}`
+    // document.getElementById('price').innerText = `가격: ${car2.price[1]}`
+
+
+
+    let products = [
+    { id : 0, price : 70000, title : 'Blossom Dress' },
+    { id : 1, price : 50000, title : 'Springfield Shirt' },
+    { id : 2, price : 60000, title : 'Black Monastery' }
+    ];
+    
+    const cards = document.querySelectorAll('.card');
+    const informs = document.querySelectorAll('.inform');
+    cards.forEach((card, idx) => {
+      let product = products[idx];
+      console.log(product);
+      // 특정 태그의 자식요소를 지정하고 싶을때 .children 사용!
+      console.log(informs[idx].children[0]);
+      informs[idx].children[0].innerText = `타이틀: ${product.title}`;
+      informs[idx].children[1].innerText = `가격: ${product.price}`;
+    });
+  </script>
+</body>
+</html>

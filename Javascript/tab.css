@@ -1,0 +1,45 @@
+ul.list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px;
+}
+/* 이렇게 pseudo element를 쓴 이유
+   그 다음으로 올 content 부터는 float설정이 없어져야 하므로!
+   ::after 를 안쓴다면 임시 div를 생성해야 하는데,
+   굳이 그럴 필요 없으므로 ::after를 사용함!
+   float를 쓰고싶다면 이 방법 반드시 기억하자!
+*/
+ul.list::after {
+  /* float 초기화는 이 세가지를 그냥 똑같이 쓰면 됨 */
+  content: '';
+  display: block;
+  clear: both;
+}
+.tab-button {
+  display: block;
+  padding: 10px 20px;
+  float: left;
+  /* 요거는 margin collapse 방지용 */
+  margin-left: -1px;
+  margin-bottom: -1px;
+  color: grey;
+  text-decoration: none;
+  cursor: pointer;
+}
+.orange {
+  border-top: 2px solid orange;
+  border-left: 1px solid #ccc;
+  border-bottom: 1px solid white;
+  border-right: 1px solid #ccc;
+  color: black;
+  margin-top: -2px;
+  background-color: rgb(250, 250, 250);
+}
+.tab-content {
+  display: none;
+  padding: 10px;
+}
+.show {
+  display: block;
+}

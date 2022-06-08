@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0px;
+    }
+    .btn {
+      padding: 10px 12px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      margin: 5px;
+    }
+    .btn-blue {
+      background-color: rgb(92, 92, 247);
+      color: white;
+    }
+    .btn-blue:hover {
+      background-color: rgb(122, 122, 250);
+    }
+    .btn-red {
+      background-color: rgb(243, 74, 74);
+      color: white;
+    }
+    .btn-red:hover {
+      background-color: rgb(249, 111, 111);
+    }
+    #bg-black {
+      background-color: rgba(0, 0, 0, 0.5);
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      display: none;
+    }
+    #modal-box {
+      background-color: white;
+      width: 500px;
+      height: 320px;
+      border-radius: 8px;
+      box-shadow: 1px 1px 1px 0.5px black;
+      position: fixed;
+      text-align: center;
+      top: 30vh;
+      left: 30vw;
+    }
+    .modal-content {
+      width: 60%;
+      height: 50%;
+      margin-top: 30px;
+      margin-left: 80px;
+      display: flex;
+      flex-direction: column;
+      
+    }
+    .modal-content div {
+      margin: 20px 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .modal-content input {
+      border: 1px solid gray;
+      border-radius: 5px;
+      padding: 5px 10px;
+    }
+    .modal-content input:focus {
+      background-color: rgb(244, 235, 223);
+      border: 1px solid rgb(160, 160, 231);
+      outline: none;
+    }
+
+  </style>
+</head>
+<body>  
+  <div id="bg-black">
+    <div id="modal-box">
+      <div class="modal-content">
+        <div>
+          <label for="id-input">아이디: </label>
+          <input type="text" id="id-input">
+        </div>
+        <div>
+          <label for="pw-input">비밀번호: </label>
+          <input type="password" id="pw-input">
+        </div>
+      </div>
+      <div class="btn-group">
+        <input type="submit" id="send-btn" value="전송" class="btn btn-blue">
+        <input type="button" id="close-btn" value="닫기" class="btn btn-red">
+      </div>
+    </div>
+  </div>
+  <button id="pop" class="btn">모달 클릭</button>
+  
+
+  <script>
+    const bgBlack = document.getElementById('bg-black');
+    const pop = document.getElementById('pop');
+    const closeBtn = document.getElementById('close-btn');
+
+    pop.addEventListener('click', () => {
+      bgBlack.style.display = 'block';
+    });
+    closeBtn.addEventListener('click', () => {
+      bgBlack.style.display = 'none';
+    })
+
+    // 이벤트 버블링. 상위 요소에 이벤트가 걸려 있는 경우
+    // 해당 요소 자식 요소에도 해당 이벤트가 전부 적용된다!
+    bgBlack.addEventListener('click', (event) => {
+      // 따라서 특정 요소에만 이벤트를 걸고 싶다면 이렇게 event.target 사용!
+      // 이벤트가 발생한 곳
+      console.log(event.target.id);
+      // 이벤트가 달려있는 곳
+      console.log(event.currentTarget);
+  
+      // 따라서 이부분을 if (event.target === event.currentTarget) 이렇게 써도 성립됨
+      if (event.target.id === 'bg-black') {
+        bgBlack.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
