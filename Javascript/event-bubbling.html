@@ -120,7 +120,10 @@
       console.log(event.target.id);
       // 이벤트가 달려있는 곳
       console.log(event.currentTarget);
-  
+      // 여기선 arrow function을 썼기떄문에 this를 못쓰지만
+      // 만약 function() {} 으로 명시적으로 콜백함수를 정의할 경우에는 this === event.currentTarget 이다! 
+      // (함수는 this를 함수 내부에서 찾아주지만, arrow function에서는 항상 this는 최상단 window DOM을 가리킴 
+      // 즉 arrow function 쓸 때는 this 쓰지말자!!! this 쓰려면 반드시 명시적 함수!)
       // 따라서 이부분을 if (event.target === event.currentTarget) 이렇게 써도 성립됨
       if (event.target.id === 'bg-black') {
         bgBlack.style.display = 'none';

@@ -43,3 +43,13 @@ ul.list::after {
 .show {
   display: block;
 }
+.hide {
+  display: none;
+}
+.select {
+  margin-top: 20px;
+  width: 250px;
+  padding: 3px 5px;
+  border: 2px solid rgb(70, 154, 223);
+  border-radius: 5px;
+}
