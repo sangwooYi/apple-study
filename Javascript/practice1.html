@@ -71,6 +71,33 @@
        }
        return true;
      }
+
+     let attendanceBook = ['철수', '유정', '상우', '나단', '보영'];
+
+     isAttendance('철수');
+
+     function isAttendance(name) {
+      //  사실 배열.indexOf(찾을 요소) 이거 쓰는게 더 편함. 있으면 인덱스 반환, 없으면 -1 반환
+       for (let i = 0; i < attendanceBook.length; i++){
+        if (attendanceBook[i] === name) {
+          console.log("오케이");
+          break;
+        } 
+        console.log("족쳐");
+      }
+    }
+
+    function print99() {
+      for (let i = 2; i <= 9; i++) {
+        console.log(`${i}단!@!!`);
+        for (let j = 1; j <= 9; j++) {
+          console.log(`${i} X ${j} = ${i*j}`)
+        } 
+        console.log("=================");
+      }
+    }
+    print99();
+
   </script>
 </body>
 </html>

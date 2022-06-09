@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+
+
+  <script>
+    // 자바스크립트 정렬의 디폴트값은 오름차순이다 (Ascending) SQL도 마찬가지!
+    let arr = [2, 10, 7, 9, 4];
+    let strArr = ["하늘", "김밥", "밥먹어", "이유정", "뭐하냐"];
+    // 그냥 쓰면 문자기준으로 오름차순 정렬 해줌
+    arr.sort(); 
+    console.log(arr);
+    // 숫자 정렬 오름차순 (ascending)
+    arr.sort((a, b) => {
+      return a-b;
+    });
+    console.log(arr);
+    // 숫자 정렬 내림차순 (descending)
+    arr.sort((a, b) => {
+      return -(a-b);
+    })
+    console.log(arr);
+
+    // 문자정렬 오름차순은 그냥 하면 됨
+    strArr.sort();
+    console.log(strArr);
+    // 문자정렬 내림차순 하고싶으면 자바랑 유사
+    strArr.sort((a, b) => {
+      if (a > b) {
+        // 왼쪽 값이 오른쪽보다 크면 -, 작으면 + 같은값이면 0값을 반환하여 이걸 이용해서 정렬
+        return -1;
+      } else if (a < b) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
+    console.log(strArr);
+  </script>
+</body>
+</html>

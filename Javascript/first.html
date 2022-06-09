@@ -63,6 +63,18 @@
     }
     console.log(calcCost(70, false));
     
+
+    // 참고 BOM / DOM
+
+    // DOM은 Document Object Model로써, 간단하게 말하면
+    // html 태그를 자바스크립트가 이해하기 쉽게 Object Type으로 저장된 형태라고 보면 됨.
+    // 실제로 window.document 찍어보면, 그냥 html태그가 나온다
+    // 저장 형태는 document = { div: { class: {}, ...} ...} 이런식으로 태그정보가 Object에 담겨 있는것
+    
+    // BOM 은 Browser Object Model이며, 간단하게 말하면
+    // DOM 을 제외한 Window 객체라고 생각하면 편함(document를 제외한 네비게이터, 스크린 같은 브라우저 정보를 담은 객체)
+
+    // DOM은 document 즉 웹페이지의 내용을 제어, BOM은 window 브라우저를 제어
   </script>
 </body>
 </html>
