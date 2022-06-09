@@ -1,5 +1,10 @@
 const content = document.getElementById('content');
+// const localArr = [];
+// // cart라는 이름의 [] localStorage에 저장
+// localStorage.setItem('cart', JSON.stringify(localArr));
+
 let time = 1;
+
 
 let products = [
   {price: 70000, title: 'SM5'},
@@ -41,10 +46,9 @@ function sortTitle(arr) {
     }
   })
 }
-
 // 동적 생성 .forEach 써도 된다.
 for (let i = 0; i < 3; i++) {
-  makeCard(products[i].title, products[i].price);
+  makeCard(products[i].title, products[i].price, i);
 }
 const btn = document.getElementById('more')
 btn.addEventListener('click', () => {
@@ -55,14 +59,14 @@ btn.addEventListener('click', () => {
   } else {
     btn.disabled = false;
   }
-})
+});
 // 가격순
 document.getElementById('sort').addEventListener('click', () => {
   sortPrice(products);
   // 초기화 후 다시 짜는 방식
   content.innerHTML = '';
-  products.forEach((product) => {
-    makeCard(product.title, product.price);
+  products.forEach((product, idx) => {
+    makeCard(product.title, product.price, idx);
   });
 });
 
@@ -70,8 +74,8 @@ document.getElementById('sort').addEventListener('click', () => {
 document.getElementById('sort2').addEventListener('click', () => {
   sortTitle(products);
   content.innerHTML = '';
-  products.forEach((product) => {
-    makeCard(product.title, product.price);
+  products.forEach((product, idx) => {
+    makeCard(product.title, product.price, idx);
   });
 });
 
@@ -104,22 +108,21 @@ function getMoreData(i) {
     fetch('https://codingapple1.github.io/js/more1.json')
     .then(res => res.json())
     .then(data => {
-      data.forEach((element) => {
+      data.forEach((element, idx) => {
         const obj = {price: element.price, title: element.title}
-        makeCard(element.title, element.price);
+        makeCard(element.title, element.price, idx+3);
         products.push(obj);
         proto.push(obj);
     
       })
-      
     });
   } else if (i === 2) {
     fetch('https://codingapple1.github.io/js/more2.json')
     .then(res => res.json())
     .then(data => {
-      data.forEach((element) => {
+      data.forEach((element, idx) => {
         const obj = {price: element.price, title: element.title}
-        makeCard(element.title, element.price);
+        makeCard(element.title, element.price, idx+6);
         products.push(obj);
         proto.push(obj);
       })
@@ -127,7 +130,7 @@ function getMoreData(i) {
   }
 }
 // 항상 단순 반복되는 코드는 이렇게 모듈화 하는 습관을 들일 것!
-function makeCard(title, price) {
+function makeCard(title, price, idx) {
   const div = document.createElement('div');
   div.className = "col-sm-4 custom-card";
   const img = document.createElement('img');
@@ -141,6 +144,34 @@ function makeCard(title, price) {
   const p = document.createElement('p');
   p.innerText = `가격: ${price}`;
   div.appendChild(p);
+
+  const btn = document.createElement('button');
+  btn.className = 'buy btn btn-primary mb-2';
+  btn.innerText = '구매';
+  // 동적으로 생성하는 요소에 이벤트 달아야할 때는
+  // 만들때 속성으로 달아야한다! 꼭 기억!
+  btn.id = idx;
+  // 이렇게! onscroll onsubmit oninput onchange 전부 존재!
+  btn.onclick = () => {
+   // 와 이게 찍히네. 기본적으로 지연이 없다면 위에서 아래로 진행되므로
+   console.log(div.children[1]);
+   const tit = div.children[1].innerText;
+   
+   let tmpArr = JSON.parse(localStorage.getItem('cart'));
+   // null인 경우 [] 선언
+    if (tmpArr == null) {
+      tmpArr = [];
+    }
+
+    //JS에서 배열에 데이터 중복 저장 안되게 하려면 이렇게
+    if (tmpArr.indexOf(tit) === -1) {
+      tmpArr.push(tit);
+    }
+   
+   localStorage.setItem('cart', JSON.stringify(tmpArr));
+   console.log(localStorage.getItem('cart'));
+  }
+  div.appendChild(btn);
 
   content.appendChild(div);
 }

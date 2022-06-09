@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    li {
+      list-style: none;
+    }
+  </style>
+</head>
+<body>
+  <ul id="print">
+
+  </ul>
+
+  <script>
+    // 로컬 스토리지에 저장 key - value형태 , 5MB까지 저장 가능
+    localStorage.setItem('price', '30000');
+    // 저장된 data 가져오는 법
+    console.log(localStorage.getItem('price'));
+    // 지우는 법
+    // localStorage.removeItem('price');
+    console.log(localStorage);
+    // localStorage.clear() 는 아예 초기화
+    // 저장할때는 JSON 타입으로 저장하자 (그래야 데이터 안상한다)
+    // JSON으로 변환하는 법 JSON.stringify(데이터) 
+    // JSON형태를 다시 데이터로 돌려놓는 법은 JSON.parse(JSON파일) 
+    const jsonData = localStorage.getItem('cart');
+    const data = JSON.parse(jsonData);
+    const ul = document.getElementById('print');
+
+    // 로컬스토리지는 일부러 날리는거 아닌이상 계속 저장되어 있음
+    data.forEach((d) => {
+      const li = document.createElement('li');
+      li.innerText = `차 이름: ${d}`;
+      ul.appendChild(li);
+    })
+
+    // 저장할때 JSON으로 변환, JSON.stringify(데이터);
+    // 꺼내 쓸때는 다시 파싱   JSON.parse(꺼내온 JSON);
+  </script>
+</body>
+</html>
