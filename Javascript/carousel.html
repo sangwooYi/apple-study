@@ -24,6 +24,8 @@
     .box {
       width: 800px;
       height: 500px;
+      /* 손바닥 보자기모양이 grap */
+      cursor: grab;
       /* float도 잘 써보자!!!! 이렇게 해두 되고, 그냥 위처럼, container에다가 flex걸어두 된다! */
       /* float: left; */
     }
@@ -148,6 +150,70 @@
       btn.className = 'btn btn-primary m-1';
       btnGroup.appendChild(btn);
     })
+
+
+    // carousel 마우스 드래그 이벤트 순서
+    // mousedown일때 mousemove 이벤트 등록 => mouseup에서 기존 mousemove 적용된 이벤트 제거
+    // 제거하려면 function이 명시적으로 선언 or 표현되어 있는게 구현하기 편하다.
+    let mouseStart;
+    let tempAmount;
+    let amount = 0;
+    container.addEventListener('mousedown', (e) => {
+      // 마우스 시작점 세팅
+      mouseStart = e.clientX;
+      // 드래그 이벤트 끝났을때 판단을 위해 기존 값
+      tempAmount = transAmount;
+      container.addEventListener('mousemove', dragCarousel, false);
+      container.style.transition = `${0}s`;
+    });
+    const dragCarousel = function (event) {
+      
+      const mouseX = event.clientX;
+      const change = mouseX - mouseStart;
+
+      amount = transAmount+change;
+
+      container.style.transform = `translate(${amount}px)`;
+   
+    }
+    // 드래그 이벤트 만드는 법.
+    // (현재 마우스 위치 - 마우스 클릭할 때 위치) <= 이  값을 이용 2차원으로도 충분히 가능
+    // 살짝 2프로 부족하다. 캐로젤 범위에서 벗어난 상태로 마우스 떼면, mouseup 이벤트가 발생 안함 ㅠㅠ
+    
+    // 특정 px이상 드래그하면 그냥 넘어가버리는 애니메이션으로 (이게 자연스럽지)
+    // container.addEventListener('mousemove', dragCarousel, false);
+    container.addEventListener('mouseup', (event) => {
+      // 이게 변화량
+      const tmp = amount-tempAmount;
+      // 이전 페이지로 이동
+      if (tmp > 300){
+        // 첫번쨰 페이지가 아닌 경우에만
+        if (event.target.innerText > 1) {
+          transAmount = tempAmount + 800;
+          container.style.transform = `translate(${transAmount}px)`;
+        } else {
+          transAmount = tempAmount;
+          container.style.transform = `translate(${transAmount}px)`;
+        }
+      } else if (tmp < -300){  
+        // 다음페이지로 이동
+        // 마지막 페이지 아닌 경우에만
+        if (event.target.innerText < containerChild) {
+          transAmount = tempAmount - 800;
+          container.style.transform = `translate(${transAmount}px)`;
+        } else {
+          transAmount = tempAmount;
+          container.style.transform = `translate(${transAmount}px)`;
+        }
+      } else {
+        transAmount = tempAmount;
+        container.style.transform = `translate(${transAmount}px)`;
+      }
+      container.removeEventListener('mousemove', dragCarousel, false);
+      container.style.transition = `${0.5}s`; 
+    });
+
+
 
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

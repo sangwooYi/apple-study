@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .card-background {
+      height: 3000px;
+      margin-top: 1000px;
+      margin-bottom: 1600px;
+    }
+    .card-box {
+      position: sticky;
+      top: 200px;
+    }
+    .card-box img {
+      display: block;
+      margin: auto;
+      max-width: 80%;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card-background" id="content">
+    <div class="card-box">
+      <img src="./img/card1.png" alt="">
+    </div>
+    <div class="card-box">
+      <img src="./img/card2.png" alt="">
+    </div>
+    <div class="card-box">
+      <img src="./img/card3.png" alt="">
+    </div>
+  </div>
+
+
+  <script>
+    const content = document.getElementById('content')
+    const start = 822;
+    const term = 565;
+    const break1 = start+term;
+    const break2 = start+(2*term);
+    const cardBox = document.querySelectorAll('.card-box');
+
+
+      window.addEventListener('scroll', () => {
+        // 현재 위치, 하긴하는데 이 노가다가 맞나 ㅡㅡ?
+        const scY = window.scrollY;
+        let ratio;
+        if (scY > start) {
+          if (scY < break1) {
+            const card = cardBox[0];
+            ratio = (scY-start) / term;
+            // 사이즈가 100% 에서 90%까지만 줄어들게 설정
+            card.style.transform = `scale(${(1-(ratio))*10 + 90}%)`
+            card.style.opacity = 1-ratio;
+            
+          } else if (scY < break2) {
+            const card = cardBox[1];
+
+            ratio = (scY-break1) / term;
+            
+            card.style.transform = `scale(${(1-(ratio))*10 + 90}%)`
+            card.style.opacity = 1-ratio;
+          } else {
+
+          }
+        }
+    })
+
+  </script>
+</body>
+</html>
