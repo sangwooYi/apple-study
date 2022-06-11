@@ -18,9 +18,9 @@ body {
 }
 
 .wrapper {
-  position: relative;
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 100%;
   height: 1300px;
   background-color: #f0f1f3;
@@ -155,7 +155,7 @@ body {
   flex-direction: column;
   margin-top: 50px;
   margin-left: 20px;
-  width: 90%;
+  width: 100%;
   height: 400px;
   background-color: rgb(164, 164, 164);
 }
@@ -208,11 +208,73 @@ body {
 }
 
 .total {
-  width: 90%;
+  width: 100%;
   margin-top: 50px;
   height: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+/* bootstrap과 안겹치게 조심 ㅡㅡ */
+.modal-back {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+} 
+/* 
+모달창은
+display none / block 을 하기때문에 flex가 안먹힌다 주의 ㅠㅠ */
+.modal-content {
+  position: fixed;
+  background-color: white;
+  width: 600px;
+  height: 450px;
+  border: none;
+  border-radius: 15px;
+  top: 200px;
+  left: 500px;
+}
+.list-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  width: 100%;
+  height: 200px;
+}
 
+.inform {
+  height: 150px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.modal-btn {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+}
+.inform-content {
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+}
+.inform-content input {
+  border-radius: 3px;
+  border: 0.5px solid gray;
+}
+.hide {
+  display: none;
+}
+.show {
+  display: block;
+}
+
+.buy-list {
+  list-style: none;
+  display: flex;
+  width: 120%;
+  justify-content: space-around;
+}

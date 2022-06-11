@@ -298,3 +298,58 @@ wishBox.addEventListener('input', (event) => {
   const final = tmpSum.toLocaleString();
   finalCost.innerText = `총 ${final}원`;
 })
+
+const modalBack = document.getElementById('modal-back');
+const closeBtn = document.getElementById('modal-cancel');
+const buyForm = document.querySelector('.inform');
+const buyList = document.getElementById('buy-list');
+
+buyBtn.addEventListener('click', () => {
+  modalBack.classList.add('show');
+  modalBack.classList.remove('hide');  
+  buyList.innerHTML = '';
+  wishList.forEach((data) => {
+    const li = document.createElement('li');
+
+    const img = document.createElement('img');
+    img.src = data.imgSrc;
+    img.style.height = '50px';
+    img.style.width = '60px';
+    img.style.marginBottom = '3px';
+    li.appendChild(img);
+
+    const titleSpan = document.createElement('span');
+    titleSpan.innerText = `상품명: ${data.title}`;
+
+    const countSpan = document.createElement('span');
+    countSpan.innerText = `구매수량: ${data.count}`;
+
+    const costSpan = document.createElement('span');
+    const cost = (parseInt(data.count) * parseInt(data.cost)).toLocaleString();
+    costSpan.innerText = `금액: ${cost}`;
+
+    li.appendChild(titleSpan);
+    li.appendChild(countSpan);
+    li.appendChild(costSpan);
+    li.className = 'buy-list';
+    buyList.appendChild(li);
+  }) 
+});
+
+closeBtn.addEventListener('click', () => {
+  modalBack.classList.add('hide');
+  modalBack.classList.remove('show');
+
+})
+buyForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+ 
+})
+
+
+// 캔버스 사용법
+// const canvas = document.getElementById('canvas');
+// const c = canvas.getContext('2d');
+// c.font = '20px dotum';
+// c.fillText('안녕안녕', 30, 20);
+// c.fillText('하라하하하', 80, 150);

@@ -12,6 +12,29 @@
   <link rel="stylesheet" href="./practice3.css">
 </head>
 <body>
+  <div class="modal-back hide" id="modal-back">
+    <canvas id="canvas" width="350" height="350"></canvas> 
+    <div class="modal-content">
+      <h4 style="text-align: center; margin-top: 30px;">최종 구매 내역</h4>
+      <div class="list-wrap" style="z-index: 5;">
+        <ul id="buy-list"></ul>
+      </div>
+      <form class="inform" href="#">
+        <div class="inform-content">
+          <label for="name" value="name">이름: </label>
+          <input type="text" id="name" style="margin-left: 34.5px;">
+        </div>
+        <div class="inform-content">
+          <label for="phone" value="phone">연락처: </label>
+          <input type="text" id="phone" style="margin-left: 20px;">
+        </div>
+        <div class="modal-btn mt-3">
+          <input type="submit" value="구매 완료" class="btn btn-success mx-2">
+          <input type="button" value="닫기" id="modal-cancel" class="btn btn-danger mx-2">
+        </div>
+      </form> 
+    </div>
+  </div>
   <div class="wrapper">
     <nav class="navbar">
       <div class="nav-logo">
@@ -79,7 +102,7 @@
       <div class="total">
         <h5>최종 가격</h5>
         <span id="final-cost" style="margin-bottom: 10px;">0원</span>
-        <button class="buy-btn">구매</button>
+        <button class="buy-btn" id="buy-btn">구매</button>
       </div>
     </div>
   </div>

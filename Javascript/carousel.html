@@ -159,6 +159,7 @@
     let tempAmount;
     let amount = 0;
     container.addEventListener('mousedown', (e) => {
+      e.preventDefault();
       // 마우스 시작점 세팅
       mouseStart = e.clientX;
       // 드래그 이벤트 끝났을때 판단을 위해 기존 값
@@ -167,7 +168,7 @@
       container.style.transition = `${0}s`;
     });
     const dragCarousel = function (event) {
-      
+      event.preventDefault();
       const mouseX = event.clientX;
       const change = mouseX - mouseStart;
 
@@ -182,7 +183,10 @@
     
     // 특정 px이상 드래그하면 그냥 넘어가버리는 애니메이션으로 (이게 자연스럽지)
     // container.addEventListener('mousemove', dragCarousel, false);
+
     container.addEventListener('mouseup', (event) => {
+
+      event.preventDefault();
       // 이게 변화량
       const tmp = amount-tempAmount;
       // 이전 페이지로 이동
@@ -213,8 +217,7 @@
       container.style.transition = `${0.5}s`; 
     });
 
-
-
+  
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
