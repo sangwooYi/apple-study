@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- bootstrap5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />   
+  <link rel="stylesheet" href="./practice3.css">
+</head>
+<body>
+  <div class="wrapper">
+    <nav class="navbar">
+      <div class="nav-logo">
+        <i class="fa-solid fa-house fa-2x"></i>
+      </div>
+      <div class="nav-menu">
+        <span class="menu-active">Home</span>
+        <span>스토어</span>
+        <span>시공견적</span>
+      </div>
+    </nav>
+    <div class="content">
+      <div class="search-bar">
+        <input type="text" placeholder="검색어입력" id="search">
+        <div class="search-btn" id="search-btn">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+      </div>
+      <div class="item-list" id="item-list">
+        <!-- drag 이벤트 쓰려면, 우선 드래그하려는 대상 태그에
+          draggable='true' 설정이 선행되어야 함!
+        -->
+        <div class="card-frame" draggable="true">
+          <img src="./img/practice/pr1.JPG" alt="">
+          <div class="card-content">
+            <span class="fs-20 fw-bold">식기세척기</span>
+            <span>세척나라</span>
+            <span>가격: 10000원</span>
+          </div>
+          <button class="wish-btn">담기</button>
+        </div>
+        <div class="card-frame" draggable="true">
+          <img src="./img/practice/pr2.JPG" alt="">
+          <div class="card-content">
+            <span class="fs-20 fw-bold">원목침대 프레임</span>
+            <span>침대나라</span>
+            <span>가격: 20000원</span>
+          </div>
+          <button class="wish-btn">담기</button>
+        </div>
+        <div class="card-frame" draggable="true">
+          <img src="./img/practice/pr3.JPG" alt="">
+          <div class="card-content">
+            <span class="fs-20 fw-bold">천연 디퓨저 세트</span>
+            <span>향기나라</span>
+            <span>가격: 30000원</span>
+          </div>
+          <button class="wish-btn">담기</button>
+        </div>
+        <div class="card-frame" draggable="true">
+          <img src="./img/practice/pr4.JPG" alt="">
+          <div class="card-content">
+            <span class="fs-20 fw-bold">시원한 시뮬레이터</span>
+            <span>바람나라</span>
+            <span>가격: 40000원</span>
+          </div>
+          <button class="wish-btn">담기</button>
+        </div>
+      </div>
+      <div class="wish">
+        <h5 style="margin-left: 20px; margin-top: 20px;">장바구니</h5>
+        <div class="wish-box" id="wish-box">
+        </div>  
+      </div>
+      <div class="total">
+        <h5>최종 가격</h5>
+        <span id="final-cost" style="margin-bottom: 10px;">0원</span>
+        <button class="buy-btn">구매</button>
+      </div>
+    </div>
+  </div>
+  <script src="./practice3.js"></script>
+  <!-- bootstrap5 -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>
