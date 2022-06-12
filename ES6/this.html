@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 200px;
+      height: 200px;
+      background-color: blue;
+      margin: 20px;
+    }
+  </style>
+</head>
+<body>
+  
+  <div id="test">
+    <div class="box">
+      <button>1</button>
+    </div>
+    <div class="box">
+      <button>2</button>
+    </div>
+    <div class="box">
+      <button>3</button>
+    </div>
+    <div class="box">
+      <button>4</button>
+    </div>
+  </div>
+
+  <script>
+    // strict모드를 따로 설정 가능 (엄격 검사)
+    // 이모드를 쓰면  1.const, let 선언자없이 변수 선언 불가(원래는 된다..)
+    // 2. function 내부 에 그냥 적는 this는 undefined가 됨 (원래는 얘두 Window객체 가르킴)
+    // 이 밖에 좀 더 엄격하게 조건을 검사해주는 모드 'use strict'
+    'use strict';
+    
+    const x = 200;
+    
+    // function thisTest() {
+    //   console.log(this);
+    // }
+    // strict모드에서는 undefined
+
+    // 기본적으로 this는 Window 객체를 가르킴
+    console.log(this);
+    document.getElementById('test').addEventListener('click', function(event) {
+      console.log(this);
+      // 현재 event가 걸려있는 태그가 담겨있음
+      console.log(event.currentTarget);
+      // 실제 event가 발생한곳(이 자식노드에서부터 이벤트 걸린 부모태그까지 버블링 되어서 전달 되는 것)
+      console.log(event.target);
+    })
+
+    // Object에서의 this는 본인을 담고있는 가장 안쪽의 Object를 가리킨다.
+    var objec = { data : 'Kim', test: function() {console.log("ㅡㅡ??");}, 
+      test2: function(){console.log(this)},
+      testData: {
+        ttf: function () {
+          console.log(this);
+        }
+      }    
+    
+    } 
+      
+    // 굳이 console을 찍는게 아니고 그냥 이걸로 함수 호출하는것
+    objec.test();
+    // 이렇게 Object 내부에 있는 함수에서의 this는 본인이 포함된 Object를 가르키게 됨
+    // 그냥 this가 그래서 Window객체를 가리키는것!!
+    objec.test2(); // 얘는 objec를 가리킨다.
+    objec.testData.ttf(); // 얘는 따라서 testData Object 를 가리키는것.
+    // arrow function은 항상 Window객체를 가리킨다. 
+    // 따라서 this 쓰고싶으면 arrow function 절대 쓰면 안됨.
+    const testOb = { data : () => {
+      console.log(this);
+    }}
+    testOb.data();
+  </script>
+</body>
+</html>
