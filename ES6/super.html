@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    class Rectangle {
+      constructor (height, width) {
+        this.name = "Rectangle";
+        this.height = height;
+        this.width = width;
+      }
+
+      sayName () {
+        console.log(`Hi! I'm a ${this.name} ~~~`);
+      }
+      //  getter, setter 정의 가능
+      get area () {
+        // 이렇게 getter 에서 바로 값을 끄집어내는게 아니라 연산이 들어가는 경우에는
+        // setter는 아래와 같이 private로 선언하거나 getter만 작성 해야함.
+        return this.height*this.width; 
+      }
+      set area (value) {
+        // _는 private 변수를 나타내는 의미
+        // 외부에서 변경하지 말라는 의미!
+        this._area = value;
+      } 
+
+      set Log (val) {
+        this.log.push(val);
+      }
+      get Log() {
+        return this.log;
+      }
+      // class 에서 필드명은 const나 let 안붙여도 된다!.
+      log = [];
+    }
+    class Square extends Rectangle {
+      constructor (length) {
+        // 상속 받은 상태에서 constructor는 반드시 super가 먼저 나와야 한다.
+        super (length, length);
+
+        this.name = 'Square';
+      }
+    }
+
+    const box1 = new Rectangle(10, 20);
+    // 그냥 함수를 호출하면 됨. return 값이 있으면 그떄 console 찍으면 되는 것
+    // 다른 언어랑 똑같다!! 
+    // C# 에서 프로퍼티랑 같은 사용방법임. get, set 선언을 통해 getter setter 선언하고
+    // 필드처럼 인스턴스.게터   인스턴스.세터 = 대입할 값  이렇게 쓰면 됨!
+    box1.sayName();
+    console.log(box1.area);
+    box1.Log = 3;
+    box1.Log = 5;
+    console.log(box1.log);
+    console.log(box1.Log);
+
+    const box2 = new Square(20);
+    console.log(box2);
+    box2.sayName();
+    console.log(box2.area); 
+  </script>
+</body>
+</html>

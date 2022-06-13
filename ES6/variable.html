@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .modal {
+      width: 500px;
+      height: 500px;
+      background-color: tomato;
+    }
+  </style>
+</head>
+<body>
+  <!-- emmet 문법도 까먹지 말자
+    div[style="display: none;"] * 3으로 생성하면됨
+    
+    자주 쓰는 클래스는
+    div.클래스명1.클래스명2 ..
+    이러면 <div class="클래스명1 클래스명2"></div> 이런식으로 생성됨
+  -->
+  <div style="display: none;" class="modal">모달1</div>
+  <div style="display: none;" class="modal">모달2</div>
+  <div style="display: none;" class="modal">모달3</div>
+
+  <button class="btn">버튼1</button>
+  <button class="btn">버튼2</button>
+  <button class="btn">버튼3</button>
+  <script>
+    /**
+     *  var , let, const 정리
+     * 
+     *             var   let  const
+     *  재선언      O     X     X
+     *  재할당      O     O     X
+     *  유효범위   함수   let,cost 둘다 중괄호
+     * 
+     * 재선언은
+     * 
+     * var 변수 = 1;
+     * var 변수 = 2; 이런게 재선언
+     *  
+     * 재할당은
+     * 
+     * let 변수2 = 1;
+     * 변수2 = 3; 이게 재선언
+     * 
+     * 
+    */
+   // 이렇게 script 가장 밖에 선언한 변수는 자동으로 전역변수 처리 된다. (모든곳에서 사용 가능)
+    var variable = 3133;
+    // var로 선언하면 window.변수로도 호출 가능함
+    // let, const로 선언한 애들은 적용 안됨!
+    console.log(window.variable);
+
+    if (true) {
+      var test = 3;
+      let test2 = 3;
+    }
+    console.log(test);  // var는 아직 유효하다. 함수 범위이므로!
+    // console.log(test2);  // 얘는 {} 이 범위이므로 if 내부의 값을 가져올 수 없음
+
+
+    /**
+     *  var 변수, 선언형 함수를 맨 위로 끌고와서 선언하는게 호이스팅 (Hoisting) 
+     *  
+    */
+    // var age; 이걸 JS가 최상단에 선언을 시켜버린다.
+    console.log(age);
+    var age = 10;
+    const aaaa = "???"
+    console.log(age);
+    /**
+     *  변수 연습 문제들
+    */
+
+    // 1, 2번
+    Q12();
+    function Q12() {
+      // console.log(hello); // 에러 발생 내역 => 초기화 전에 접근했다.
+      console.log(hello2);
+      // const, let 도 역시 호이스팅이 되나, const, let은 선언만 한상태에서 호출하면 에러 발생시킴!
+      let hello = 'hello~!';
+      // 호이스팅은 할당까지 해주는 것이 아니라 var hello2; 를 최상단에 선언까지만 최상단에 해주는 것
+      // 따라서 63번째 줄에서 hello2에는 아직 아무런 값이 할당되지 않은 상태 (undefined)
+      var hello2 = 'helllo~~~';
+    }
+    // 3번
+    let a = 1;
+    var Q3 = function() {
+      a = 2;
+    }
+    console.log(a);
+
+    // 4번
+    // var는 function 단위, 따라서 window 객체 내부에서 전부 유효하므로
+    // window.y === var로 선언한 전역변수 y 임!!! 
+    // 근데 let 으로 선언한 애는 window.x 와는 또 다르다.
+    let x = 1;
+    var y = 2;
+    window.x = 3;
+    window.y = 4;
+    console.log(window.x, window.y, x, y);
+    console.log(window.x === x); // 요거 false
+    console.log(window.y === y); // 요건 true
+    console.log(x+y); // 따라서 1+4 => 5가 됨
+
+    // 5번
+    for (var i = 1; i < 6; i++) {
+      console.log(i); // 얘는 i 가 잘 출력 되나'
+      var ind = i;
+      setTimeout(function() {
+        console.log(i, ind);  // 얘는 6을 출력함
+        console.log("=========");
+      }, i*1000);
+    }
+    // 이유? 위의 반복문은 i가 6이 되면서 끝나게 된다.
+    // var의 유효 범위는 function이기 때문에 이 6이란 값이 여전히 유효한것.
+    // 따라서 for문은 반드시 let으로 쓸 것!
+
+    for (let i = 1; i < 6; i++) {
+      // 1초 term으로 추가적인 실행을 해야 하므로 interval 시간은 1000ms 만큼 계속 증가해야함. 
+      setTimeout(() => {
+        console.log(i)
+      }, i*1000)
+    }
+
+    // 6번
+    const modals = document.querySelectorAll('.modal');
+    const btns = document.querySelectorAll('.btn');
+    console.log(modals);
+    console.log(btns);
+    btns.forEach((btn, idx) => {
+      btn.addEventListener('click', () => {
+        // 여길 만약 반복문으로 쓸거면 역시 무조건 for (let i = 0; i < modals.length; i++) 로 해야한다
+        // 여기서도 var i = 0 으로 시작하는순간 위에랑 똑같은 이유로 문제 발생
+        // 그냥 var 대신 let, const를 쓰자!
+        modals.forEach((modal, index) => {
+          if (idx == index) {
+            modal.style.display = 'block';
+          } else {
+            modal.style.display = 'none';
+          }
+        })
+      })
+    })
+  </script>
+</body>
+</html>

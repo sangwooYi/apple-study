@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+  </style>
+</head>
+<body>
+  <button id="btn">버튼버튼버튼</button>
+
+  <script>
+    // 'use strict';
+    // 호이스팅? 실행되기 전에, 필요한 선언된 내용들을 끌어올려서 최상단에 선언해 주는 것
+    // 그래서 호이스팅 된 애들은 선언한 상단부에서 호출해도 사용 되는 것 
+    // 변수와 선언 함수에 대해서는 모두 호이스팅이 발생
+    // 변수의 호이스팅은 선언 까지만 해주는것 할당 (즉 초기화)은 해주지 않음.
+    // 따라서 var는 초기화 전에 호출해도 undefined로 값을 반환해주지만
+    // let, const는 에러가 발생한다. ( Cannot access '변수명' before initialization 이란 에러 발생)
+    // 단. 선언 함수는 전체가 호이스팅 됨 (표현함수 (const 변수 = function(){} 같은애들)는 호이스팅 안됨)
+ 
+    // 함수를 만드는 방법들
+    // 1. 명시적 함수 선언 => 얘는 심지어 선언한 상단 부에 써도 써진다.(호이스팅 되기 때문)
+    function test() {
+      //...
+    }
+    // 2.익명 함수 표현 => 익명함수를 자바스크립트가 변수명으로 추정하여 넣어주는것, 호이스팅 안되며,
+    // 따라서 할당 이후에만 사용 가능
+    // 명시적 함수 선언한 함수명과, 함수가 할당된 변수 명과 겹치면 안 됨!
+    const test2 = function () {
+      //...
+    }
+    // 3.명시적 함수 표현 => 사실상 2와 같다. 다만 추론되지 않고 확실한 함수가 변수에 넣어지는것 역시 호이스팅 X
+    const test3 = function namedTest() {
+
+    }
+    // 4. arrow function => constructor로 사용 불가능, this의 메커니즘이 다름(얘는 그냥 상단부 this 그대로 씀)
+    const test4 = () => {
+      //...
+    }
+    // 이 밖에도 즉시 실행, function constructor로 생성하는 방법도 있긴 있으나 잘 안씀
+
+
+    const arr = [1, 2, 3, 4, 5];
+
+    //for of는 iterable, for in 은 Object 순회를 목적으로 쓰면 됨 (for (key in Obj) 형태로 쓰임)
+    for (a of arr) {
+      // 요소가 하나씩 출력 됨
+      console.log(a);
+    }
+    for (a in arr) {
+      // 이러면 그냥 인덱스 값이 출력 됨
+      console.log(a);
+      console.log("=");
+      console.log(arr[a]);
+    }
+    arr.forEach((a, idx) => {
+      console.log(a, idx);
+    })
+
+    // this & arrow function 연습 문제
+    let people = {
+      name: '이상우',
+      sayHi: function () {
+        console.log(`안녕 나는 ${this.name}에요~`);
+      }
+    }
+    people.sayHi()
+
+    let dataObj = {
+      data: [1, 2, 3, 4, 5],
+      addData: function () {
+        let tmp = 0
+        this.data.forEach((num) => {
+          tmp += num;
+        })
+        console.log(tmp);
+      },
+      ttt: () => {
+        // 얘 기준으로 가장 바깥에 선언 가능한 this는 Window. 따라서 Window 가리킨다.
+        // arrow function은 바인딩을 제공하지 않기때문에, 사용한 this 기준, 선언 가능한 바로 바깥의 this와 동일한 값을 가리킴
+        console.log(this);
+      }
+    }
+    dataObj.addData();
+    dataObj.ttt();
+
+    const btn = document.getElementById('btn');
+    const printBtnText = () => {
+      console.log(btn.innerHTML);
+    }
+
+    btn.addEventListener('click', () => {
+      // setTimeout에 함수 쓸 때는 소괄호 없이 넣어야 함 아니면 setTimeout이 안먹힘.
+      // 함수를 그냥 쓰는것과 ()를 붙이는것의차이는 
+      // 전자는 함수를 그냥 인자로 전달하는것, 후자는 해당 함수를 호출하라는 의미.
+
+      // setTimeout에서는 첫번째인자로 함수를 애초에 받고 있다. 따라서 함수명만 써주어야함.
+
+      // 함수() 이건 해당 함수를 실행하라는 의미. 따라서 인자로 전달할때는 그냥 함수2 (함수) {} 이런식으로 써야한다.
+      setTimeout(printBtnText, 1000);
+    })
+  </script>
+</body>
+</html>

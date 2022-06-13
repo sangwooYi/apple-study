@@ -36,7 +36,7 @@
     // 이모드를 쓰면  1.const, let 선언자없이 변수 선언 불가(원래는 된다..)
     // 2. function 내부 에 그냥 적는 this는 undefined가 됨 (원래는 얘두 Window객체 가르킴)
     // 이 밖에 좀 더 엄격하게 조건을 검사해주는 모드 'use strict'
-    'use strict';
+    // 'use strict';
     
     const x = 200;
     
@@ -47,12 +47,25 @@
 
     // 기본적으로 this는 Window 객체를 가르킴
     console.log(this);
+    // 3. 이벤트 리스너에서의 this 는 event.currentTarget을 가리킴.
+    // arrow function은 항상 this가 Window 객체이다 조심!
     document.getElementById('test').addEventListener('click', function(event) {
       console.log(this);
       // 현재 event가 걸려있는 태그가 담겨있음
       console.log(event.currentTarget);
       // 실제 event가 발생한곳(이 자식노드에서부터 이벤트 걸린 부모태그까지 버블링 되어서 전달 되는 것)
       console.log(event.target);
+      console.log("===");
+      const arr = [1, 2, 3];
+      // Window 나옴 (strict모드에서는 undefined)
+      arr.forEach(function(num) {
+        console.log(this);
+      });
+      // event.currentTarget 가리킴 위에 있는 this 값을 그대로 물려받는 것!
+      arr.forEach((num) => {
+        console.log(this);
+      })
+      console.log("===");
     })
 
     // Object에서의 this는 본인을 담고있는 가장 안쪽의 Object를 가리킨다.
@@ -69,15 +82,82 @@
     // 굳이 console을 찍는게 아니고 그냥 이걸로 함수 호출하는것
     objec.test();
     // 이렇게 Object 내부에 있는 함수에서의 this는 본인이 포함된 Object를 가르키게 됨
+    // 이걸 '바인딩' 이라고 부름
     // 그냥 this가 그래서 Window객체를 가리키는것!!
     objec.test2(); // 얘는 objec를 가리킨다.
     objec.testData.ttf(); // 얘는 따라서 testData Object 를 가리키는것.
-    // arrow function은 항상 Window객체를 가리킨다. 
-    // 따라서 this 쓰고싶으면 arrow function 절대 쓰면 안됨.
+
+    // 따라서 this 쓰고싶으면 왠만하면 arrow function 쓰지 말자. 의도한것과 다르게 작동할 가능성 농후
+    // 물론 외부 this값을 그대로 재사용 하고싶으면 써도 된다. (이해를 제대로 하고 써야함)
+    // arrow function은 바인딩 기능을 제공하지 않는 것, 따라서 밖에 선언된 this값을 그대로 가져옴;
     const testOb = { data : () => {
       console.log(this);
     }}
     testOb.data();
+
+
+    // 4. constructor 문법에서의  this (생성자!)는 constructor function을 가리킴
+    // JS에서는 클래스 없이 바로 functiono에다가 constructor를 넣을 수 있다!.
+    // consTest란 Object에 내가 인자로 넘긴 데이터가 담긴 새로운 오브젝트를 생성 해 줌
+    function consTest(name, age) {
+      this.name = name;
+      this.age = age;
+    }
+
+    const testConstruct = new consTest("이상우", "31");
+    const testConstruct2 = new consTest("이유정", "29");
+    console.log(testConstruct);
+    console.log(testConstruct2);
+
+    const ObjectObject = { 
+      name: ['김', '이', '박'], 
+      func: function () {
+        console.log(this);
+        console.log("하하하");
+        ObjectObject.name.forEach(function() {
+          // Window나옴 (strict모드에서는 undefined)
+          console.log(this); // 이 this를 출력하는 function  자체는 특정 Object에 속해있지 않는다! 
+          // 따라서 Window 가리킴
+        });
+      },
+      func2: function () {
+        ObjectObject.name.forEach(() => {
+          // 이러면 이 this도 상위 Object인 ObjectObject를 가리킨다. (그냥 위의 this를 그대로 물려받기 때문)
+          console.log(this);
+        })
+      }
+    }
+
+    console.log("테스트");
+    ObjectObject.func();
+    ObjectObject.func2();
+
+    // 참고 strict mode 에서는
+    function thisTest11() {
+      console.log(this);
+    }
+    // 이건 undefined를  (strict mode에서는 기존처럼 window.을 자동으로 호환해주지 않는 것)
+    thisTest11();
+    // 이건 Window객체를 가리킨다.
+    window.thisTest11();
+    
+    
+    // this, super에서 사용되는 this에서의 bind() 이해하기
+    // 특정 오브젝트를 가리킬 수 있도록 새로운 함수를 만들어주는 기능임
+    const obj1 = { name: "유정" }
+    function bindTest() {
+  
+      console.log(this.name);
+      console.log(this);
+    }
+    console.log("==== bind 테스트 ====")
+    // 당연히 undefined , this는 Window
+    bindTest();
+    const bindTest2 = bindTest.bind(obj1);
+    // obj1이 바인딩 되어, obj1을 가리킨다. 즉 this는 오브젝트, 이벤트 리스너 등에서 
+    // 이 bind() 메서드를 통해 적절한 오브젝트 값에 바인딩 되는것, 당연히 디폴트는 Window 객체
+    bindTest2();
+    
   </script>
 </body>
 </html>
