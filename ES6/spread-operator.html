@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    /**
+     *  기본적으로 spread operator는 array 에서 요소를 펼쳐준다고 생각하면 편하다.
+    */
+   const nums = [1, 2, 3, 4, 5]
+   console.log(...nums) // 1 2 3 4 5
+
+   // 이걸 이용해서 array 간 결합, 깊은복사가 매우 쉬워짐
+   
+   // array 결합
+   const arr1 = [1, 2, 3]
+   const arr2 = [10, 11, 12]
+   const newArr = [...arr1, ...arr2]
+   const str1 = "hello"
+   console.log(newArr);
+
+   // 깊은 복사, 아예 새로운 배열을 만들어 주는 것
+   const deepCopy = [...arr1]
+
+   // 얕은 복사, 그냥 바로 할당하면 같은 주소를 참조하기때문에 한쪽이 바뀌면 같이 바뀜
+   // 참조에 의한 복사
+   const shallow = arr1  
+   arr1[0] = 987
+   console.log(deepCopy); // [1, 2, 3]
+   console.log(shallow);  // [987, 2,   3]
+   console.log(...str1);
+   // 문자열도 인덱싱 되므로 아래처럼 문자열도 쪼개서 array에 넣을 수 있다.
+   const arr3 = ['1', '5', '#']
+   const arr11 = [...arr3, ...str1]
+   console.log(arr11);
+
+   // object에서의 spread operator 사용 가능, iterable이 아니므로 그냥 ...obj1 을 출력할 수는 없다.
+   let obj1 = {'안녕': '디지몬', x : 42};
+   // 근데 이런식으로 copy는 가능
+   let cloneObj = {...obj1}
+   let shallowObj = obj1
+   obj1.x = 68
+   console.log(obj1);
+   console.log(shallowObj); // shallow copy하면 역시나 reference data 참조에 의한 복사가 됨
+   // object에서도 deep copy 해줌
+   console.log(cloneObj);
+
+   // 오브젝트에서 spread operator 쓸때 주의할 점은, 만약 key값이 중복되면
+   // 나중에 쓴 object 의 값으로 결정 된다. 겹치지 않는 부분들은 그냥 합쳐짐
+   let obj2 = {'안녕': '포켓몬', y: 11};
+   let cloned = {...obj1, ...obj2}
+   console.log(cloned);
+
+   /**
+    *   apply, call 메서드
+    *   역할은 둘다 거의 똑같다. 
+    * . 메서드.apply(func, params)  
+    *   앞의 메서드의 기능/ 을 func 함수에 적용해서/  parmas 인자들을 통해 처리해라/  라는 의미!
+    *   차이는 parameter로 apply는 array를 한번에 집어넣는게 가능 call은 인자당 요소 하나씩만 전달 가능
+    *   ex) const a = [1, 2, 3]
+    *   메서드.apply(undefined, a) 가능 
+    *   call은 이걸 func.메서드.apply(undefined, 1, 2, 3) 이렇게 써야한다는것
+    * 
+    *   undefined를 쓰는 이유는 그냥 메서드 기능 자체만 쓰고 싶기 때문에 편법 쓴것! (null 도 씀)
+    *   
+    * 
+   */
+
+    const numnum = [1, 2, 3]
+    function add(a, b, c) {
+      console.log(a + b + c)
+    }
+    add(...numnum);
+    add.apply(undefined, numnum);
+
+    let person = { greet: function() { console.log(this.name + "안녕")}}
+    let person2 = { name: '손흥민 '}
+
+    person.greet.apply(person2, [1, 2, 3]);
+  </script> 
+</body>
+</html>
