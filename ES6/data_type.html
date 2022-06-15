@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // primitive data type vs reference data type
+    /*
+      자바나 다른 언어에도 있는 개념
+      직역하면 원시 자료 형 vs 참조 자료 형
+      전자의 경우 해당 값을 직접 사용 (따라서 복사시 값에 의한 복사 발생)
+      후자의 경우는 값이 저장된 주소를 참조하여 사용 (복사시 참조에 의한 복사 발생)
+      
+      전자는 stack 메모리에 할당 되며, default 값을 갖고 있다.
+      후자는 heap 메모리에 할당 된다. default 값은 Null
+      
+      참고로
+      자바스크립트에서는 primitive data type에 초기화가 이루어지지 않은경우 undefined로 값이 할당 됨.
+    */
+
+    let naming = { name: '김' };
+
+    // 매개변수에 전달되는 인자는 var 라고 생각하면 편하다!
+    // 해당 함수 내에서만 유효한 상황 따라서 아래와같이 진행되면 실제 naming에는 영향 주지 못함
+    function changeObj(obj) {
+      // 여기서 재할당이 되긴하나, 이 함수를 벗어나면 이 할당값은 날라감
+      obj = {name: '박'};
+      console.log(obj);
+    }
+    changeObj(naming);
+    // 따라서 위에서 재할당 형식으로 이루어지면 함수 밖에서는 전혀 영향이 없음
+    console.log(naming);
+
+    // 대신 이렇게 직접 접근하면 바뀐다.
+    function changeObj2(obj) {
+      obj.name = '박';
+    }
+    changeObj2(naming);
+    console.log(naming);
+
+
+    let arr = [1, 2, 3, 4, 5]
+    // 이건 작동 되는데..?
+    function swap(arr, idx1, idx2) {
+      temp = arr[idx1];
+      arr[idx1] = arr[idx2];
+      arr[idx2] = temp;
+    }
+    swap(arr, 2 ,4);
+    console.log(arr);
+  </script>
+</body>
+</html>
