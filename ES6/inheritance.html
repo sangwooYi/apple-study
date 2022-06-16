@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /**
+     *  ES5 에서는 상속 (Inheritance)을 할 수 있는 더 쉬운 방법이 생김
+     *  Object.create() 
+     * 
+     * 자식.__proto__ 와 같은 기능을 하는 .getPrototypeOf() 존재
+     * Object.getPrototypeOf(자식); 이렇게 쓰면 된다.
+    */
+
+    const parent = { name: 'Kim', age: 50 };
+    // 이게 ES5 에서의 상속
+    const child = Object.create(parent);
+    console.log(child);
+    console.log(child.age)
+    child.age = 20;
+    // 우선순위는 본인이 직접 갖고있는애가 최우선 => 그 다음 부모 => 그다음 부모의 부모 ... ㄴ
+    console.log(child.age);
+
+    const grandChild = Object.create(child);
+    console.log(grandChild.age);
+
+
+
+    /**
+     *  JS에서 클래스는 ES6에서부터 추가되었다.. 놀랍게도 .
+     *  자바에서 쓰는 class와 거의 유사한 형태로 작성한다.
+     *  상속도 extends로 상속함
+    */
+    
+    class Person {
+      constructor(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+      // 필드선언은 이렇게
+      friend;
+
+      // 메서드 선언은 이렇게
+      sayHi() {
+        console.log(`안녕 나는 ${this.name}`);
+      }
+    }
+
+    const sang = new Person('이상우', 31);
+    console.log(sang)
+    sang.sayHi();
+
+    // 상속은 extends 자바랑 거의 똑같다
+    class Friend extends Person {
+      // constructor에 있는 필드, 메서드는 자식 인스턴스가 직접 갖고 있는다
+      constructor(name, age, kind) {
+        // 상속받을 constructor 내용은 반드시 super()로 선행해서 써주어야 함.
+        super(name, age);
+        this.kind = kind;
+      }
+      // 여기에 선언한 필드, 메서드는 prototype으로 갖고 있다.
+      introduce() {
+        console.log(`이 친구는 ${this.kind}친구!`)
+      }
+    }
+    const yoojung = new Friend('이유정', 29, '여자');
+    console.log(yoojung);
+    yoojung.sayHi();
+    yoojung.introduce();
+  </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /**
+     * Constructor는 기존 다른 언어에서는 Class에서 인스턴스 초기화를 해주는 친구이나
+     * JS에서는 특이하게 function에다가 바로 constructor를 설정해 줄 수 있다. 역할은 같음!
+     * constructor 메서드만 사용 할 수 있다고 생각하면 됨!
+     * 
+     * prototype
+     * 상속의 일종이다!
+    */
+   
+    // ex
+
+    function student(name, age, score) {
+      this.name = name;
+      this.age = age;
+      this.score = score;
+      // 말그대로 Object를 새로 생성한것, 사용법도 똑같다! Object 내부의 함수 선언가능
+      this.sayHi = function () {
+        console.log(`안녕 내 이름은 ${this.name}이야!!`);
+      }
+    }
+    // 이렇게 인스턴스를 constructor 메서드만 사용해서 선언할 수 도 있다!
+    const yoojung = new student("이유정", 29, 100);
+    console.log(yoojung);
+    // 말그대로 Object를 새로 생성한것, 사용법도 똑같다! Object 내부의 함수 선언가능
+    console.log(yoojung.sayHi());
+
+    // 원래는 Class를 통해 인스턴스를 생성해야함
+    class Human {
+      constructor(name, age, weight) {
+        this.name = name;
+        this.age = age;
+        this.weight = weight;
+      }
+      // 필드 선언, const나 let을 붙일 필요가 없다.
+      girl = "유정";
+
+      introduce() {
+        console.log(`안녕 내이름은 ${this.name}, 나이는 ${this.age}`)
+      }
+    }
+    const sangwoo = new Human("이상우", 31, 74)
+    sangwoo.introduce();
+    console.log(sangwoo.girl);
+
+    function product(name, cost) {
+      this.name = name;
+      this.cost = cost;
+      this.vat = function () {
+        console.log(`부가세는 ${this.cost*0.1}`)
+      }
+    } 
+    // prototype을 출력해 볼 수도 있다.
+    console.log(product.prototype);
+
+    // 자바처럼, new 한정자를 통해서 메모리를 할당해 주어야 함!
+    const product1 = new product('shirts', 50000);
+    const porduct2 = new product('pants', 60000);
+
+    product1.vat();
+
+  </script>
+</body>
+</html>

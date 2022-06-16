@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /**
+     *  Prototype
+     *  
+     *  기본적으로, constructor를 선언하면 prototype이 생성된다!
+     *  prototype은 원형, 즉 유전자라 생각하면 됨!
+     * 
+     *  자바스크립트는 
+     *  인스턴스.필드 // 인스턴스.메서드  를 실행할 때 아래와같은 순서로 진행 됨
+     *  1. 우선 직접 가지고 있는지 판단.
+     *  2. 없으면 prototype 즉, 부모요소에는 있는지 판단
+    */
+
+    function protoTest(name) {
+      this.name = name;
+    }
+    console.log(protoTest.prototype);
+
+    // 근데 이 prototype을 통해, 위에서 function에서 생성 안한 정보를 넣을 수도 있다!
+    protoTest.prototype.job = "네이버 개발자";
+    const sangwoo = new protoTest("이상우");
+    console.log(protoTest);
+    // prototype에만 추가되어있는것을 확인할 수 있다.
+    // 기본적으로 prototype은 constructor에만 내장되어있는 애임!
+    console.log(protoTest.prototype)
+    // 부모의 prototype이 뭔지를 체크할수도 있긴 하다 .__proto__
+    console.log(sangwoo.__proto__);
+    console.log(sangwoo.job);
+    console.log(sangwoo);
+  
+    // .sort(), .map(), .forEach() 이런애들을 바로바로 쓸 수 있는이유!
+    console.log(Array.prototype);
+    console.log(String.prototype);
+
+    /*
+      우리가
+      const a = [1, 2, 3]; 이렇게 작성을해도 실제로는
+      const a = new Array(1, 2, 3); 이렇게 동작을 하는것!
+      Ojbect, String 전부 마찬가지
+    */
+
+
+   // __proto__ 이용한 Object 상속
+   const par = {'name': 'Kim'}
+   const stud = {}
+  
+   // 이렇게 직접 상속관계를 설정할수도 있다.
+   stud.__proto__ = par;
+
+
+   // constructor, prototype 예제
+   // 1번
+  
+   function person(name, age) {
+    this.name = name;
+    this.age = age;
+    this.sayHi = function() {
+      console.log(`안녕~ 나는 ${this.name}이야!`);
+    }
+   }
+
+   const stud1 = new person('Kim', 20)
+   const stud2 = new person('Park', 21)
+   const stud3 = new person('Yi', 22)
+   stud1.sayHi();
+
+   // 2번
+   function Par() {
+    this.name = 'Kim';
+   }
+
+   let a = new Par();
+   a.__proto__.name = 'Yi';
+   console.log(a.name);
+   // Par.prototype은 바뀌어져 있다!
+   console.log(Par.prototype);
+   let b = new Par();
+   // 근데 내부에 직접 선언된 애가 더 우선!
+   // 우선순위는 아래와 같다
+   // 1. 직접 갖고 있는애 => 얘를 먼저보고, 여기에 없어야 2를 본다!ㄴ
+   // 2. 그다음이 prototye에 있는 애
+   // 얜 Kim, 직접 갖고 있으므로 prototype을 체크하지 않는것!
+   console.log(b.name);
+   // Yi, 값 자체는 바뀌어져 있는걸 확인할 수 있다!
+   console.log(Par.prototype.name);
+
+   // 3번
+   /*
+    아래 코드가 잘 작동 안되는이유?
+    
+    function Student(이름, 나이){
+      this.name = 이름;
+      this.age = 나이;
+    }
+
+    Student.prototype.sayHi = () => {
+        console.log('안녕 나는 ' + this.name + '이야');
+      }
+    var 학생1 = new Student('Kim', 20);
+
+    학생1.sayHi(); //왜 이 코드가 제대로 안나오죠?
+    => arrow function이기 떄문! function() {} 형태로 바꾸여 주어야 한다! 
+    위처럼 쓰면 this는 Window를 가리킴. 따라서 window.name은 아무것도 없음
+   */
+      
+   function Test(name) {
+    this.name = name;
+   }
+
+   Test.prototype.sayHi = () => {
+    console.log(this.name);
+   }
+
+   const testStud = new Test('이상우');
+   testStud.sayHi();   
+   
+   console.log(this); // Window
+
+   // array 메서드 추가하기
+   // Array, String 같은 이미 JS에서 만들어둔 Object의 prototype을 건드릴수도 있다!
+   // 물론 이 js 파일에서만 적용되는 것!;
+   Array.prototype.remove3 = function () {
+    // this는 생성한 인스턴스 자신을 가리키게 된다.
+    console.log(this);
+    // .filter()는 참인 조건의 값만 추려서 새로운 배열을 만들어주는 친구!
+    this.forEach((num, idx) => {
+      if (num === 3) {
+        // .splice(인덱스, 갯수, 대체값(선택 사항))
+        // 첫번째 인자의 인덱스 값에서부터, 두번쨰인자에 입력된 갯수만큼을 삭제
+        // 세번째 인자로 전달되는 대체값은, 선택사항이며, 없으면 삭제만,
+        // 삭제한 애보다 더 많은 요소를 넣는것도 가능!
+        // ex) splice(2, 0, ['ㅁ', 'ㅂ', 'ㅅ']) 이건 2번째 인덱스 이후부터, 삭제는 없고 ㅁ, ㅂ, ㅅ 요소 3개를 넣어준다!
+        this.splice(idx, 1);
+      }
+    })
+
+   }
+
+   
+   let arr = [1, 2, 3];
+   arr.remove3();
+
+   console.log(arr);
+   
+  </script>
+</body>
+</html>

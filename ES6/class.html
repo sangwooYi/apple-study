@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /**
+     *  놀랍게도 JS에서 Class 문법은 ES6 이후에서나 들어옴
+     * 
+    */
+
+    class GrandParent {
+      constructor(name, age) {
+        this.lastName = 'Yi';
+        this.firstName = name;
+        this.age = age;
+      }
+
+      sayHi() {
+        console.log(`안녕 내이름은 ${this.lastName} ${this.firstName}`)
+      }
+    }
+
+    const gP = new GrandParent('이이이', 80);
+    gP.sayHi();
+
+    class Parent extends GrandParent {
+      constructor(name, age) {
+        super(name, age);
+      }
+      // 메서드도 상속받아 구현할 수 있다.
+      sayHi2() {
+        // super가 말그대로 부모 클래스를 지칭하는것!
+        super.sayHi();
+        console.log(`나는 ${this.firstName}`);
+      }
+      // getter setter, C#에서의 프로퍼티랑 거의 유사한 기능임 (ES5부터 추가 됨)
+      wife;
+      // 메서드 작명은 사실 자유롭게 하면 된다.
+      get Wife() {
+        return this.wife;
+      }
+      // setter의 parameter는 반드시 한개여야 한다.
+      set Wife(val) {
+        this.wife = val;
+      }
+    }
+    const P = new Parent('하하하', 50);
+    P.sayHi();
+    // sayHi 를 상속받아 sayHi()기능까지 실행 됨
+    P.sayHi2();
+    // C# 에서 프로퍼티랑 같은 기능이며, 장점은 getter setter를 필드처럼 쓸 수 있다는것!
+    P.Wife = '유정';
+    console.log(P.Wife);
+
+    // 예제 문제
+
+    // 1번
+    class Dog {
+      constructor (type, color) {
+        this.type = type;
+        this.color = color;
+      }
+
+      addAge() {
+        
+        // 자바처럼 instanceof라는 친구가 존재함!
+        // this (현재 인스턴스) 가 어떤 형태인지 체크해줌 (다형성 부분에서 쓰이는 친구!)
+        // 해당 인스턴스가 비교하는 Object 에 해당되면 T, 아니면 F를 반환해줌
+        // 중요한건, 인스턴스의 부모요소랑 비교해도 T로 반환해줌
+        // ex, 여기서 Cat으로 만들어진 인스턴스는 this instanceof Dog 해도 True인것!
+        // 물론 그 반대는 False, 
+        if (this instanceof Cat) {
+          // 얘도 True , 당연히 Dog로 만든 인스턴스는 this instanceof Cat 하면 False 나옴
+          console.log(this instanceof Dog)
+          this.age++;
+        }
+
+      }
+    }
+    const botong = new Dog('말티푸', 'brown');
+    // console.log(botong.addAge());
+
+    // 2번. 3번 (이건 엄연히 예제라서, 실제로는 동물 => 동물을 상속받는 dog, 동물을 상속받는 cat 이렇게 만들겠죠?)
+    class Cat extends Dog {
+      constructor (type, color, age) {
+        super(type, color);
+        this.age = age;
+      }
+
+    }
+    const nabi = new Cat('코숏', 'white', 5);
+    console.log(nabi);
+    nabi.addAge();
+    console.log(nabi.age);
+
+    // 4번
+    class Unit {
+      constructor() {
+        this.atkPoint = 5;
+        this.HP = 100;
+      }
+
+      get battlePoint() {
+        console.log(`현재 배틀포인트는 ${this.atkPoint + this.HP}, 공격력: ${this.atkPoint}, 체력: ${this.HP}`);
+      }
+
+      set heal(num) {
+        const amount = parseInt(num);
+        this.HP += amount;
+      }
+    }
+    const testUnit = new Unit();
+    console.log(testUnit);
+    testUnit.battlePoint;
+    testUnit.heal = 100;
+    testUnit.battlePoint;
+
+    // 5번, getter, setter는 그냥 오브젝트에다가도 설정 가능하다!
+    let data = {
+      odd : [],
+      even : [],
+      getData() {
+        const temp = [...this.odd, ...this.even]
+        temp.sort((a, b) => {
+          // 이게 오름차순, 반대로하면 내림차순
+          if (a > b) {
+            return 1;
+          } else if (a < b) {
+            return -1;
+          } else {
+            return 0;
+          }
+        })
+        
+        return temp;
+      },
+      // 그냥 set은 param 1개밖에 못넣는다. 따라서 여러개 넣어야하면 그냥 따로 setter 직접 만들어야함!
+      setData(...params) {
+        params.forEach((num) => {
+          if (num % 2) {
+            this.odd.push(num);
+          } else {
+            this.even.push(num);
+          }
+        })
+      }
+    }
+    data.setData(1, 6, 9, 4, 5, 6)
+    console.log(data.getData());
+  </script> 
+</body>
+</html>
