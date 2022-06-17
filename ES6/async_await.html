@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id="test-btn">버튼버튼</button>
+  <script>
+    /*
+      async await.
+      Promise 이후에 추가 된 문법으로 (ES8 이후부터 추가 됨)
+      function에 async를 붙이면 이 함수는 항상 Promise를 반환한다.
+      async를 앞에 붙은 function은 await 표현식을 사용 가능하다!
+      await는 Promise가 처리 될떄까지 기다리는 기능을 함
+      
+      // 아래 표현은 test함수가 성공적으로 수행 된 경우 1을 출력하라는 의미임!
+      async function test() {
+        return 1;
+      }
+
+      대신 async의 경우는 resolve한 상태에서의 로직만 작성 가능 (이게 한계점)
+      따라서 만약에 reject한 경우의 로직을 작성하고 싶으면
+      아래와가이 Promise.reject() 를 반환하는 방법으로 해결 가능!
+      if (실패 로직인 경우) {
+        return Promise.reject();
+      }
+
+      Promise / async, await 에 대해서 복습해두자!!
+    */
+   
+    function adder() {
+      return 1+1;
+    }
+
+    // 기존에는 Promise로 만들어야하나, async를 붙여 같은 효과를 낼 수 있다.
+    // 이렇게 async 선언하면 promise와 같은 역할을 한다고 생각하면 됨
+    async function newAdder() {
+      // 이게 알아서 resolve(1+1); 과 같은 역할임!
+      return 1+1;
+    }
+
+    // 따라서 .then().catch() 사용 가능!
+    newAdder()
+    .then((res) => {
+      console.log(res);
+    }) 
+
+    // await
+    // async function에서 .then 역할로 사용하는 친구라고 생각하면 됨!
+    // 아래처럼 사용할 수 있는것!
+    // .then() 역할 대신 const 결과 = await ~` 이런식으로 작성할 수 있는것 
+
+    async function test() {
+      // 실패하는 코드 짜고싶으면 async에서는 이렇게 해줘야 함
+      // 기본적으로 async는 resolve 된 결과에 대한 처리를 하는게 기본임.
+      return Promise.reject();
+    }
+
+    async function asawTest() {
+      // promise가 resolve 판정 날때까지 기다림, 실패하면 에러 발생하고 코드가 멈추어 버림.
+      const result = await fetch('https://jsonplaceholder.typicode.com/posts');
+      const data = await result.json();
+      console.log(data);
+
+      // 만약 await이 에러가 나도 코드를 중단시키기 싫으면 try-catch를 사용해야함!
+      // 근데 이럴 바에는 그냥 Promise .then().catch() 쓰는게 나음
+     
+      try {
+        const reulst = await test();
+      } catch {
+        // await 에러 발생하는 경우 출력할 코드
+        console.log('하하하하하');
+      }
+    }
+    asawTest();
+
+    // 예제
+    // Promise만 사용
+    const btn = document.getElementById('test-btn')
+    const result = new Promise((resolve, reject) => {
+      btn.addEventListener('click', () => {
+        resolve();
+      })
+    })
+
+    result.then(() => {
+      console.log("성공이라구~");
+    })
+
+    // async await 사용, 어렵게 생각하지말자!!
+    // await 쓰려면 결국 promise 객체를 사용해야함
+    async function testClick() {
+      // promise 객체 선언한걸 여기다 써주면 await 사용 가능
+      // await 역할이, promise객체에 대한 판단이 r결정 될떄가지 기다려주는 역할(그게 끝!)
+      // 따라서 성공이면 다음 코드로 진행, 실패면 에러발생시켜준다.,
+      const res = await result;
+      console.log("성공~~");
+    }
+
+    testClick();
+  </script>
+</body>
+</html>
