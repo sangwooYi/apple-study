@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /**
+     *  번역은 구조분해할당.
+     *  array나 object를 선언할 때 보다 쉽게 선언이 가능하도록 해주는 문법
+     *  핵심은, array, object를 분해, 해체해서 변수로 지정가능하다는 것!
+    */
+
+    const arr =[1, 2, 3];
+    const copy = [...arr]; // 이렇게 해서 copy[0], copy[1] 물론 이렇게 써도된다
+
+    // 근데 구조분해 할당을 적용하면 (파이썬에서도 a, b = (1, 2) 이렇게 구조분해할당 하는것과 유사한것)
+    const [a, b, c] = arr;
+    console.log(a, b, c);  // 1, 2, 3
+
+    // 디폴트값도 적용 가능
+    const [e, f, g=5] = [1, 2];
+    console.log(e, f, g)  // 1, 2, 5  => default 파라미터 설정한것과 같은 로직으로 진행됨, undefined로 인자가 전달될 때만 적용 됨
+    
+
+    // object에도 destructuring 가능
+    const { name, age } = {name: 'Yi', age: 31};
+    console.log(name, age);  // Yi, 31 key값을 찾아서 알아서 구조분해할당 된다!
+
+    // value의 변수값이 key값과 동일하면 생략도 가능
+    const score = 80;
+    const room = 3;
+
+    // 이게 정석이나
+    const testtest = {score: score, room: room};
+    // 이렇게도 가능
+    const test123 = {score, room};  // 근데 솔직히 명시해주는 코드로 작성하고, 이런 코드 볼 떄 이해할 수만 있으면 됨!
+    console.log(test123);   
+
+    // 오브젝트도 디폴트값 설정해서 해체 가능
+    const {m = 10, n = 5} = {m: 3};
+    console.log(m, n)   // 3, 5
+
+    // 요런것도 가능! Obj는 Obj끼리 destructuring, array는 array끼리 destructuring 
+    // 잘 쓰이진 않음
+    const argTest = {name: 'Yi', age: 31};
+    const arrArgs = ['Yi', 31];
+
+    function destTest({name, age}) {
+      console.log(name, age)
+    }    
+    destTest(argTest);     // Yi, 31
+
+    function arrdest([name, age]) {
+      console.log(name, age)
+    }
+    arrdest(arrArgs);  // Yi, 31
+
+    // 활용 예제, 이렇게 쓸줄만 알면 된다.
+    let bodyProfile = {
+      body: {
+        height: 180,
+        weight: 70
+      },
+      size: ["상의 Large", "바지 30인치"], 
+    };
+
+    const {body: {height, weight}, size: [topSize, bottomSize]} = bodyProfile;
+
+    console.log(height, weight, topSize, bottomSize);  // 이렇게 좌우 꼴만 맞추어 주면 됨
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  
+  <!-- import export 사용하려면 type="module" 이 필수로 선행되어야 한다. -->
+  <script type="module">
+     /*
+        기존 js 파일 가져오는 방법, 이게 사실 호환성이 짱이라 걍 이거 쓰면된다.
+        but React, Angular에서 이걸 쓰므로 이해하고는 있어야함!
+        <script src="경로">
+
+        ES6에서 추가된 새로운 방법 import, export 다른 언어에서의 존재하는 impor를 가져온 것
+        근데 통째로 가져오는것이 아니고, 보통은 특정 값, 함수같이 일부만 가져온다.
+
+        export default로 export한 애를 import 할 때는, 변수명을 자유롭게 설정 가능 
+        => 어차피 deafult값이 정해져 있으므로
+
+        근데 export {}로 여러개를 보낸 경우는
+        반드시 export 할때의 변수값과 동일하게 맞추어주어야한다! key-vlaue값으로 찾아준다고 생각하면 됨!
+        
+     */ 
+      // import 가져올것 from 경로
+      import {change, exportTest} from './importTest.js'
+      import baseVal from './importTest.js'
+
+      // * (에스터링크) 사용해서 named exports한 애들 전부 가져올수도 있다.
+      import * as ttt from './importTest.js'
+        
+      console.log(change);  // export {} 한 애는 반드시 export 할때의 변수값과 맞추어주어야함 (안그러면 못찾음!)
+      exportTest();
+      console.log(baseVal);  // export default 한 애는 import할때는 변수명을 자유롭게 설정 가능 (어차피 정해진 값이므로)
+
+      console.log(ttt.change);
+      ttt.exportTest();
+      ttt.baseVal;  // default exports 는 *로 못가져온다! 주의하자! 반드시 따로 import 해주어야 함
+
+      // 참고! 옛날 방식 require 얘도 export 할때부터 설정해주어야한다. (혹시나 발견하면 당황 금지, 요새는 안쓴다.)
+      // const hahaha = require('./importTest.js');
+      // console.log(hahaha);
+</script>
+</body>
+</html>

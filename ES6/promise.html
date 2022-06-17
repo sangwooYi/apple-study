@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <img src="https://codingapple1.github.io/kona.jpg" id="test">
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> 
+  <script>
+    /*
+      콜백함수 지옥을 해결하기 위해 도입된 개념!
+      동기성이 확보된 콜백함수 디자인을 가독성있게 하기 위함!
+      아래와 같이 단계를 끊어서 작성할 수 있게 해주는 것!
+      func()
+      .then( () => {
+
+      })
+      .then( () => {
+
+      })
+      .catch( () => {
+
+      })
+
+      Promise도 코드 디자인 패턴이다!
+    */
+    
+    // 아래와같이 깔끔하게 디자인이 가능해졌다!
+    const promiseTest = new Promise((resolve, reject) => {
+      // 여기다가 resolove 될 조건, reject될 조건을 작성하는것!
+      let hard = 1+1;
+      // 성공판정이 나면 얘가 실행 됨
+      // 그리고 이렇게 parameter를 전달해 줄 수 있다!
+      resolve(hard);
+
+      // if(실패) => 이떄 reject(); 를 실행하도록
+
+      // 만약 여기서 reject();를 실행되면 얘는 catch로 간다.
+    });
+
+    console.log(promiseTest); // 상태 확인 가능 (판단 전: pending, 성공: fulfilled, 실패: rejected)
+    // 성공시(fulfill)
+    // resolve() 에서 내가 전달한 parameter가 여기서 data로 전달되어 온다.
+    promiseTest.then(function(data) {
+      console.log(data);
+      console.log("성공");
+      // 실패할 경우
+    }).catch(function() {
+      console.log("실패");
+    })
+
+    
+    // 예제1
+    
+    const promiseEx = new Promise((resolve, reject) => {
+      const img = document.getElementById('test');
+      // 참고! 이미지 로딩 관련해서 load, error 이벤특 존재한다! 
+      // (로딩 잘되었으면 load 이벤트발생, 문제가 발생햇을시 error 이벤트 발생)
+      img.addEventListener('load', () => {
+        resolve();
+      })
+      img.addEventListener('error', () => {
+        reject();
+      })
+    });
+
+    promiseEx.then(() =>{
+      console.log("이미지 로딩 성공!");
+    }).catch(() => {
+      console.log("이미지 로딩 실패");
+    })
+
+    // 예제2, 3 참고로 fetch가 있기때문에 쓰잘데기없지만 promise 이해 용도!
+    /*
+      참고로 post 요청은 아래처럼 보내줘야함, 주소 말고도, 두번쨰 인자로 method, headers, body등 
+      데이터를 정의해준 object를 넘겨주어야 한다.
+      // fetch("https://jsonplaceholder.typicode.com/posts", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify({
+      //     title: "Test",
+      //     body: "I am testing!",
+      //     userId: 1,
+      //   }),
+      // }).then((response) => console.log(response));    
+      
+      get 요청은 그냥 주소만 보내줘도 됨! (애초에 그래서 GET 요청인것)
+
+      fetch는 호환성이 별로 좋지가 않다..
+    */
+    const promiseEx2 = new Promise((resolve, reject) => {
+      // 이거 fetch 호환이 안되는거ㅠㅠㅠㅠㅠㅠㅠ
+      fetch('https://codingapple1.github.io/hello.txt')
+      .then((data) => {
+        resolve(data);
+      }).catch((error) => {
+        reject(error);
+      })
+    })
+    const promiseEx3 = new Promise((resolve, reject) => {
+      fetch('https://codingapple1.github.io/hello2.txt')
+      .then((data) => {
+        resolve(data);
+      }).catch((error) => {
+        reject(error);
+      })
+    })
+
+    promiseEx2.then((data) => {
+      promiseEx3.then((data) => {
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+
+    // jquery도 사용할 줄은 알아야함!
+    // .then(), .catch(), .finally() 가 각각 .done(), .fail(), .always()에 대응 됨
+    const promise4 = new Promise((resolve, reject) => {
+      $.get('https://codingapple1.github.io/hello.txt')
+      .done((result) => {
+        resolve(result);
+      })
+      .fail((err) => {
+        reject(err);
+      })
+    })
+
+    promise4.then((data) => {
+      console.log(data);
+      // return으로 값을 던져주면 다음 then에서 받을 수 있다!
+      return new Promise((resolve, reject) => {
+        $.get('https://codingapple1.github.io/hello2.txt')
+        .done((result) => {
+          resolve(result);
+        })
+        .fail((err) => {
+          reject(err);
+        })        
+      })
+    }).then( (data) => {
+      console.log(data);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  </script>
+  
+</body>
+</html>

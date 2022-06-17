@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /*
+      브라우저 동작 원리에 대한 내용!
+      
+      기본적으로 자바스크립트는 동기적으로 작동한다. (위에서부터 순차적으로 진행)
+      근데 setTImeout, Ajax(Promise 포함) 요청 같이 '비동기성'을 띈 코드 작업이 가능한 것!
+      이 구분을 명확히 하자
+
+      동작원리는 기본적으로
+      Call Stack, WebAPI, TaskQueue, Event Loop 이렇게 크게 네가지로 구분 됨
+
+      Call Stack : 자바스크립트 코드는 순차적으로 우선 Call Stack에 쌓인다.
+      바로 실행 가능한 애들은 여기서 바로 pop 되면서 출력
+      시간이 걸리거나, 의도적 지연(setTimeout) 된 애들은 Web API로 보내짐 (setTimeout, setInterval, Ajax 요청)
+      이후 Web API 에서 요청한 작업을 시행함
+      (자바스크립트이 Call Stack은 단 하나! 따라서 Single Threaded 라고 한다.)
+
+      Task Queue: 비동기 처리된 callback 함수들이 대기하는 공간,
+      Web API에서 요청된 지연시간 or 작업이 완료된 애들이 enqueue 되는 곳이며
+      Event Loop 에 의해서 Call Stack이 비어있는지 체크하여,
+      Call Stack이 비어있으면 front 부분부터 차례대로 dequeue되어 Call Stack 에 쌓인다.
+
+      Event Loop: Call Stack이 비어있는지를 체크해주는 친구.
+      비어있다면 => Task Queue에 대기중인 call back 함수 여부 체크
+      => 있다면 앞에서부터 dequeue해서 Call Stack에 push 해줌
+    */
+
+    // 아래 코드에서 출력이 2, "안녕", 그다음 setTimeOut이 실행된다.
+    // 얘는 또 바로 시행됨
+    // 따라서
+    // 1. 일단 시간 오래걸리는 연산을 자바스크립트로 짜면 안된다.
+    // 2. 만약 정 써야하면, 그 메서드는 setTiemout() 같은것들을 활용해 의도적으로 Web API로 던져주어야 함
+    function addTest () {
+      let res = 0;
+      for (let i = 1; i <= 100; i++) {
+        res += i;
+      }
+      return res;
+    }
+    console.log(1+1);
+    setTimeout(function() {
+      console.log("이거 원래 중간");
+    }, 1000);
+    console.log(addTest());
+    console.log("안녕");
+
+
+    /*
+      동기 (synchronous) vs 비동기 (asynchronous)
+    */
+
+    // 콜백 함수 
+    function first() {
+      // 굳이 디자인하려면 이렇게 디자인 해야함!
+      setTimeout(() => {
+        console.log("얘가 처음 실행되야함");
+        second();
+      }, 1000);
+    }
+    function second() {
+      console.log("히히");
+    }
+    // 기본적인 콜백함수 디자인 방법 (디자인 패턴임, 비동기성을 얘가 보장하진 않는다.)
+    first(second);
+
+    // 문제점.. 콜백 지옥
+
+    /*
+      콜백함수로만 동기성이 확보된 코드 디자인을 하려면 아래와 같은 x랄해야함.. 
+      first(() => {
+        second(() => {
+          third(() => {
+
+          })
+        })
+      })
+
+      그래서 나온게 Promise!!
+    */
+
+  </script>
+</body>
+</html>
