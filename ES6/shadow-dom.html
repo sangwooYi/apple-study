@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="test">
+  </div>
+  <label for="">하하하</label>
+  <my-custom></my-custom>
+
+  <!-- HTML 임시 보관함!! Vue가 이걸 쓰는것!! -->
+  <template id="template1">
+    <p>ㅎ하하</p>
+    <h4 id="clcl">Vue 별거 아니었누</h4>
+  </template>
+  <script>
+    // shadow-DOM 만들기!
+    const div = document.getElementById('test');
+    // shadow-DOM 열어주는 함수 .attachShadow()
+    // mode: 'open' 해 줘야 shadow-DOM 부착 가능해짐
+    div.attachShadow({mode: 'open'})
+    
+    // 그다음에 shadowRoot 경로를 통해 원하는 태그 부착 가능
+    div.shadowRoot.innerHTML = `<p>헤헤헤헤헤헤헤헨</p>`
+
+    // WebComponent와 같이 사용하면 HTML 모듈화 가능!
+    // shadow-dom 에서 설정한 style은 shadow-DOM 내부에서만 영향을 주기 떄문! (오염방지!)
+    class WebComponentTest extends HTMLElement {
+      connectedCallback() {
+        this.attachShadow({mode: 'open'})
+        this.shadowRoot.innerHTML = `<label>이메일</label><input>
+        <style> label { color: red }</style>`
+        // 정석은 this.shadowRoot.appendChild() 사용!
+        // template에 고유 id값을 부여하면 이렇게 바로 가져올수있다!!
+        this.shadowRoot.appendChild(template1.content.cloneNode(true));
+
+        // shadow-DOM에다가 이벤트리스너 달아야하면 document가아니라 this.shadowRoot. 
+        // 요걸로 접근해야함! 기본적으로 document는 shadow-DOM을 조회 못한다!
+        const clcl = this.shadowRoot.getElementById('clcl');
+        clcl.addEventListener('click', () => {
+          console.log("하핳");
+        })
+      }
+    }
+    customElements.define('my-custom', WebComponentTest);
+  </script>
+</body>
+</html>

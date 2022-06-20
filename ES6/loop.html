@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /**
+     *  JS에서 반복문을 돌리는 방법은 대중적인건 4가지이다
+     *  for
+     *  forEach
+     *  for in
+     *  for of
+    */
+
+     // for in은 Object를 나열할떄 쓰는 것!
+    const testObj = { name: 'Kim', age: 31, haha: 'gkgkgk'}
+    const a = Object.getOwnPropertyDescriptors(testObj);  // enurable: true일때만 for in 사용 가능
+    console.log(a);
+    // object의 key값을 나열해준다!
+    for (let key in testObj) {
+    console.log(key);
+    // value값을 뽑으려면  .key로 하면 안된다! 
+    // (.으로 접근시에는 'key'라는 이름의 key값을 찾는것!, 즉 변수로 접근 불가)
+    console.log(testObj[key]);
+    }
+
+    // for of는 array, NodeList, Map, Set.. 의 요소값을 반복해줌, String도 가능!
+    const testArr = [1, 2, 3, 4, 5]
+    for (let elem of testArr) {
+    // 요소값을 반복해줌! 
+    console.log(elem);
+    }
+
+    // 예제1
+    let data = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    for (let i of data) {
+    for (let j of data) {
+      console.log(`${i} x ${j} = ${i*j}`)
+    }
+    }
+
+    // 예제2
+    let products = [
+      {
+        name1 : 'chair',
+        price1 : 7000,
+      },
+      {
+        name2 : 'sofa',
+        price : 5000,
+      },
+      {
+        name1 : 'desk',
+        price3 : 9000,
+      },
+    ];   
+    const temp = []
+    // array 안의 요소가 object! 따라서 정석은 for of => 요소에 대해선 for in!
+    for (let obj of products) {
+      console.log(obj);
+      const tmpObj = {}
+      for (let key in obj) {
+        const numTest = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+        // 마지막 자리가 숫자인것
+        const lastIdx = key.length-1
+        if (numTest.indexOf(key[lastIdx]) !== -1) {
+          // slice 시작인덱스 ~ 종료인덱스-1 까지의 범위를 slice해줌 
+          // 시작인덱스부터 종료인덱스 직전까지 (따른 언어랑 같다)
+          const newKey = key.slice(0, lastIdx)
+          tmpObj[newKey] = obj[key]
+        } else {
+          tmpObj[key] = obj[key]
+        }
+      }
+      temp.push(tmpObj);
+    }
+    console.log(temp);
+    products = temp;
+    console.log(products);
+    // 만약에 이렇게 안하고, 그냥 기존 애만 건드리고 싶으면
+    // Obejct에서 key-value 데이터쌍을 지우려면 delete 오브젝트[지우려는 data key] 이거 쓰면됨
+  </script>
+</body>
+</html>

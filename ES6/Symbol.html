@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /*
+      Symbol 자료형
+      쓸데는 크게 없으나,
+      유니크한 key값을 오브젝트에 추가하고 싶을때 사용
+      => 만들때마다 다른 주소값을 참조한다
+      => 따라서 Object 의 key값으로 이 Symbol을 사용가능한것 
+
+      const sym1 = Symbol('tt');
+      const sym2 = Symbol('tt');
+      => sym1 === sym2 해보면 false사욤
+      
+      근데 Symbol을 key값으로 쓰면 얘는 for in 에서 안나옴 (enurable=false로 설정 되어 있음)
+      Object.getOwnPropertySymbols() 만약 조회하고싶으면 이걸 써야함!
+      (따라서 비밀스럽게 Object에 저장할 수 있음)
+    */
+  let sym1 = Symbol('설명설명');
+  console.log(sym1);
+  let symObj = Object(sym1)
+  console.log(symObj);
+
+  let testObj = {name: 'Yi'};
+  let symb = Symbol('몸무게');
+  testObj[symb] = 74;
+  console.log(testObj); // {name: 'Yi', Symbol(몸무게): 74}; 이렇게 나옴
+
+  for (let key in testObj) {
+    console.log(key); // name만 나옴
+  }
+  // Object에 담긴 Symbol 보려면 이걸 별도로 사용해야 함
+  const sysy = Object.getOwnPropertySymbols(testObj);
+  console.log(sysy);
+
+  // Symbol도 전역으로 선언 가능 .for 이용
+  // 그냥 .for('') 여기에 입력된 문자로 선언된 Symbol이 있다면 걔를 그대로 가져다 쓰겠다는 의미
+  let globSym = Symbol.for('글로벌');
+  let globSym2 = Symbol.for('글로벌');
+  console.log(globSym === globSym2);  // true
+  </script>
+</body>
+</html>

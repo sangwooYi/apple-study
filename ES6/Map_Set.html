@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /*
+      Map, Set 자료형
+
+      Map: Object와 유사하나,
+      보다 key-value 관계를 강조하기 위해 추가 됨
+      근데 이때 key값에는 모든 자료형을 다 사용 가능하다!! (파이썬 dict와 다른 점)
+
+      Set: 말그대로 Set이다! 중복을 허용하지 않는 자료형
+
+      Map, Set 자료형의 특징은, 해당 자료 안에, 요소의 유무를 검색할때
+      O(1)이라는 것! Hash 형태로 저장되기때문에!!! 
+
+      따라서, 자료의 크기가 큰 구조의 data를 자주 검색해야 될 때는
+      Map 아니면 Set으로 저장하면 매우 효율적이다!
+    */
+
+    // Map 자바에서 Map이랑 유사한거라 생각하면됨, 
+    const mapTest = new Map();
+    // 추가할 때는 .set(key, value) 사용, 조회할때는 .get(key)사용
+    /*
+      주의할 점은, Map도 그냥 mapTest[key] = value 이렇게
+      Object처럼 key-value 추가가 된다!
+      하지만 이렇게 하면 Map에서의 메서드가 작동을 못함.
+      따라서 Map쓴다면 key 추가할떄 반드시 .set()사용!
+    */
+    mapTest.set('age',  31);
+    mapTest.set('name', 'Yi');
+    console.log(mapTest);
+    // 조회할때
+    console.log(mapTest.get('age'))
+    console.log(mapTest.has('age'))
+    // 삭제하고 싶으면 맵.delete(키값); 이렇게 하면 됨
+    console.log(mapTest.keys()); // mapIterator 형태로 조회됨 따라서 for of 사용 가능
+    for (let key of mapTest.keys()) { // 실제로 for of로 key 조회할 수 있음
+      console.log(key);
+    }
+
+    // Set
+    const setTest = new Set([1, 2, 3, 4, 5, 4, 4, 4, 4]);
+    console.log(setTest);  // {1, 2, 3, 4, 5}
+    // 만약 추가하려면 .add
+    setTest.add(7);
+    setTest.add(5);
+    console.log(setTest); // 중복된 애는 어차피 추가 안된다.
+
+    // 삭제하려면 .delete() , 유무체크는 .has(), 크기는 .size()
+    
+    // forEach, for of 사용 가능!, forEach는 당근 사용 가능 즉 iterable함
+    for (let num of setTest) {
+      console.log(num);
+    }
+
+    // 주위할것은 array, 리스트와 다르게 인덱스로 조회되지 않는다!!!. (다른 언어에서도 같다)
+
+    // spread operator도 사용 가능!
+    // 중복 제거한 배열을 만들고 싶을 때
+    const test = ['sang', 'sang', 'yi', 'jung', 'yoo', 'kim', 'yoo']
+
+    const testtest = new Set(test);
+    // 무지 간편하다!
+    const res = [...testtest]
+    console.log(res);
+  </script>
+</body>
+</html>
