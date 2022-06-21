@@ -36,3 +36,34 @@
     transform: rotate(360deg);
   }
 }
+
+.black-bg {
+  background-color: #282c34;
+  width: 100%;
+  display: flex;
+  color: white;
+  padding: 20px;
+}
+
+div {
+  box-sizing: border-box;
+}
+
+.list {
+  padding-left: 20px;
+  text-align: left;
+  border-bottom: 1px solid gray;
+  height: 150px;
+}
+
+.like-btn {
+  background-color: #339dba;
+  color: white;
+  font-size: 12px;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.like-btn:hover {
+  background-color: #4ab8d6;
+}
