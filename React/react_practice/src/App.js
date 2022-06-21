@@ -12,6 +12,15 @@ function App() {
   let [post, setPost] = useState('기본값');
   let [datas, setDatas] = useState(['남자 코트 추천', '강남 우동 맛집', '파이썬 독학']);
   let [likes, setLikes] = useState([0, 0, 0]);
+  let [modalData, setModalData] = useState();
+
+  // function으로 명시적 선언을 해주면 사용하는곳 뒤에 써도 되지만
+  // 얘처럼 표현식으로 쓴경우는 무조건 쓰는곳 이전에 써줘야한다!!! (반드시 기억)
+  // JS 호이스팅!!!, 명시적 선언을 한 함수는 전체를 호이스팅해주지만
+  // 아래처럼 표현식같은 경우는 undefined상태로 선언만 해주는 상태로 호이스팅해주기 때문!
+  const moveDetail = () => {
+    
+  }
   // 이렇게 return 안에 html 코드 짜는것을 JSX라고 한다.
   return (
     <div className="App">
@@ -37,6 +46,10 @@ function App() {
           }}>
             좋아요👍{likes[idx]}
           </span>
+          {/* 일반적으로는 이렇게 이벤트핸들러 달때 return 생략하고 쓴다 (한줄이니까) */}
+          <span className='like-btn' onClick={() => moveDetail()}>
+            자세히 보기
+          </span>
         </div>
       })}
       {/* 태그에 변수를 넣을때는 이렇게 {}안에 변수를 넣어주어야 함 
@@ -48,6 +61,10 @@ function App() {
       <h4 style={ { backgroundColor: 'white', padding: '10px'} }>{ post }</h4>
       <button onClick={changeSort}>정렬하자정렬</button>
       {/* 이벤트는 아래와 같이 등록한다. */}
+
+      <Modal data={modalData}></Modal>   
+      {/* 그냥 <Modal/> 이렇게만 써도 완전 동일하다 */}
+
     </div>
   );
   function clickBtn(index) {
@@ -98,7 +115,26 @@ function App() {
   }
 }
 
-
+// 컴퍼넌트 문법! (자바스크립트에서 WebComponent랑 같은 역할이다!)
+// 3step  
+// 1. function을 만든다.(다른 함수 바깥에다가 만들어야 한다.)
+// 2. return() 안에다가 html 태그 담기
+// 3. 배치할 곳에 <함수명></함수명> 쓰기
+/*
+  컴퍼넌트 만들면 편한 대표적인 3가지 경우
+  1. 반복적인 html을 축약할 때
+  2. 큰 페이지들 (특히 리액트에서는 이걸 많이한다)
+  3. 자주 변경되는 html UI
+*/
+function Modal(props) {
+  return (
+    <div className='modal'>
+      <h4>제목: </h4>
+      <p>날짜: </p>
+      <p>상세내용: </p>
+    </div>
+  )
+}
 
 
 export default App;

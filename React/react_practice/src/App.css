@@ -63,7 +63,16 @@ div {
   padding: 10px;
   border-radius: 10px;
   cursor: pointer;
+  margin-right: 10px;
 }
 .like-btn:hover {
   background-color: #4ab8d6;
+}
+
+.modal {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #eee;
+  text-align: left;
+  display: none;
 }
