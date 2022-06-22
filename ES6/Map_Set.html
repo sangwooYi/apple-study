@@ -70,6 +70,64 @@
     // 무지 간편하다!
     const res = [...testtest]
     console.log(res);
+
+    const test11 = [[1, 2, 3], [4, 5, 6]];
+    const test22 = [...test11];
+    console.log(test22);
+
+
+    class Queue {
+        constructor(capacity) {
+            this.max = capacity;
+            this.que = new Array(this.max).fill(0);
+            this.data = 0;
+            this.front = 0;
+            this.rear = 0;
+        }
+
+        enqueue(num) {
+            if (this.data >= this.max) {
+                throw new Error("Index!");
+            }
+            this.que[this.rear] = num;
+            this.data++;
+            this.rear++;
+            if (this.rear == this.max) {
+                this.rear = 0;
+            }
+            return num;
+        }
+        dequeue() {
+            if (this.data <= 0) {
+                throw new Error("Index!");
+            }
+            let now = this.que[this.front];
+            this.front++;
+            this.data--;
+            if (this.front == this.max) {
+                this.front = 0;
+            }
+            return now
+        }
+        isEmpty() {
+            return this.data <= 0;
+        }
+    }
+
+    que = new Queue(100);
+    que.enqueue(5);
+
+
+    const arrTest = new Array(3).fill(0);
+    arrTest.forEach((el, idx, arr) => {
+      arr[idx] = new Array(3).fill(0);
+    })
+    arrTest[0][1] = 3;
+    console.log(arrTest);
+
+    const mapmap = new Map();
+    mapmap.set([[1, 2], [3, 4]], 1);
+    console.log(mapmap.has([[1, 2], [3, 4]]))
   </script>
 </body>
 </html>

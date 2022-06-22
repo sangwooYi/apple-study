@@ -18,9 +18,19 @@ function App() {
   // 얘처럼 표현식으로 쓴경우는 무조건 쓰는곳 이전에 써줘야한다!!! (반드시 기억)
   // JS 호이스팅!!!, 명시적 선언을 한 함수는 전체를 호이스팅해주지만
   // 아래처럼 표현식같은 경우는 undefined상태로 선언만 해주는 상태로 호이스팅해주기 때문!
-  const moveDetail = () => {
-    
+  const moveDetail = (idx) => {
+    setModalData(datas[idx]);
+    document.querySelector('.modal').style.display = 'block';
   }
+
+  const closeDetail = () => {
+    document.querySelector('.modal').style.display = 'none';
+  }
+
+  const changeData = () => {
+    setModalData('여자 코트 추천');
+  }
+
   // 이렇게 return 안에 html 코드 짜는것을 JSX라고 한다.
   return (
     <div className="App">
@@ -33,6 +43,7 @@ function App() {
       */}
       {/* v-for 리액트에서 구현하는방법! 그냥 자바스크립트 + JSX 문법인것 */}
       { datas.map((el, idx) => {
+        // 주의할 사항! 태그 반복해서 생성할때 반드시 태그에 유니크한 key값을 부여해주어야한다!
         return <div className='list' key={idx}> 
           <h4>{ el }</h4>
           <p>2월 17일 발행</p>
@@ -41,15 +52,16 @@ function App() {
             보통은 그냥 return 생략해서 (return이 한줄짜리면 return 생략 가능)
             onClick{() => 함수(인자)} 이런식으로 작성한다! 
           */}
+          {/* onClick={() => clickBtn(idx)} 랑 똑같다 */}
           <span className='like-btn' onClick={() => {
             return clickBtn(idx)
           }}>
             좋아요👍{likes[idx]}
           </span>
           {/* 일반적으로는 이렇게 이벤트핸들러 달때 return 생략하고 쓴다 (한줄이니까) */}
-          <span className='like-btn' onClick={() => moveDetail()}>
+          <span className='like-btn' onClick={() => moveDetail(idx)}>
             자세히 보기
-          </span>
+          </span>       
         </div>
       })}
       {/* 태그에 변수를 넣을때는 이렇게 {}안에 변수를 넣어주어야 함 
@@ -62,7 +74,9 @@ function App() {
       <button onClick={changeSort}>정렬하자정렬</button>
       {/* 이벤트는 아래와 같이 등록한다. */}
 
-      <Modal data={modalData}></Modal>   
+      {/* 작명={prop으로 보낼 데이터}  이런 형태로 전달해주며, 여러 prop데이터가 필요한 경우
+         아래 처럼 그냥 쭉 쓰면 된다!*/}
+      <Modal data={modalData} close={closeDetail} change={changeData}></Modal>   
       {/* 그냥 <Modal/> 이렇게만 써도 완전 동일하다 */}
 
     </div>
@@ -126,15 +140,28 @@ function App() {
   2. 큰 페이지들 (특히 리액트에서는 이걸 많이한다)
   3. 자주 변경되는 html UI
 */
+
+// 또한 리액트에서는 이렇게 일반적으로 컴퍼넌트를 별도의 파일로 만들고 
+// export, import 사용해서 적용한다!
 function Modal(props) {
+  const closePage = () => {
+    // 하위 컴퍼넌트 => 상위 컴퍼넌트 방향으로 데이터 전달 or 조작하는방법
+    // 1. 상위 컴퍼넌트에서 필요한 함수를 prop해준다
+    // 2. 하위컴퍼넌트에서 필요한 상황에 해당 함수를 props.프랍명 으로 호출해주면 끝!;
+    props.close();
+  }
+  const changeData = () => {
+    props.change();
+  }
   return (
     <div className='modal'>
-      <h4>제목: </h4>
+      <h4>제목: {props.data}</h4>
       <p>날짜: </p>
       <p>상세내용: </p>
+      <span className='like-btn' onClick={changeData}>변경변경!</span>
+      <span className='like-btn' onClick={closePage}>닫기</span>
     </div>
   )
 }
-
 
 export default App;
