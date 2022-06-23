@@ -43,6 +43,8 @@
   display: flex;
   color: white;
   padding: 20px;
+  justify-content: space-between;
+  align-items: center;
 }
 
 div {
@@ -74,5 +76,12 @@ div {
   padding: 20px;
   background-color: #eee;
   text-align: left;
-  display: none;
+}
+
+
+.input-form {
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 14px;
+  margin: 5px;
 }
