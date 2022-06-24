@@ -28,6 +28,15 @@
   color: #61dafb;
 }
 
+.main-bg {
+  height: 800px;
+  /* 얘는 CSS 배경이미지 넣는 방법 background-img: url(경로!); */
+  background-image: url(../public/imges/shoes.png);
+  background-size: cover;
+}
+
+
+/* keyframes 기억하자 from, to 로 작성할수도 있지만 25% 50% 75% 100% 이렇게 %로 작성도 가능 */
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

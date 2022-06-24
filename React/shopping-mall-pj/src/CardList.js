@@ -4,7 +4,7 @@ import CardComp from './components/CardComp';
 function CardList(props) {
 
   return (
-    <div className="d-flex justify-content-center mt-3">
+    <div className="d-flex justify-content-center pt-5">
       {
         props.cardDatas.map((data, idx) => {
           return <CardComp data={data} key={idx}></CardComp>
