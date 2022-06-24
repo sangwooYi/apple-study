@@ -3,6 +3,7 @@ import { useState } from 'react';
 import './App.css';
 import Modal from './Modal';
 import Search from './Search';
+import ClassComponent from './ClassComponent';
 
 function App() {
   // let post = '강남 우동 맛집'
@@ -174,7 +175,7 @@ function App() {
         : null
       }
       {/* 그냥 <Modal/> 이렇게만 써도 완전 동일하다 */}
-
+      <ClassComponent></ClassComponent>
     </div>
   );
   function clickBtn(index) {
