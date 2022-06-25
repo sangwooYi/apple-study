@@ -1,7 +1,11 @@
 import { Card, Button } from 'react-bootstrap';
-
+import { Link, Route } from 'react-router-dom'
 
 function CardComp(props) {
+  const moveToDetail = (value) => {
+    props.moveToDetail(value);
+  }
+
   return(
     <div className="mx-3">
       <Card style={{ width: '18rem' }}>
@@ -11,7 +15,10 @@ function CardComp(props) {
         <Card.Text>
           {props.data.cost}원
         </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
+        {/* Link에서 to="경로" 이 경로대로 이동한다.  */}
+        <Link to={`/detail/${props.data.id}`}>
+          <Button variant="primary" onClick={() => moveToDetail(props.data)}>Detail</Button>
+        </Link>
       </Card.Body>
     </Card>
     </div>
