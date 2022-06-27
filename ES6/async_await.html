@@ -42,6 +42,7 @@
       return 1+1;
     }
 
+    // async function은 Promise 객체를 return 해준다! (resolve에 대한 Promise 객체 결과를 반환해준다고 생각하면 됨)
     // 따라서 .then().catch() 사용 가능!
     newAdder()
     .then((res) => {
