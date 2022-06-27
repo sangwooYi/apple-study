@@ -7,7 +7,7 @@ function CardComp(props) {
   }
 
   return(
-    <div className="mx-3">
+    <div className="m-3 col-3">
       <Card style={{ width: '18rem' }}>
       <Card.Img variant="top" src={props.data.img} />
       <Card.Body>

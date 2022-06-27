@@ -8,15 +8,73 @@ import Detail from './components/Detail';
 import baseDatas from './data';
 import { Button } from 'react-bootstrap';
 import { Routes, Route } from 'react-router-dom';
+import axios from 'axios';
 
 function App() {
 
   let [cardDatas, setCardDatas] = useState(baseDatas);
   let [detailData, setDetailData] = useState({});
+  let [btnCount, setBtnCount] = useState(0);
 
   // state 상위 컴퍼넌트 보내는 것은 Vue에서 prop, emit한것처럼 하면 된다.
   const moveToDetail = (value) => {
     setDetailData(value);
+  }
+
+  async function sendAxios(url) {
+    const result = await axios.get(url)
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    return result;
+  }
+
+
+  const getDataFromServer = () => {
+    if (btnCount == 0) {
+      const test = sendAxios(`https://codingapple1.github.io/shop/data2.json`); 
+      setBtnCount(btnCount+1);
+      test.then((res) => {
+        // console.log(res);
+        const resData = res;
+        let newArr = resData.map((obj) => {
+          const newObj = {}
+          newObj.id = obj.id;
+          newObj.title = obj.title;
+          newObj.cost = obj.price;
+          newObj.img = `https://codingapple1.github.io/shop/shoes3.jpg`;
+          return newObj;
+        })
+        newArr = [...newArr, ...cardDatas];
+        setCardDatas(newArr);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    } else if (btnCount == 1) {
+      setBtnCount(btnCount+1);
+      axios.get(`https://codingapple1.github.io/shop/data3.json`)
+      .then((res) => {
+        // console.log(res);
+        const resData = res.data;
+        let newArr = resData.map((obj) => {
+          const newObj = {}
+          newObj.id = obj.id;
+          newObj.title = obj.title;
+          newObj.cost = obj.price;
+          newObj.img = `https://codingapple1.github.io/shop/shoes3.jpg`;
+          return newObj;
+        })
+        newArr = [...newArr, ...cardDatas];
+        setCardDatas(newArr);
+      })
+      .catch((err) => {
+        console.log(err);
+      })      
+    }
   }
 
   return (
@@ -30,7 +88,18 @@ function App() {
           <div className="main-bg">
             <CardList cardDatas={cardDatas} moveToDetail={moveToDetail}></CardList>
             {/* class는 className으로 걸고, bootstrap이랑 동일하게 쓰면 된다! */}
-          <Button variant="primary" className="mt-3">Primary</Button>
+          {/* 조금 귀찮더라도 이렇게 삼항연산자 쓰는게 가장 무난한 방법 */}
+          { 
+            (btnCount >= 2) 
+            ? <Button variant="primary" className="mt-3" disabled>데이터 추가</Button>            
+            : <Button 
+            variant="primary" 
+            className="mt-3"
+            onClick={() => getDataFromServer()}
+            >
+            데이터 추가
+          </Button>
+          }
           </div>
           }>
         </Route>
