@@ -7,7 +7,7 @@ function CardList(props) {
   }
 
   return (
-    <div className="d-flex justify-content-center pt-5">
+    <div className="d-flex justify-content-center flex-wrap pt-5">
       {
         props.cardDatas.map((data, idx) => {
           return <CardComp data={data} key={idx} moveToDetail={moveToDetail}></CardComp>

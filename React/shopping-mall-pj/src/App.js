@@ -8,16 +8,63 @@ import Detail from './components/Detail';
 import baseDatas from './data';
 import { Button } from 'react-bootstrap';
 import { Routes, Route } from 'react-router-dom';
+import axios from 'axios';
 
 function App() {
 
   let [cardDatas, setCardDatas] = useState(baseDatas);
   let [detailData, setDetailData] = useState({});
+  let [btnCount, setBtnCount] = useState(0);
+  let [btnStatus, setBtnStatus] = useState(true);
 
   // state 상위 컴퍼넌트 보내는 것은 Vue에서 prop, emit한것처럼 하면 된다.
   const moveToDetail = (value) => {
     setDetailData(value);
   }
+
+  const addData = () => {
+
+    if (btnCount == 0) {
+      setBtnCount(btnCount+1);
+      axios.get('https://codingapple1.github.io/shop/data2.json')
+      .then((res)=> {
+        let tmp = []
+        res.data.forEach((el) => {
+          let obj = {}
+          obj.id = el.id;
+          obj.title = el.title;
+          obj.cost = el.price;
+          obj.img = 'https://codingapple1.github.io/shop/shoes3.jpg';
+          tmp.push(obj);
+        })
+        let newArr = [...tmp, ...cardDatas];
+        setCardDatas(newArr);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    } else if (btnCount == 1) {
+      setBtnCount(btnCount+1);
+      axios.get('https://codingapple1.github.io/shop/data3.json')
+      .then((res)=> {
+        let tmp = []
+        res.data.forEach((el) => {
+          let obj = {}
+          obj.id = el.id;
+          obj.title = el.title;
+          obj.cost = el.price;
+          obj.img = 'https://codingapple1.github.io/shop/shoes3.jpg';
+          tmp.push(obj);
+        })
+        let newArr = [...tmp, ...cardDatas];
+        setCardDatas(newArr);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      setBtnStatus(false);      
+    } 
+  } 
 
   return (
     // <Route>는 말그대로 라우팅 설정을 하는것 (이것만하면 url치고 들어가는 접근밖에 없다...)
@@ -30,7 +77,25 @@ function App() {
           <div className="main-bg">
             <CardList cardDatas={cardDatas} moveToDetail={moveToDetail}></CardList>
             {/* class는 className으로 걸고, bootstrap이랑 동일하게 쓰면 된다! */}
-          <Button variant="primary" className="mt-3">Primary</Button>
+        
+          { 
+            btnStatus ? 
+            <Button 
+              variant="primary" 
+              className="mt-3"
+              onClick={() => addData()}
+            >
+              데이터 추가
+            </Button>
+            :
+            <Button 
+              variant="primary" 
+              className="mt-3"
+              disabled
+            >
+              데이터 추가
+            </Button>            
+          }
           </div>
           }>
         </Route>
