@@ -22,22 +22,34 @@ function App() {
     setDetailData(value);
   }
 
-  const addData = () => {
+  async function sendAxios(url) {
+    const result = await axios.get(url)
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    return result;
+  }
 
+
+  const getDataFromServer = () => {
     if (btnCount == 0) {
+      const test = sendAxios(`https://codingapple1.github.io/shop/data2.json`); 
       setBtnCount(btnCount+1);
-      axios.get('https://codingapple1.github.io/shop/data2.json')
-      .then((res)=> {
-        let tmp = []
-        res.data.forEach((el) => {
-          let obj = {}
-          obj.id = el.id;
-          obj.title = el.title;
-          obj.cost = el.price;
-          obj.img = 'https://codingapple1.github.io/shop/shoes3.jpg';
-          tmp.push(obj);
+      test.then((res) => {
+        // console.log(res);
+        const resData = res;
+        let newArr = resData.map((obj) => {
+          const newObj = {}
+          newObj.id = obj.id;
+          newObj.title = obj.title;
+          newObj.cost = obj.price;
+          newObj.img = `https://codingapple1.github.io/shop/shoes3.jpg`;
+          return newObj;
         })
-        let newArr = [...tmp, ...cardDatas];
+        newArr = [...newArr, ...cardDatas];
         setCardDatas(newArr);
       })
       .catch((err) => {
@@ -45,26 +57,26 @@ function App() {
       })
     } else if (btnCount == 1) {
       setBtnCount(btnCount+1);
-      axios.get('https://codingapple1.github.io/shop/data3.json')
-      .then((res)=> {
-        let tmp = []
-        res.data.forEach((el) => {
-          let obj = {}
-          obj.id = el.id;
-          obj.title = el.title;
-          obj.cost = el.price;
-          obj.img = 'https://codingapple1.github.io/shop/shoes3.jpg';
-          tmp.push(obj);
+      axios.get(`https://codingapple1.github.io/shop/data3.json`)
+      .then((res) => {
+        // console.log(res);
+        const resData = res.data;
+        let newArr = resData.map((obj) => {
+          const newObj = {}
+          newObj.id = obj.id;
+          newObj.title = obj.title;
+          newObj.cost = obj.price;
+          newObj.img = `https://codingapple1.github.io/shop/shoes3.jpg`;
+          return newObj;
         })
-        let newArr = [...tmp, ...cardDatas];
+        newArr = [...newArr, ...cardDatas];
         setCardDatas(newArr);
       })
       .catch((err) => {
         console.log(err);
-      })
-      setBtnStatus(false);      
-    } 
-  } 
+      })      
+    }
+  }
 
   return (
     // <Route>는 말그대로 라우팅 설정을 하는것 (이것만하면 url치고 들어가는 접근밖에 없다...)
