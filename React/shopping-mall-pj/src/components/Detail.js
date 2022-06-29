@@ -24,7 +24,6 @@ import TabComponent from './TabComponent';
 
 */
 
-
 function Detail(props) {
   let [tabComp, setTabComp] = useState([<div>탭1</div>, <div>탭2</div>, <div> 탭3</div>]);
   let [sendTab, setSendTab] = useState(<div>탭1</div>);
@@ -122,10 +121,11 @@ function Detail(props) {
   }
 
   useEffect(() => {
-    setTimeout(() => {
+    let a = setTimeout(() => {
       setTabState('end');
     }, 150)
     return () => {
+      clearTimeout(a);
       setTabState('');
     }
   }, [sendTab])
@@ -138,7 +138,9 @@ function Detail(props) {
       flexDirection: 'column',
       alignItems: 'center',
       height: '800px',
-    }}>
+    }}
+    className={`start ${props.dState}`}
+    >
     <img src={props.detailData.img} style={{height: '300px', marginTop: '50px'}}></img>
     <p>상품명: {props.detailData.title}</p>
     <p>가격: {props.detailData.cost}</p>
@@ -154,7 +156,20 @@ function Detail(props) {
     }
 
     <input className='input-form' onChange={(e) => checkInput(e)}></input>
+    <Nav variant="tabs"  defaultActiveKey="link0" className='col-6'>
+      <Nav.Item>
+        <Nav.Link eventKey="link0" onClick={() => changeTab(0)}>버튼0</Nav.Link>
+      </Nav.Item>
+      <Nav.Item>
+        <Nav.Link eventKey="link1" onClick={() => changeTab(1)}>버튼1</Nav.Link>
+      </Nav.Item>
+      <Nav.Item>
+        <Nav.Link eventKey="link2" onClick={() => changeTab(2)}>버튼2</Nav.Link>
+      </Nav.Item>
+    </Nav>    
+    <TabComponent content={sendTab} tabState={tabState}></TabComponent>
   </div>
+ 
   ) 
 }
 

@@ -16,6 +16,16 @@ function App() {
   let [detailData, setDetailData] = useState({});
   let [btnCount, setBtnCount] = useState(0);
   let [btnStatus, setBtnStatus] = useState(true);
+  let [dState, setDState] = useState('');
+
+  useEffect(() => {
+    setTimeout(() => {
+      setDState('end');
+    }, 100)
+    return () => {
+      setDState('');
+    }
+  }, [detailData])
 
   // state 상위 컴퍼넌트 보내는 것은 Vue에서 prop, emit한것처럼 하면 된다.
   const moveToDetail = (value) => {
@@ -74,7 +84,8 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
-      })      
+      })   
+      setBtnStatus(false);   
     }
   }
 
@@ -95,7 +106,7 @@ function App() {
             <Button 
               variant="primary" 
               className="mt-3"
-              onClick={() => addData()}
+              onClick={() => getDataFromServer()}
             >
               데이터 추가
             </Button>
@@ -114,7 +125,7 @@ function App() {
         <Route path='/detail/:id'
          element={
          <div className='main-bg'>
-          <Detail detailData={detailData}></Detail>
+          <Detail detailData={detailData} dState={dState}></Detail>
          </div>
           }
          >
