@@ -1,6 +1,11 @@
-import { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useState, useEffect, useContext } from 'react';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
+import { context1 } from '../App'; 
+import { useSelector, useDispatch } from 'react-redux';
+import { increment, decrement, incrementByAmount } from '../features/counterSlice';
+import { changeUser, increaseAge } from '../features/user';
+import { addItem } from '../features/cartItems';
 
 // 참고 과거에 useEffect 없던 시절 아래와 같이 LifeCycle 코드를 작성했었음
 
@@ -30,6 +35,23 @@ function Detail(props) {
   let [btnYn, setBtnYn] = useState(true);
   let [effectTest, setEffectTest] = useState(0);
   let [text, setText] = useState('');
+
+  const neviate = useNavigate();
+
+
+  // destructuring assignment 사용해서 let { contextTest, btnCount } = useContext(context1); 이렇게 해도 됨!
+  let contextTest = useContext(context1);
+
+  // store에서 특정 state 값 읽어오는건 useSelector 활용, 변경(action)은 useDispatch 활용
+  // 내가 counterSlice에다 선언한 값에 맞게 명시해주어야 함
+  // 그냥 useSelector(state => state); 로 쓰게되면 store에 저장된 모든 state들이 object형태로 전달된다!
+  // 따라서 아래처럼 원하는것만 .을 활용해서 가져오는 것! 그리고 사실 ((state) => {return state}) 이거다!
+  const countTest = useSelector(state => state.counter.value);
+  const countTest2 = useSelector(state => state.counter.dat);
+  const userState = useSelector(state => state.user.name);
+  const userAge = useSelector(state => state.user.age);
+
+  const dispatch = useDispatch();
 
   const closeBtn = () => {
     setBtnYn(false);
@@ -75,7 +97,7 @@ function Detail(props) {
   useEffect(() => {
     // [] 생략하면 모든 변화요소에 대해 실행됨
     // 위처럼 []를 명시해 두면, mount 단계에서만 실행 됨!
-    console.log("얘는 어떤 요소가 변하던지 출력함")
+    console.log(contextTest.contextTest);
     // clean up function, 속해있는 useEffect가 실행 되기 전에 먼저 실행되는 부분!
     // + unmount 때도 1회 실행됨. 따라서 unmount될때만 실행할 코드를 작성 가능
     return () => {
@@ -104,6 +126,17 @@ function Detail(props) {
     console.log(`effectTest가 바뀔때만 실행 될걸?? ${effectTest}`)
   }, [effectTest])
 
+  const addItemToCart = () => {
+    let obj = {}
+    obj.id = props.detailData.id + 10;
+    obj.name = props.detailData.title;
+    obj.count = 1;
+    dispatch(addItem(obj));
+
+    // 이렇게 특정 메서드에서 url 이동시키고 싶으면 useNevigate 사용하는게 더 편할 듯?
+    // 심지어 얘는 기본적으로 새로고침 안한다. (Link 태그도 포함)
+    neviate('/cart');
+  }
 
   return (
   <div 
@@ -118,6 +151,7 @@ function Detail(props) {
     <img src={props.detailData.img} style={{height: '300px', marginTop: '50px'}}></img>
     <p>상품명: {props.detailData.title}</p>
     <p>가격: {props.detailData.cost}</p>
+    <Button className='my-3' onClick={() => addItemToCart()}>장바구니에 추가</Button>
     <button className='btn btn-primary my-2' onClick={() => setCount(count+1)}>클릭해봐</button>
     <Link to={'/'}>
      <Button variant='primary'>돌아가기</Button>
@@ -130,6 +164,17 @@ function Detail(props) {
     }
 
     <input className='input-form' onChange={(e) => checkInput(e)}></input>
+
+    <p>{ countTest }</p>
+    <p>{ countTest2 }</p>
+    {/* 사용하려는 곳에 dispatch(내가 만든 reducer명) 이렇게 쓰면 된다 */}
+    <Button variant='success' onClick={() => dispatch(increment())}>증가</Button>
+    <Button variant='success' onClick={() => dispatch(decrement())}>감소</Button>
+    <Button variant='success' onClick={() => dispatch(incrementByAmount(3))}>3 증가</Button>
+    
+    <p>{ userState }, 나이:{ userAge }세</p>
+    <Button onClick={() => dispatch(changeUser('Yi'))}>눌러봐</Button>
+    <Button onClick={() => dispatch(increaseAge())}>하하하</Button>
   </div>
   ) 
 }

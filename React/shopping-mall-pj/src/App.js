@@ -1,20 +1,37 @@
-import {useState, useEffect} from 'react';
+import {useState, createContext} from 'react';
 import './App.css';
 import NavbarComp from './NavbarComp';
 import CardList from './CardList';
 import About from './components/About';
 import Event from './components/Event';
 import Detail from './components/Detail';
+import Cart from './components/Cart';
 import baseDatas from './data';
 import { Button } from 'react-bootstrap';
 import { Routes, Route } from 'react-router-dom';
 import axios from 'axios';
+
+
+// state를 보관할 수 있는 Context를 만드는것!
+/**
+ *  Conext API 쓰는 방법 4 step
+ *  1. createContext()를 이용하여 context를 하나 선언해 준다. 
+ * (export 해주어야 함, export let 변수명 = createContext(); 이렇게 해주면 됨)
+ *  2. 컨텍스트를 공유할 하위 컴퍼넌트를 컨텍스트명.Provider 태그로 감싸준다
+ *  3. 공유할 State들을 .Porvider 태그에 value={{ 공유할 state1, state2 ..}} 
+ *  value 속성에 위와 같이 넣어 준다
+ *  4. 하위 컴퍼넌트에서 import 해준후 useContext(컨텍스트명) 를 선언해주면 끝!
+ */
+export let context1 = createContext();
 
 function App() {
 
   let [cardDatas, setCardDatas] = useState(baseDatas);
   let [detailData, setDetailData] = useState({});
   let [btnCount, setBtnCount] = useState(0);
+  // Context API 테스트용! (props 없이 하위 컴퍼넌트와 데이터를 공유할 수 있게 해주는 
+  // 리액트의 기본 문법!! 성능 이슈 + 그닥 편하지 않아서 실제로 잘 쓰지는 않는다. (보통은 Redux를 씀))
+  let [contextTest, setContextTest] = useState([10, 11, 12]);
 
   // state 상위 컴퍼넌트 보내는 것은 Vue에서 prop, emit한것처럼 하면 된다.
   const moveToDetail = (value) => {
@@ -48,7 +65,7 @@ function App() {
           newObj.img = `https://codingapple1.github.io/shop/shoes3.jpg`;
           return newObj;
         })
-        newArr = [...newArr, ...cardDatas];
+        newArr = [...cardDatas, ...newArr];
         setCardDatas(newArr);
       })
       .catch((err) => {
@@ -68,7 +85,7 @@ function App() {
           newObj.img = `https://codingapple1.github.io/shop/shoes3.jpg`;
           return newObj;
         })
-        newArr = [...newArr, ...cardDatas];
+        newArr = [...cardDatas, ...newArr];
         setCardDatas(newArr);
       })
       .catch((err) => {
@@ -106,7 +123,10 @@ function App() {
         <Route path='/detail/:id'
          element={
          <div className='main-bg'>
-          <Detail detailData={detailData}></Detail>
+          {/* Context를 공유할 컴퍼넌트를 이렇게 컨텍스트명.Provider 태그로 감싸주어야 한다! */}
+          <context1.Provider value={{contextTest, btnCount}}>
+            <Detail detailData={detailData}></Detail>
+          </context1.Provider>
          </div>
           }
          >
@@ -120,7 +140,11 @@ function App() {
           <Route path='one' element={<div>첫 주문시 양배추즙 서비스</div>}></Route>
           <Route path='two' element={<div>생일 기념 쿠폰 받기</div>}></Route>
         </Route>
+
+        <Route path='/cart' element={<Cart></Cart>}>
+        </Route>
       </Routes>
+    
     </div>
   );
 }
