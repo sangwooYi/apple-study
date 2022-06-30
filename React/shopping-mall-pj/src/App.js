@@ -90,7 +90,8 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
-      })      
+      })   
+      setBtnStatus(false);   
     }
   }
 
@@ -105,17 +106,24 @@ function App() {
           <div className="main-bg">
             <CardList cardDatas={cardDatas} moveToDetail={moveToDetail}></CardList>
             {/* class는 className으로 걸고, bootstrap이랑 동일하게 쓰면 된다! */}
-          {/* 조금 귀찮더라도 이렇게 삼항연산자 쓰는게 가장 무난한 방법 */}
+        
           { 
-            (btnCount >= 2) 
-            ? <Button variant="primary" className="mt-3" disabled>데이터 추가</Button>            
-            : <Button 
-            variant="primary" 
-            className="mt-3"
-            onClick={() => getDataFromServer()}
+            btnStatus ? 
+            <Button 
+              variant="primary" 
+              className="mt-3"
+              onClick={() => getDataFromServer()}
             >
-            데이터 추가
-          </Button>
+              데이터 추가
+            </Button>
+            :
+            <Button 
+              variant="primary" 
+              className="mt-3"
+              disabled
+            >
+              데이터 추가
+            </Button>            
           }
           </div>
           }>

@@ -29,16 +29,28 @@
 }
 
 .main-bg {
-  height: 170vh;
+  height: 1500px;
   /* 얘는 CSS 배경이미지 넣는 방법 background-img: url(경로!); */
   background-image: url(../public/imges/shoes.png);
   background-size: cover;
 }
 
-.input-form {
-  margin-top: 10px;
-  border-radius: 5px;
-  padding: 5px 10px;
+.tab-content { 
+  background-color: white;
+  width: 49.5vw;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.start {
+  opacity: 0;
+}
+
+.end {
+  opacity: 1;
+  transition: opacity 0.8s;
 }
 
 /* keyframes 기억하자 from, to 로 작성할수도 있지만 25% 50% 75% 100% 이렇게 %로 작성도 가능 */

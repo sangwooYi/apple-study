@@ -26,8 +26,10 @@ import { addItem } from '../features/cartItems';
 
 */
 
-
 function Detail(props) {
+  let [tabComp, setTabComp] = useState([<div>탭1</div>, <div>탭2</div>, <div> 탭3</div>]);
+  let [sendTab, setSendTab] = useState(<div>탭1</div>);
+  let [tabState, setTabState] = useState('');
   // url에서 parameter를 사용하는 방법 useParams
   // /:id 로 선언해놓았으니 {id} 로 빼오는 것!
   let {id} = useParams();
@@ -138,6 +140,25 @@ function Detail(props) {
     neviate('/cart');
   }
 
+  // styled-components => 컴퍼넌트 스타일을 주입해서 만들게 해주는 라이브러리! 
+  // style 태그로 들어가기때문에 CSS 오염을 방지하나, 자칫 JS 코드가 더러워질 염려가 있다. 취향에 따라 선택!
+  // let Btn = styled.button`background: ${ props => props.bg }; color: black; padding: 10px; border-radius: 5px;`;
+
+  // 대문자로 시작해서 작명해 줘야 함!
+  // let BlueBox = styled.div`background-color: white; padding: 10px;`;
+  const changeTab = (idx) => {
+    setSendTab(tabComp[idx]);
+  }
+
+  useEffect(() => {
+    let a = setTimeout(() => {
+      setTabState('end');
+    }, 150)
+    return () => {
+      clearTimeout(a);
+      setTabState('');
+    }
+  }, [sendTab])
   return (
   <div 
     style={{
@@ -146,8 +167,10 @@ function Detail(props) {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      height: '500px',
-    }}>
+      height: '800px',
+    }}
+    className={`start ${props.dState}`}
+    >
     <img src={props.detailData.img} style={{height: '300px', marginTop: '50px'}}></img>
     <p>상품명: {props.detailData.title}</p>
     <p>가격: {props.detailData.cost}</p>
@@ -176,6 +199,7 @@ function Detail(props) {
     <Button onClick={() => dispatch(changeUser('Yi'))}>눌러봐</Button>
     <Button onClick={() => dispatch(increaseAge())}>하하하</Button>
   </div>
+ 
   ) 
 }
 
