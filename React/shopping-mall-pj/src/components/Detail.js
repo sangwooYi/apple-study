@@ -37,6 +37,7 @@ function Detail(props) {
   let [btnYn, setBtnYn] = useState(true);
   let [effectTest, setEffectTest] = useState(0);
   let [text, setText] = useState('');
+  let [dState, SetDState] = useState('');
 
   const neviate = useNavigate();
 
@@ -81,6 +82,15 @@ function Detail(props) {
     console.log(`현재 count: ${count}`)
   }, [count])
   
+  useEffect(() => {
+    const tmp = setTimeout(() => {
+      SetDState('end');
+    }, 100)
+    return () => {
+      clearTimeout(tmp);
+    }
+
+  }, [])
   
   // [] 즉, dependecny를 그냥 [] 이렇게 설정해두면 mount 될때만 실행됨
   // [] 생략하면 모든 update 변화에 대해 전부 체크함! 따라서 코드 의도에 따라 선택!
@@ -99,7 +109,7 @@ function Detail(props) {
   useEffect(() => {
     // [] 생략하면 모든 변화요소에 대해 실행됨
     // 위처럼 []를 명시해 두면, mount 단계에서만 실행 됨!
-    console.log(contextTest.contextTest);
+    // console.log(contextTest.contextTest);
     // clean up function, 속해있는 useEffect가 실행 되기 전에 먼저 실행되는 부분!
     // + unmount 때도 1회 실행됨. 따라서 unmount될때만 실행할 코드를 작성 가능
     return () => {
@@ -169,7 +179,7 @@ function Detail(props) {
       alignItems: 'center',
       height: '800px',
     }}
-    className={`start ${props.dState}`}
+    className={`start ${dState}`}
     >
     <img src={props.detailData.img} style={{height: '300px', marginTop: '50px'}}></img>
     <p>상품명: {props.detailData.title}</p>
