@@ -19,7 +19,7 @@ import axios from 'axios';
   주의할것은 import에 쓸 경로에 .js 같이 확장자명을 생략하면 안된다.
   
   단점은 lazy로 import한 컴퍼넌트로 들어갈 때 로딩 시간이 발생한다는것.
-  => Suspense 태그로 감싸주어 fallback={로딩중일때 보여줄 태그} 속성을 통해 UX적 보완이 가능함!  
+  => Suspense 태그로 감싸주어 fallback={로딩중일때 보여줄 태그} 속성을 통해 UX적 보완이 가능함!!!  
   (로딩하는 동안은 fallback 속성에 설정한 태그를 보여줌)
 */
 const Cart = lazy( () => import('./components/Cart.js') )
