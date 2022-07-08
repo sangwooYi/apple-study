@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, useRef } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { context1 } from '../App'; 
@@ -55,6 +55,7 @@ function Detail(props) {
   const userAge = useSelector(state => state.user.age);
 
   const dispatch = useDispatch();
+  const refTest = useRef();
 
   const closeBtn = () => {
     setBtnYn(false);
@@ -72,7 +73,9 @@ function Detail(props) {
     if (isNaN(text)) {
       console.log("아니 숫자만 입력해 ㅡㅡ");
     }
-    
+    // 내가 ref 속성으로 걸어둔 태그 자체를 가르키게 된다. document.getElementById('해당 태그의 id값')으로 가져온것과 같은 역할 (재렌더링 안됨!)
+    // 내가 선언한 useRef 변수를 참조할 태그에 ref={} 값으로 걸면, useRef변수.current 로 해당 태그를 끄집어 쓸 수 있다.
+    console.log(refTest.current);
   }, [text])
 
   // useEffect 코드의 특징: 이 페이지가 렌더링이 완료 되고 나서 출력된다.
@@ -182,7 +185,7 @@ function Detail(props) {
     className={`start ${dState}`}
     >
     <img src={props.detailData.img} style={{height: '300px', marginTop: '50px'}}></img>
-    <p>상품명: {props.detailData.title}</p>
+    <p ref={refTest}>상품명: {props.detailData.title}</p>
     <p>가격: {props.detailData.cost}</p>
     <Button className='my-3' onClick={() => addItemToCart()}>장바구니에 추가</Button>
     <button className='btn btn-primary my-2' onClick={() => setCount(count+1)}>클릭해봐</button>

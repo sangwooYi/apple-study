@@ -143,6 +143,7 @@ console.log(car1);
 console.log(car1.tax());
 class Word {
     // 인자가 몇개 전달될지 모르는 경우에는 (...args) 이렇게 설정해주면 된다. 파이썬에서는 *args, **kwargs 가 존재함 (자바스크립트에도 존재!)
+    // rest parameter 라고 부른다!
     constructor(...args) {
         // 진짜 그냥 타입스크립트는 자바 코드 짤 때처럼 짜면 된다 (필요하면 초기화 해준다)
         this.num = [];
@@ -176,3 +177,33 @@ const obj = {
         return a - b;
     }
 };
+const person1 = { student: true, age: 20 };
+// 이렇게 object를 destructuring 문법으로 써도, 타입 지정은 object랑 동일하게함
+// 길어지니까 보통 이렇게 type이나 interface로 만들어서 적용시킨다.
+function ffunc({ student, age }) {
+    console.log(student, age);
+}
+function findMax(...numbers) {
+    let answer = numbers[0];
+    numbers.forEach((number, idx) => {
+        if (answer < number) {
+            answer = number;
+        }
+    });
+    return answer;
+}
+console.log(findMax(1, 2, 3, 4, 5, -5, 13));
+// destructuring (구조분해 할당)
+// object  
+// 사실은 (내가 정한 key: value값에 내가 초기화한 object의 key값) 이런식으로 매칭하는게 정석 
+// {student123: student123, age123: age123} 이지만 ES6이후에 key-value가 같으면 생략 가능해짐
+let { student123, age123 } = { student123: 'aa', age123: 30 };
+// array
+let [xx, yy, zz] = [1, 2, 3];
+function homeFunc({ user, comment, admin }) {
+    console.log(user, comment, admin);
+}
+homeFunc({ user: 'kim', comment: [1, 2, 3], admin: false });
+function hhffunc([a, b, c]) {
+    console.log(a, b, c);
+}
