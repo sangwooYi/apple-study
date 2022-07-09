@@ -309,15 +309,15 @@ let {student123, age123} = {student123 :'aa', age123 : 30};
 // array
 let [xx, yy, zz] = [1, 2, 3]
 
-type homeWorkFuncType = {user :string, comment :number[], admin :boolean};
+type homeWorkFuncType = {user: string, comment: number[], admin: boolean};
 
-function homeFunc({ user, comment, admin} :homeWorkFuncType) :void{
+function homeFunc({ user, comment, admin}: homeWorkFuncType): void{
   console.log(user, comment, admin);
 }
 
 homeFunc({user: 'kim', comment: [1, 2, 3], admin: false});
 
-function hhffunc([a, b, c] :(number | string | boolean)[]) :void {
+function hhffunc([a, b, c]: (number | string | boolean)[]): void {
   console.log(a, b, c);
 }
 
