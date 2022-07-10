@@ -90,7 +90,7 @@ class Square {
 
   private w: number;
   private h: number;
-  private colors: string; 
+  private color: string; 
 
   constructor(width: number, height: number, color: string) {
     this.w = width;
@@ -129,3 +129,51 @@ for (let i: number = 0; i < 8; i++) {
 
 
 // 타입도 import export 가능 게다가 쓰는법도 아예 동일함
+
+// export default ㅁ 에서 default는 파일당 단 하나만 지정 가능
+// import 할 때는 import 변수명 from 경로로 호출 가능 + 변수명은 내가 자유롭게 변경 할 수 도 있다.
+// 그냥 export 의 경우는 export { export할 애들.. } 이렇게 한번에 여러개 변수, 메서드, 클래스 export 가능
+// 대신 import 할때는 import { import할 애들.. } from 경로 이렇게 {} 안에 적어주어야 하며
+// 이 경우는 export 할때 작성한 변수명과 동일해야만 호출이 가능하다!
+
+/**
+ *  import - export 없었을때는 namespace 사용함 (더 과거에는 module이었음 얘는 namespace와 완전동일)
+ */
+
+
+namespace NameS {
+  export type Name1 = string | number;
+  export const VV = 123;
+}
+
+// 과거엔 이렇게 namespace에 작성해둔 애를  
+// ///<reference path='경로'/> 로 해당 파일 가져온다음 네임스페이스명.호출할것  이렇게 꺼내썼었음
+// 근데 그냥 import export 쓰자.
+console.log(NameS.VV);
+const aaaa :NameS.Name1 = '하하하';
+
+
+// 숙제 
+type Carrr = {
+  wheel: number,
+  model: string,
+}
+interface Bikk {
+  wheel: 2;
+  model: string;
+}
+
+// 함수 타입 지정    a?: object 는 a: (object | undefine)와 같은 의미
+// type 타입명 = (파라미터 타입들) => 반환 타입 이 형태로 작성한다. 
+type fffuncType = (obj?: object) => void
+
+namespace hometttt {
+  export type Dogg = string;
+  export interface Dogg1 {
+    name: string;
+  }
+}
+const doggg: hometttt.Dogg = '하하';
+const dogggg: hometttt.Dogg1 = {name: '크크크'}
+
+export {Carrr, Bikk}

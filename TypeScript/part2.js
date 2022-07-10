@@ -1,0 +1,37 @@
+/**
+ *  Narrowing 테크닉
+ */
+/**
+ *  1. && 활용
+ *  && 논리연산자의 경우 하나만 F이면 F 판정을 하므로 a && b && c 이렇게 여러개 연산이 엮여있을때
+ *  앞에 하나만 F 판정이 나오면 연산을 중단해 버린다!  (반대로 | 는 하나만 T가 나와도 뒤의 연산 X)
+ *  따라서 if (a && typeof a === 'string') 이렇게 썼을때 a 가 falsy (false로 판정받는 null, undefined 애들)라면
+ *  뒤에 판정 없이 Fale 판정을 받아 if 문  실행이 되지 않는것
+ */
+function fff(a) {
+    if (a && typeof a === 'string') {
+        // 만약 a가 undefined라면 애초에 여기가 실행되지 않는다.
+    }
+}
+function ffff(animal) {
+    if ('swim' in animal) {
+        // Fish 타입일때만 실행 됨
+    }
+}
+/**
+ *  instanceof
+ *  a instanceof b 이면 a란 인스턴스가 b를 통해 생성된 인스턴스인지 체크 해줌
+ */
+let daty = new Date();
+if (daty instanceof Date) {
+    // daty란 인스턴스는 Date 클래스를 통해 생성 한 인스턴스이므로 T 판정을 받는다.
+    // 그게 아니면 F판정임
+}
+function carBike(x) {
+    if (x.wheel === '4EA') {
+        // 여기에는 Car1 타입만 실행 됨
+    }
+    else if (x.wheel === '2EA') {
+        // 여기는 Bike1 타입만 실행 됨
+    }
+}
