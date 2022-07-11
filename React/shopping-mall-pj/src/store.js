@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit'
 // counterSlice.reducer 로 export default 를 해주었으며, 작명은 이렇게 자유롭게 할 수 있다.
 // 어차피 export default는 하나밖에 없으므로, 이렇게 import할때 자유롭게 이름을 바꿀 수 있다!
 // 그냥 counterSlice.reducer로 해도 됨
+// export default 의 경우는 어차피 파일당 한개이므로, import할 떄 원하는대로 이름 변경 가능
 import counterReducer from './features/counterSlice';
 // 얘는사실 user.reducer 임
 import userReducer from './features/user';

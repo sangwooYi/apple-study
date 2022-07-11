@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-
+// createSlice를 통해 slice를 생성하며 그 내부에는 name, initialState, reducers에 대한 내용이 있어야 한다.
+// 이런 구조로 작성해야한다!! (doc 참고) <= reduxjs/toolkit 으로 설치할때의 구조임.
 export const cartItems = createSlice({
   name: 'cartItems',
   initialState: {
@@ -54,4 +55,5 @@ export const cartItems = createSlice({
 })
 
 export const { increment, decrement, addItem, deleteItem } = cartItems.actions;
+// 슬라이스.reducer를 반드시 export default 해주어야 함
 export default cartItems.reducer;

@@ -3,6 +3,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { context1 } from '../App'; 
 import { useSelector, useDispatch } from 'react-redux';
+// 사용할 reducer 메서드를 이렇게 호출해주어야 한다.
 import { increment, decrement, incrementByAmount } from '../features/counterSlice';
 import { changeUser, increaseAge } from '../features/user';
 import { addItem } from '../features/cartItems';

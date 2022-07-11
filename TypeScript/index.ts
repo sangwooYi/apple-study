@@ -1,5 +1,8 @@
 // ts 파일을 js파일로 변환해줘야함
 // tsc -w 를 터미널에 입력하면 js파일 자동으로 생성해 줌 (안되면 npm install -g typescript 해서 타입스크립트 깔아야함)
+// 타입스크립트는 기본적으로 global 모듈이다 (ambient module)
+// 따라서 같은 폴더에있으면 다른 ts 파일의 변수를 바로 가져다 쓸 수 있음
+// 이거 싫으면 export 를 해주어야 한다 (export 해주는 순간 로컬 module 이 됨)
 
 // 이렇게 변수옆에 :타입 을 지정해줘야하는것이 TypeScript
 
