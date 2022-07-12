@@ -8,8 +8,10 @@
 </head>
 <body>
 
-  <custom-input name="시크릿"></custom-input>
-  <script>
+  <custom-input name="시크릿" do="123"></custom-input>
+  <!-- 이렇게 스크립트 파일 분리할 수 있다! -->
+  <script src="./component.js"></script>
+  <!-- <script>
     /*
       Vue나 React에서 봤던것처럼 커스텀 태그를 만드는 것!
     
@@ -35,7 +37,7 @@
 
         this.appendChild(img);
 
-        // 파라미터 문법도 구현 가능
+        // 파라미터 문법도 구현 가능, 이렇게 props를 할 수 있다.
         let name = this.getAttribute('name');
         console.log(name);
 
@@ -53,6 +55,6 @@
     }
     customElements.define('custom-input',WebComponentTest);
 
-  </script>
+  </script> -->
 </body>
 </html>
