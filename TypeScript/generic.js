@@ -43,3 +43,18 @@ class Pers {
 }
 let aa1 = new Pers('상우');
 console.log(aa1.name);
+
+ob1 = {a: '1', b: '2'};
+aa1 = [1, 2, 3];
+// 인덱스 값이 순회가됨
+for (const idx in aa1) {
+    console.log(idx);
+}
+// object같이 enumerable 하나 iterable하진 않은 애들은 for in (iterable은 차례대로 순회한다는 의미)
+for (const key in ob1) {
+    console.log(key);
+}
+// iterable 한 애들은 for of
+for (const val of aa1) {
+    console.log(val);
+}

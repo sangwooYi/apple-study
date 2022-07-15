@@ -135,3 +135,91 @@ function seperator(...args: (string | number)[]): [string[], number[]] {
 }  
 
 console.log(seperator(1, 2, '하', '히', 5, 7, '후', '히', 9, 11))
+
+// object index signatures object, 타입지정 한번에 가능(대신 한 타입으로 통일 되야함)
+// 아래처럼 활용한다.
+interface StringOnly {
+  [key: string]: string;
+}
+
+let objUser: StringOnly = {
+  age: '30',
+  name: '상우'
+}
+
+interface SignatureTest {
+  [key: number]: string
+}
+
+let sigTest = {
+  0: 'kim',
+  1: 'sang',
+  2: 'young'
+}
+
+// 숙제
+type HomeworkType = {
+  [key: string]: string | number
+}
+let obj1231: HomeworkType = {
+  model : 'k5',
+  brand : 'kia',
+  price : 6000,
+  year : 2030,
+  date : '6월',
+  percent : '5%',
+  dealer : '김차장',
+}
+
+// 이렇게 재귀적으로도 작성 가능하다.
+interface TestRecurType {
+  [key: string]: TestRecurType | number
+}
+
+let objRec: TestRecurType = {
+  'font-size' : 10,
+  'secondary' : {
+    'font-size' : 12,
+    'third' : {
+      'font-size' : 14
+    }
+  }
+}
+
+
+// type of
+interface Person123 {
+  age: number;
+  name: string;
+}
+// age타입 | name타입  이렇게 literal type이 Union 상태로 된다
+type PersonKeys = keyof Person123;
+let aa: PersonKeys = 'name'; // name, age만 들어올 수 있음
+
+// 타입 변환기 (제네릭 사용)
+type TypeChanger<T> = {
+  // for in 인것!
+  [key in keyof T]: string
+}
+
+type Car11 = {
+  color: boolean,
+  model: boolean,
+  font: boolean | number,
+}
+// 모든 key값의 type이 string으로 변함
+type NewTyy = TypeChanger<Car11>;
+
+// 숙제
+type Bus = {
+  color: string,
+  model: boolean,
+  price: number,
+}
+
+// 제네릭은 , 통해서 여러개 지정도 가능하다!
+type TypeChanger2<T, K> = {
+  [key in keyof T]: K
+}
+type NewBus = TypeChanger2<Bus, string>;
+
