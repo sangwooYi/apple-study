@@ -223,3 +223,38 @@ type TypeChanger2<T, K> = {
 }
 type NewBus = TypeChanger2<Bus, string>;
 
+
+// 삼항 연산자 이용 type 뽑아내기
+// T가 string 속성을 갖고잇으면 string type으로 아니면 any 타입으로
+type TestAge<T> = T extends string ? string : any;
+
+// any 타입이 된다.
+const tttt: TestAge<number> = 1;
+// string 타입이 된다.
+const ttttt: TestAge<string> = "1";
+
+
+// 퀴즈
+type FirstItem<T> = T extends any[] ? T[0] : any;
+
+const frara: FirstItem<string[]> = '1'; // string 타입
+const farara: FirstItem<number> = 3;  // any 타입
+
+// infer (있다는것만 알고 넘어가자) 조건문에서 쓸수 있는 특수한 키워드
+
+// T에서 type을 뽑아서 R에다 대입해주는게 infer 임! (조건문에서만 사용 가능)
+type InferType<T> = T extends infer R ? string : unknown;
+
+// () => void 가 T의 Type이므로 R은 void가 적용된다.!  (꼴을 맞추어서 R에 해당하는 값을 대입해 주는것)
+type InferFunc<T> = T extends (() => infer R) ? R : any;
+type a1 = InferFunc<() => void> 
+
+// 숙제
+type AAge<T> = T extends [string, ...any] ? string : unknown;
+const aaaage: AAge<[string, number]> = '3';
+const aaaaa: AAge<[number, string]> = 4;
+
+// type TestHome<T> = T extends any[]
+
+type InferInfer<T> = T extends ((x: infer R) => void) ? R : any;
+const infff: InferInfer<(x: number) => void> = 3;
