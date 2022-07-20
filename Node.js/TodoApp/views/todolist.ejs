@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+<body>
+  <!-- .ejs 파일은 반듯히 views 폴더 내부에 있어야한다 (그냥 그렇게 정해줌) -->
+
+  <h4>Todo 리스트</h4>
+  <!-- ejs 파일에서 서버로 부터 받은 파일 표기하는 방법 (react나 vue에서 { 값 } 이거랑 똑같은거 ) -->
+  <!-- EJS 파일도 JSX랑 유사하다! 자바스크립트 쓰려면 <%%> 안에 담아야함 
+    그냥 EJS도 JSX 처럼 자바스크립트 코드 내부에 HTML 태그를 포함시킬 수 있는 템플릿!
+    JSX 보다 조금 더 코드가 더럽다는 단점이 있고.
+    자바스크립트의 줄마다 <%%> 를 감싸서 적어야 한다. (이래서 더러워짐)
+    React에서는 따라서 JSX를 사용한 것 (그냥 return에 HTML 태그를 적으면 되서)
+  -->
+  <% for (let i = 0; i < posts.length; i++) { %>
+  <h5>할일: <%= posts[i].title %></h5>
+  <p>일자: <%= posts[i].date %></p>
+  <% } %>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body> 
+</html>

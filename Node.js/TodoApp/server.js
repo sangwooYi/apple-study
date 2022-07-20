@@ -7,11 +7,38 @@ const MongoClient = require('mongodb').MongoClient; // 몽고 DB
 let db;
 const myUrl = 'mongodb+srv://okqwaszx123:dkfhs2594!@cluster0.iqpz9n5.mongodb.net/?retryWrites=true&w=majority'
 
+// 필요 메서드 작성
+// DB에 데이터 개별 저장
+const insertOneDataToDB = (data) => {
+  MongoClient.connect(myUrl, (err, client) => {
+    if (err) {
+      return console.log(err);
+    }
+    db = client.db('todoapp');
+    db.collection('post').insertOne(data, (req, res) => {
+      console.log('데이터 저장 완료')
+    })
+  })
+}
+
+// 전체 todo 리스트 가져오기 (return 어케하냐..)
+// const getAllTodoList = () => {
+//   // post(내가 작성한 콜렉션 이름) 컬렉션에서 모든 데이터를 가져오기
+//   db.collection('post').find().toArray((req, res) => {
+//     console.log(res);
+//     return res;
+//   });
+// }
+
+
 // express
 const app = express();
 // app.use() 이 server 앱은 ~ 를 쓰겠다라는 의미
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.json());
+
+// ejs 라이브러리 세팅
+app.set('view engine', 'ejs');
 const port = 8080;
 // 해당 port에 서버가 열리면 뒤의 callback 함수를 실행해주는 역할
 app.listen(port, () => {
@@ -40,21 +67,21 @@ app.get('/write', (req, res) => {
   res.sendFile(__dirname + '/write.html')
 })
 
+// 전체 TODO 리스트 보여주기
+app.get('/todolist', (req, res) => {
+  db.collection('post').find().toArray(function(err, data){
+    console.log(data)
+    res.render('todolist.ejs', { posts : data })
+  })
+})
 
+
+// TODO 추가
 app.post('/add', (req, res) => {
   console.log(req.body); 
   const data = req.body
   // req.body.title, req.body.date 이런식으로 object 타입 꺼내쓰듯이 꺼내 쓰면 된다
-  
-  MongoClient.connect(myUrl, (err, client) => {
-    if (err) {
-      return console.log(err);
-    }
-    db = client.db('todoapp');
-    db.collection('post').insertOne(data, (req, res) => {
-      console.log('데이터 저장 완료')
-    })
-  })
+  insertOneDataToDB(data);
   res.send("성공");
 })
 
