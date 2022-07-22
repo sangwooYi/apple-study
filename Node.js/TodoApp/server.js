@@ -7,6 +7,7 @@ const MongoClient = require('mongodb').MongoClient; // 몽고 DB
 let db;
 const myUrl = 'mongodb+srv://okqwaszx123:dkfhs2594!@cluster0.iqpz9n5.mongodb.net/?retryWrites=true&w=majority'
 
+
 // 필요 메서드 작성
 // DB에 데이터 개별 저장
 const insertOneDataToDB = (data) => {
@@ -68,6 +69,7 @@ app.get('/write', (req, res) => {
 })
 
 // 전체 TODO 리스트 보여주기
+// 참고, MongoDB는 Auto Increment 기능을 직접 구현해야함
 app.get('/todolist', (req, res) => {
   db.collection('post').find().toArray(function(err, data){
     console.log(data)
@@ -79,10 +81,25 @@ app.get('/todolist', (req, res) => {
 // TODO 추가
 app.post('/add', (req, res) => {
   console.log(req.body); 
-  const data = req.body
+  // const data = req.body
+  // .findOne(찾으려는 쿼리문, (err, res)=>{})
+  const result = res;
+  db.collection('counter').findOne({name: 'todo'}, (err, res) => {
+    let totalPost = res.totalPost;
+    // console.log(`totalPost: ${totalPost}`);
+    // 몽고 DB 업데이트 하는방법 (그냥 SQL문을 공부하자..)
+    // 참고 $inc, $set, $rename등 존재 필요하면 찾아서 쓰자 
+    db.collection('counter').updateOne({name: 'todo'}, {$inc: {totalPost: 1}}, (err, res) => {
+      if (err) {
+        return console.log(err)
+      }
+      const data = { _id: totalPost+1, title: req.body.title, date: req.body.date }
+      insertOneDataToDB(data);
+      // 리다이렉트 보내는 방법!
+      result.redirect(`/write`)
+    })
+  })
   // req.body.title, req.body.date 이런식으로 object 타입 꺼내쓰듯이 꺼내 쓰면 된다
-  insertOneDataToDB(data);
-  res.send("성공");
 })
 
 
