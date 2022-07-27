@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+<!-- saved from url=(0099)https://programmers.co.kr/app/with_setting/tests/45949/challenges/algorithms/12297?language=python3 -->
+<html lang="ko" xml:lang="ko" xmlns="http://www.w3.org/1999/xhtml" class="" translate=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="twitter:title" property="og:title" itemprop="title name" content="프로그래머스">
+<meta name="og:title" property="og:title" itemprop="title name" content="프로그래머스">
+<meta name="twitter:description" property="og:description" itemprop="description" content="코드 중심의 개발자 채용. 스택 기반의 포지션 매칭. 프로그래머스의 개발자 맞춤형 프로필을 등록하고, 나와 기술 궁합이 잘 맞는 기업들을 매칭 받으세요.">
+<meta name="og:description" property="og:description" itemprop="description" content="코드 중심의 개발자 채용. 스택 기반의 포지션 매칭. 프로그래머스의 개발자 맞춤형 프로필을 등록하고, 나와 기술 궁합이 잘 맞는 기업들을 매칭 받으세요.">
+<meta name="twitter:image" property="og:image" itemprop="image primaryImageOfPage" content="https://programmers.co.kr/assets/img-meta-programmers-e00862a7c9acd8ef5164f8c85b3ab0127d083ab59b3a98d7219690bd3570bf35.png">
+<meta name="og:image" property="og:image" itemprop="image primaryImageOfPage" content="https://programmers.co.kr/assets/img-meta-programmers-e00862a7c9acd8ef5164f8c85b3ab0127d083ab59b3a98d7219690bd3570bf35.png">
+<meta name="twitter:url" property="og:url" content="https://programmers.co.kr/app/with_setting/tests/45949/test_token?token=3d50ac4e99df0c2164f574cb2d7263a4">
+<meta name="og:url" property="og:url" content="https://programmers.co.kr/app/with_setting/tests/45949/test_token?token=3d50ac4e99df0c2164f574cb2d7263a4">
+
+<title>프로그래머스</title>
+<link rel="shortcut icon" type="image/x-icon" href="https://programmers.co.kr/assets/icons/favicon-40b78633b6556a68c3da8e2125c31512fbd01d09906ab76c8a8ff289e494cadb.png">
+<link rel="apple-touch-icon" type="image/png" href="https://programmers.co.kr/assets/icons/apple-icon-6eafc2c4c58a21aef692d6e44ce99d41f999c71789f277317532d0a9c6db8976.png">
+<meta name="description" content="코드 중심의 개발자 채용. 스택 기반의 포지션 매칭. 프로그래머스의 개발자 맞춤형 프로필을 등록하고, 나와 기술 궁합이 잘 맞는 기업들을 매칭 받으세요.">
+<meta name="keywords" content="코딩 교육, 코딩, 프로그래밍, 실습, 생활코딩, 알고리즘">
+<meta property="fb:app_id" content="339079816467879">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="프로그래머스">
+<meta name="twitter:card" content="summary">
+<meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="WgbFGt2CKWNCt0xKsdpOxiyHcKqb1G6xEkAJ-5cz3GggdoNmVSgjpCvDot7AOH8rY7w7KEGEVlvaG8YDCX6p3Q">
+<meta name="action-cable-url" content="wss://ws.programmers.co.kr:443/cable">
+
+
+  <link rel="stylesheet" media="all" href="./프로그래머스_files/library-fde8239530a1278c686e9b405fb833ba36a6cdf92d0f6433a27713dd62f061be.css" debug="false">
+  <link rel="stylesheet" media="all" href="./프로그래머스_files/application-9d6a0377a6316b2941b901b2e7fa34f665b8a5594f0b37a5152c1271a5a4827f.css">
+  
+
+
+  <!-- Google Tag Manager -->
+<script type="text/javascript" async="" src="./프로그래머스_files/ch-plugin-web.js.다운로드" charset="UTF-8"></script><script src="./프로그래머스_files/2050250308523590" async=""></script><script async="" src="./프로그래머스_files/fbevents.js.다운로드"></script><script type="text/javascript" async="" src="./프로그래머스_files/analytics.js.다운로드"></script><script async="" src="./프로그래머스_files/gtm.js.다운로드"></script><script>(function (w, d, s, l, i) {
+  w[l] = w[l] || [];
+  w[l].push({
+    'gtm.start':
+      new Date().getTime(), event: 'gtm.js'
+  });
+  var f = d.getElementsByTagName(s)[0],
+    j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src =
+    'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-NT8HLJD');</script>
+<!-- End Google Tag Manager -->
+
+
+
+<style type="text/css">.vue-notification-group{display:block;position:fixed;z-index:5000}.vue-notification-wrapper{display:block;overflow:hidden;width:100%;margin:0;padding:0}.notification-title{font-weight:600}.vue-notification-template{background:#fff}.vue-notification,.vue-notification-template{display:block;box-sizing:border-box;text-align:left}.vue-notification{font-size:12px;padding:10px;margin:0 5px 5px;color:#fff;background:#44a4fc;border-left:5px solid #187fe7}.vue-notification.warn{background:#ffb648;border-left-color:#f48a06}.vue-notification.error{background:#e54d42;border-left-color:#b82e24}.vue-notification.success{background:#68cd86;border-left-color:#42a85f}.vn-fade-enter-active,.vn-fade-leave-active,.vn-fade-move{transition:all .5s}.vn-fade-enter,.vn-fade-leave-to{opacity:0}</style><style type="text/css">.cloudinary-thumbnails { list-style: none; margin: 10px 0; padding: 0 } .cloudinary-thumbnails:after { clear: both; display: block; content: '' } .cloudinary-thumbnail { float: left; padding: 0; margin: 0 15px 5px 0; display: none } .cloudinary-thumbnail.active { display: block } .cloudinary-thumbnail img { border: 1px solid #01304d; border-radius: 2px; -moz-border-radius: 2px; -webkit-border-radius: 2px } .cloudinary-thumbnail span { font-size: 11px; font-family: Arial, sans-serif; line-height: 14px; border: 1px solid #aaa; max-width: 150px; word-wrap: break-word; word-break: break-all; display: inline-block; padding: 3px; max-height: 60px; overflow: hidden; color: #999; } .cloudinary-delete { vertical-align: top; font-size: 13px; text-decoration: none; padding-left: 2px; line-height: 8px; font-family: Arial, sans-serif; color: #01304d }.cloudinary-button { color: #fefeff; text-decoration: none; font-size: 18px; line-height: 28px; height: 28x; border-radius: 6px; -moz-border-radius: 6px; -webkit-border-radius: 6px; font-weight: normal; text-decoration: none;   display: inline-block; padding: 4px 30px 4px 30px; background: #0284cf; font-family: Helvetica, Arial, sans-serif;   background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAyODRjZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMjU5OGIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);   background: -moz-linear-gradient(top,  #0284cf 0%, #02598b 100%);   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#0284cf), color-stop(100%,#02598b));   background: -webkit-linear-gradient(top,  #0284cf 0%,#02598b 100%);   background: -o-linear-gradient(top,  #0284cf 0%,#02598b 100%);   background: -ms-linear-gradient(top,  #0284cf 0%,#02598b 100%);   background: linear-gradient(to bottom,  #0284cf 0%,#02598b 100%);   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0284cf', endColorstr='#02598b',GradientType=0 ); }.cloudinary-button:hover { background: #02598b;   background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAyNTk4YiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMjg0Y2YiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);   background: -moz-linear-gradient(top,  #02598b 0%, #0284cf 100%);   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#02598b), color-stop(100%,#0284cf));   background: -webkit-linear-gradient(top,  #02598b 0%,#0284cf 100%);   background: -o-linear-gradient(top,  #02598b 0%,#0284cf 100%);   background: -ms-linear-gradient(top,  #02598b 0%,#0284cf 100%);   background: linear-gradient(to bottom,  #02598b 0%,#0284cf 100%);   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#02598b', endColorstr='#0284cf',GradientType=0 ); </style><link rel="stylesheet" type="text/css" href="./프로그래머스_files/37-828a2e56.chunk.css"><script charset="utf-8" src="./프로그래머스_files/37-bbc863ebae9f9a9cfd56.chunk.js.다운로드"></script><script charset="utf-8" src="./프로그래머스_files/238-5428915bc258f6e18d67.chunk.js.다운로드"></script><link rel="stylesheet" type="text/css" href="./프로그래머스_files/28-d8c4cef6.chunk.css"><script charset="utf-8" src="./프로그래머스_files/28-2cdf8eb1ffbfe547ae29.chunk.js.다운로드"></script><link rel="stylesheet" type="text/css" href="./프로그래머스_files/53-ae357f9e.chunk.css"><script charset="utf-8" src="./프로그래머스_files/53-571cefe69c05f7e00c1a.chunk.js.다운로드"></script><style type="text/css" media="screen" class="monaco-colors">.codicon-add:before { content: '\ea60'; }
+.codicon-plus:before { content: '\ea60'; }
+.codicon-gist-new:before { content: '\ea60'; }
+.codicon-repo-create:before { content: '\ea60'; }
+.codicon-lightbulb:before { content: '\ea61'; }
+.codicon-light-bulb:before { content: '\ea61'; }
+.codicon-repo:before { content: '\ea62'; }
+.codicon-repo-delete:before { content: '\ea62'; }
+.codicon-gist-fork:before { content: '\ea63'; }
+.codicon-repo-forked:before { content: '\ea63'; }
+.codicon-git-pull-request:before { content: '\ea64'; }
+.codicon-git-pull-request-abandoned:before { content: '\ea64'; }
+.codicon-record-keys:before { content: '\ea65'; }
+.codicon-keyboard:before { content: '\ea65'; }
+.codicon-tag:before { content: '\ea66'; }
+.codicon-tag-add:before { content: '\ea66'; }
+.codicon-tag-remove:before { content: '\ea66'; }
+.codicon-person:before { content: '\ea67'; }
+.codicon-person-follow:before { content: '\ea67'; }
+.codicon-person-outline:before { content: '\ea67'; }
+.codicon-person-filled:before { content: '\ea67'; }
+.codicon-git-branch:before { content: '\ea68'; }
+.codicon-git-branch-create:before { content: '\ea68'; }
+.codicon-git-branch-delete:before { content: '\ea68'; }
+.codicon-source-control:before { content: '\ea68'; }
+.codicon-mirror:before { content: '\ea69'; }
+.codicon-mirror-public:before { content: '\ea69'; }
+.codicon-star:before { content: '\ea6a'; }
+.codicon-star-add:before { content: '\ea6a'; }
+.codicon-star-delete:before { content: '\ea6a'; }
+.codicon-star-empty:before { content: '\ea6a'; }
+.codicon-comment:before { content: '\ea6b'; }
+.codicon-comment-add:before { content: '\ea6b'; }
+.codicon-alert:before { content: '\ea6c'; }
+.codicon-warning:before { content: '\ea6c'; }
+.codicon-search:before { content: '\ea6d'; }
+.codicon-search-save:before { content: '\ea6d'; }
+.codicon-log-out:before { content: '\ea6e'; }
+.codicon-sign-out:before { content: '\ea6e'; }
+.codicon-log-in:before { content: '\ea6f'; }
+.codicon-sign-in:before { content: '\ea6f'; }
+.codicon-eye:before { content: '\ea70'; }
+.codicon-eye-unwatch:before { content: '\ea70'; }
+.codicon-eye-watch:before { content: '\ea70'; }
+.codicon-circle-filled:before { content: '\ea71'; }
+.codicon-primitive-dot:before { content: '\ea71'; }
+.codicon-close-dirty:before { content: '\ea71'; }
+.codicon-debug-breakpoint:before { content: '\ea71'; }
+.codicon-debug-breakpoint-disabled:before { content: '\ea71'; }
+.codicon-debug-hint:before { content: '\ea71'; }
+.codicon-primitive-square:before { content: '\ea72'; }
+.codicon-edit:before { content: '\ea73'; }
+.codicon-pencil:before { content: '\ea73'; }
+.codicon-info:before { content: '\ea74'; }
+.codicon-issue-opened:before { content: '\ea74'; }
+.codicon-gist-private:before { content: '\ea75'; }
+.codicon-git-fork-private:before { content: '\ea75'; }
+.codicon-lock:before { content: '\ea75'; }
+.codicon-mirror-private:before { content: '\ea75'; }
+.codicon-close:before { content: '\ea76'; }
+.codicon-remove-close:before { content: '\ea76'; }
+.codicon-x:before { content: '\ea76'; }
+.codicon-repo-sync:before { content: '\ea77'; }
+.codicon-sync:before { content: '\ea77'; }
+.codicon-clone:before { content: '\ea78'; }
+.codicon-desktop-download:before { content: '\ea78'; }
+.codicon-beaker:before { content: '\ea79'; }
+.codicon-microscope:before { content: '\ea79'; }
+.codicon-vm:before { content: '\ea7a'; }
+.codicon-device-desktop:before { content: '\ea7a'; }
+.codicon-file:before { content: '\ea7b'; }
+.codicon-file-text:before { content: '\ea7b'; }
+.codicon-more:before { content: '\ea7c'; }
+.codicon-ellipsis:before { content: '\ea7c'; }
+.codicon-kebab-horizontal:before { content: '\ea7c'; }
+.codicon-mail-reply:before { content: '\ea7d'; }
+.codicon-reply:before { content: '\ea7d'; }
+.codicon-organization:before { content: '\ea7e'; }
+.codicon-organization-filled:before { content: '\ea7e'; }
+.codicon-organization-outline:before { content: '\ea7e'; }
+.codicon-new-file:before { content: '\ea7f'; }
+.codicon-file-add:before { content: '\ea7f'; }
+.codicon-new-folder:before { content: '\ea80'; }
+.codicon-file-directory-create:before { content: '\ea80'; }
+.codicon-trash:before { content: '\ea81'; }
+.codicon-trashcan:before { content: '\ea81'; }
+.codicon-history:before { content: '\ea82'; }
+.codicon-clock:before { content: '\ea82'; }
+.codicon-folder:before { content: '\ea83'; }
+.codicon-file-directory:before { content: '\ea83'; }
+.codicon-symbol-folder:before { content: '\ea83'; }
+.codicon-logo-github:before { content: '\ea84'; }
+.codicon-mark-github:before { content: '\ea84'; }
+.codicon-github:before { content: '\ea84'; }
+.codicon-terminal:before { content: '\ea85'; }
+.codicon-console:before { content: '\ea85'; }
+.codicon-repl:before { content: '\ea85'; }
+.codicon-zap:before { content: '\ea86'; }
+.codicon-symbol-event:before { content: '\ea86'; }
+.codicon-error:before { content: '\ea87'; }
+.codicon-stop:before { content: '\ea87'; }
+.codicon-variable:before { content: '\ea88'; }
+.codicon-symbol-variable:before { content: '\ea88'; }
+.codicon-array:before { content: '\ea8a'; }
+.codicon-symbol-array:before { content: '\ea8a'; }
+.codicon-symbol-module:before { content: '\ea8b'; }
+.codicon-symbol-package:before { content: '\ea8b'; }
+.codicon-symbol-namespace:before { content: '\ea8b'; }
+.codicon-symbol-object:before { content: '\ea8b'; }
+.codicon-symbol-method:before { content: '\ea8c'; }
+.codicon-symbol-function:before { content: '\ea8c'; }
+.codicon-symbol-constructor:before { content: '\ea8c'; }
+.codicon-symbol-boolean:before { content: '\ea8f'; }
+.codicon-symbol-null:before { content: '\ea8f'; }
+.codicon-symbol-numeric:before { content: '\ea90'; }
+.codicon-symbol-number:before { content: '\ea90'; }
+.codicon-symbol-structure:before { content: '\ea91'; }
+.codicon-symbol-struct:before { content: '\ea91'; }
+.codicon-symbol-parameter:before { content: '\ea92'; }
+.codicon-symbol-type-parameter:before { content: '\ea92'; }
+.codicon-symbol-key:before { content: '\ea93'; }
+.codicon-symbol-text:before { content: '\ea93'; }
+.codicon-symbol-reference:before { content: '\ea94'; }
+.codicon-go-to-file:before { content: '\ea94'; }
+.codicon-symbol-enum:before { content: '\ea95'; }
+.codicon-symbol-value:before { content: '\ea95'; }
+.codicon-symbol-ruler:before { content: '\ea96'; }
+.codicon-symbol-unit:before { content: '\ea96'; }
+.codicon-activate-breakpoints:before { content: '\ea97'; }
+.codicon-archive:before { content: '\ea98'; }
+.codicon-arrow-both:before { content: '\ea99'; }
+.codicon-arrow-down:before { content: '\ea9a'; }
+.codicon-arrow-left:before { content: '\ea9b'; }
+.codicon-arrow-right:before { content: '\ea9c'; }
+.codicon-arrow-small-down:before { content: '\ea9d'; }
+.codicon-arrow-small-left:before { content: '\ea9e'; }
+.codicon-arrow-small-right:before { content: '\ea9f'; }
+.codicon-arrow-small-up:before { content: '\eaa0'; }
+.codicon-arrow-up:before { content: '\eaa1'; }
+.codicon-bell:before { content: '\eaa2'; }
+.codicon-bold:before { content: '\eaa3'; }
+.codicon-book:before { content: '\eaa4'; }
+.codicon-bookmark:before { content: '\eaa5'; }
+.codicon-debug-breakpoint-conditional-unverified:before { content: '\eaa6'; }
+.codicon-debug-breakpoint-conditional:before { content: '\eaa7'; }
+.codicon-debug-breakpoint-conditional-disabled:before { content: '\eaa7'; }
+.codicon-debug-breakpoint-data-unverified:before { content: '\eaa8'; }
+.codicon-debug-breakpoint-data:before { content: '\eaa9'; }
+.codicon-debug-breakpoint-data-disabled:before { content: '\eaa9'; }
+.codicon-debug-breakpoint-log-unverified:before { content: '\eaaa'; }
+.codicon-debug-breakpoint-log:before { content: '\eaab'; }
+.codicon-debug-breakpoint-log-disabled:before { content: '\eaab'; }
+.codicon-briefcase:before { content: '\eaac'; }
+.codicon-broadcast:before { content: '\eaad'; }
+.codicon-browser:before { content: '\eaae'; }
+.codicon-bug:before { content: '\eaaf'; }
+.codicon-calendar:before { content: '\eab0'; }
+.codicon-case-sensitive:before { content: '\eab1'; }
+.codicon-check:before { content: '\eab2'; }
+.codicon-checklist:before { content: '\eab3'; }
+.codicon-chevron-down:before { content: '\eab4'; }
+.codicon-drop-down-button:before { content: '\eab4'; }
+.codicon-chevron-left:before { content: '\eab5'; }
+.codicon-chevron-right:before { content: '\eab6'; }
+.codicon-chevron-up:before { content: '\eab7'; }
+.codicon-chrome-close:before { content: '\eab8'; }
+.codicon-chrome-maximize:before { content: '\eab9'; }
+.codicon-chrome-minimize:before { content: '\eaba'; }
+.codicon-chrome-restore:before { content: '\eabb'; }
+.codicon-circle-outline:before { content: '\eabc'; }
+.codicon-debug-breakpoint-unverified:before { content: '\eabc'; }
+.codicon-circle-slash:before { content: '\eabd'; }
+.codicon-circuit-board:before { content: '\eabe'; }
+.codicon-clear-all:before { content: '\eabf'; }
+.codicon-clippy:before { content: '\eac0'; }
+.codicon-close-all:before { content: '\eac1'; }
+.codicon-cloud-download:before { content: '\eac2'; }
+.codicon-cloud-upload:before { content: '\eac3'; }
+.codicon-code:before { content: '\eac4'; }
+.codicon-collapse-all:before { content: '\eac5'; }
+.codicon-color-mode:before { content: '\eac6'; }
+.codicon-comment-discussion:before { content: '\eac7'; }
+.codicon-compare-changes:before { content: '\eafd'; }
+.codicon-credit-card:before { content: '\eac9'; }
+.codicon-dash:before { content: '\eacc'; }
+.codicon-dashboard:before { content: '\eacd'; }
+.codicon-database:before { content: '\eace'; }
+.codicon-debug-continue:before { content: '\eacf'; }
+.codicon-debug-disconnect:before { content: '\ead0'; }
+.codicon-debug-pause:before { content: '\ead1'; }
+.codicon-debug-restart:before { content: '\ead2'; }
+.codicon-debug-start:before { content: '\ead3'; }
+.codicon-debug-step-into:before { content: '\ead4'; }
+.codicon-debug-step-out:before { content: '\ead5'; }
+.codicon-debug-step-over:before { content: '\ead6'; }
+.codicon-debug-stop:before { content: '\ead7'; }
+.codicon-debug:before { content: '\ead8'; }
+.codicon-device-camera-video:before { content: '\ead9'; }
+.codicon-device-camera:before { content: '\eada'; }
+.codicon-device-mobile:before { content: '\eadb'; }
+.codicon-diff-added:before { content: '\eadc'; }
+.codicon-diff-ignored:before { content: '\eadd'; }
+.codicon-diff-modified:before { content: '\eade'; }
+.codicon-diff-removed:before { content: '\eadf'; }
+.codicon-diff-renamed:before { content: '\eae0'; }
+.codicon-diff:before { content: '\eae1'; }
+.codicon-discard:before { content: '\eae2'; }
+.codicon-editor-layout:before { content: '\eae3'; }
+.codicon-empty-window:before { content: '\eae4'; }
+.codicon-exclude:before { content: '\eae5'; }
+.codicon-extensions:before { content: '\eae6'; }
+.codicon-eye-closed:before { content: '\eae7'; }
+.codicon-file-binary:before { content: '\eae8'; }
+.codicon-file-code:before { content: '\eae9'; }
+.codicon-file-media:before { content: '\eaea'; }
+.codicon-file-pdf:before { content: '\eaeb'; }
+.codicon-file-submodule:before { content: '\eaec'; }
+.codicon-file-symlink-directory:before { content: '\eaed'; }
+.codicon-file-symlink-file:before { content: '\eaee'; }
+.codicon-file-zip:before { content: '\eaef'; }
+.codicon-files:before { content: '\eaf0'; }
+.codicon-filter:before { content: '\eaf1'; }
+.codicon-flame:before { content: '\eaf2'; }
+.codicon-fold-down:before { content: '\eaf3'; }
+.codicon-fold-up:before { content: '\eaf4'; }
+.codicon-fold:before { content: '\eaf5'; }
+.codicon-folder-active:before { content: '\eaf6'; }
+.codicon-folder-opened:before { content: '\eaf7'; }
+.codicon-gear:before { content: '\eaf8'; }
+.codicon-gift:before { content: '\eaf9'; }
+.codicon-gist-secret:before { content: '\eafa'; }
+.codicon-gist:before { content: '\eafb'; }
+.codicon-git-commit:before { content: '\eafc'; }
+.codicon-git-compare:before { content: '\eafd'; }
+.codicon-git-merge:before { content: '\eafe'; }
+.codicon-github-action:before { content: '\eaff'; }
+.codicon-github-alt:before { content: '\eb00'; }
+.codicon-globe:before { content: '\eb01'; }
+.codicon-grabber:before { content: '\eb02'; }
+.codicon-graph:before { content: '\eb03'; }
+.codicon-gripper:before { content: '\eb04'; }
+.codicon-heart:before { content: '\eb05'; }
+.codicon-home:before { content: '\eb06'; }
+.codicon-horizontal-rule:before { content: '\eb07'; }
+.codicon-hubot:before { content: '\eb08'; }
+.codicon-inbox:before { content: '\eb09'; }
+.codicon-issue-closed:before { content: '\eba4'; }
+.codicon-issue-reopened:before { content: '\eb0b'; }
+.codicon-issues:before { content: '\eb0c'; }
+.codicon-italic:before { content: '\eb0d'; }
+.codicon-jersey:before { content: '\eb0e'; }
+.codicon-json:before { content: '\eb0f'; }
+.codicon-kebab-vertical:before { content: '\eb10'; }
+.codicon-key:before { content: '\eb11'; }
+.codicon-law:before { content: '\eb12'; }
+.codicon-lightbulb-autofix:before { content: '\eb13'; }
+.codicon-link-external:before { content: '\eb14'; }
+.codicon-link:before { content: '\eb15'; }
+.codicon-list-ordered:before { content: '\eb16'; }
+.codicon-list-unordered:before { content: '\eb17'; }
+.codicon-live-share:before { content: '\eb18'; }
+.codicon-loading:before { content: '\eb19'; }
+.codicon-location:before { content: '\eb1a'; }
+.codicon-mail-read:before { content: '\eb1b'; }
+.codicon-mail:before { content: '\eb1c'; }
+.codicon-markdown:before { content: '\eb1d'; }
+.codicon-megaphone:before { content: '\eb1e'; }
+.codicon-mention:before { content: '\eb1f'; }
+.codicon-milestone:before { content: '\eb20'; }
+.codicon-mortar-board:before { content: '\eb21'; }
+.codicon-move:before { content: '\eb22'; }
+.codicon-multiple-windows:before { content: '\eb23'; }
+.codicon-mute:before { content: '\eb24'; }
+.codicon-no-newline:before { content: '\eb25'; }
+.codicon-note:before { content: '\eb26'; }
+.codicon-octoface:before { content: '\eb27'; }
+.codicon-open-preview:before { content: '\eb28'; }
+.codicon-package:before { content: '\eb29'; }
+.codicon-paintcan:before { content: '\eb2a'; }
+.codicon-pin:before { content: '\eb2b'; }
+.codicon-play:before { content: '\eb2c'; }
+.codicon-run:before { content: '\eb2c'; }
+.codicon-plug:before { content: '\eb2d'; }
+.codicon-preserve-case:before { content: '\eb2e'; }
+.codicon-preview:before { content: '\eb2f'; }
+.codicon-project:before { content: '\eb30'; }
+.codicon-pulse:before { content: '\eb31'; }
+.codicon-question:before { content: '\eb32'; }
+.codicon-quote:before { content: '\eb33'; }
+.codicon-radio-tower:before { content: '\eb34'; }
+.codicon-reactions:before { content: '\eb35'; }
+.codicon-references:before { content: '\eb36'; }
+.codicon-refresh:before { content: '\eb37'; }
+.codicon-regex:before { content: '\eb38'; }
+.codicon-remote-explorer:before { content: '\eb39'; }
+.codicon-remote:before { content: '\eb3a'; }
+.codicon-remove:before { content: '\eb3b'; }
+.codicon-replace-all:before { content: '\eb3c'; }
+.codicon-replace:before { content: '\eb3d'; }
+.codicon-repo-clone:before { content: '\eb3e'; }
+.codicon-repo-force-push:before { content: '\eb3f'; }
+.codicon-repo-pull:before { content: '\eb40'; }
+.codicon-repo-push:before { content: '\eb41'; }
+.codicon-report:before { content: '\eb42'; }
+.codicon-request-changes:before { content: '\eb43'; }
+.codicon-rocket:before { content: '\eb44'; }
+.codicon-root-folder-opened:before { content: '\eb45'; }
+.codicon-root-folder:before { content: '\eb46'; }
+.codicon-rss:before { content: '\eb47'; }
+.codicon-ruby:before { content: '\eb48'; }
+.codicon-save-all:before { content: '\eb49'; }
+.codicon-save-as:before { content: '\eb4a'; }
+.codicon-save:before { content: '\eb4b'; }
+.codicon-screen-full:before { content: '\eb4c'; }
+.codicon-screen-normal:before { content: '\eb4d'; }
+.codicon-search-stop:before { content: '\eb4e'; }
+.codicon-server:before { content: '\eb50'; }
+.codicon-settings-gear:before { content: '\eb51'; }
+.codicon-settings:before { content: '\eb52'; }
+.codicon-shield:before { content: '\eb53'; }
+.codicon-smiley:before { content: '\eb54'; }
+.codicon-sort-precedence:before { content: '\eb55'; }
+.codicon-split-horizontal:before { content: '\eb56'; }
+.codicon-split-vertical:before { content: '\eb57'; }
+.codicon-squirrel:before { content: '\eb58'; }
+.codicon-star-full:before { content: '\eb59'; }
+.codicon-star-half:before { content: '\eb5a'; }
+.codicon-symbol-class:before { content: '\eb5b'; }
+.codicon-symbol-color:before { content: '\eb5c'; }
+.codicon-symbol-customcolor:before { content: '\eb5c'; }
+.codicon-symbol-constant:before { content: '\eb5d'; }
+.codicon-symbol-enum-member:before { content: '\eb5e'; }
+.codicon-symbol-field:before { content: '\eb5f'; }
+.codicon-symbol-file:before { content: '\eb60'; }
+.codicon-symbol-interface:before { content: '\eb61'; }
+.codicon-symbol-keyword:before { content: '\eb62'; }
+.codicon-symbol-misc:before { content: '\eb63'; }
+.codicon-symbol-operator:before { content: '\eb64'; }
+.codicon-symbol-property:before { content: '\eb65'; }
+.codicon-wrench:before { content: '\eb65'; }
+.codicon-wrench-subaction:before { content: '\eb65'; }
+.codicon-symbol-snippet:before { content: '\eb66'; }
+.codicon-tasklist:before { content: '\eb67'; }
+.codicon-telescope:before { content: '\eb68'; }
+.codicon-text-size:before { content: '\eb69'; }
+.codicon-three-bars:before { content: '\eb6a'; }
+.codicon-thumbsdown:before { content: '\eb6b'; }
+.codicon-thumbsup:before { content: '\eb6c'; }
+.codicon-tools:before { content: '\eb6d'; }
+.codicon-triangle-down:before { content: '\eb6e'; }
+.codicon-triangle-left:before { content: '\eb6f'; }
+.codicon-triangle-right:before { content: '\eb70'; }
+.codicon-triangle-up:before { content: '\eb71'; }
+.codicon-twitter:before { content: '\eb72'; }
+.codicon-unfold:before { content: '\eb73'; }
+.codicon-unlock:before { content: '\eb74'; }
+.codicon-unmute:before { content: '\eb75'; }
+.codicon-unverified:before { content: '\eb76'; }
+.codicon-verified:before { content: '\eb77'; }
+.codicon-versions:before { content: '\eb78'; }
+.codicon-vm-active:before { content: '\eb79'; }
+.codicon-vm-outline:before { content: '\eb7a'; }
+.codicon-vm-running:before { content: '\eb7b'; }
+.codicon-watch:before { content: '\eb7c'; }
+.codicon-whitespace:before { content: '\eb7d'; }
+.codicon-whole-word:before { content: '\eb7e'; }
+.codicon-window:before { content: '\eb7f'; }
+.codicon-word-wrap:before { content: '\eb80'; }
+.codicon-zoom-in:before { content: '\eb81'; }
+.codicon-zoom-out:before { content: '\eb82'; }
+.codicon-list-filter:before { content: '\eb83'; }
+.codicon-list-flat:before { content: '\eb84'; }
+.codicon-list-selection:before { content: '\eb85'; }
+.codicon-selection:before { content: '\eb85'; }
+.codicon-list-tree:before { content: '\eb86'; }
+.codicon-debug-breakpoint-function-unverified:before { content: '\eb87'; }
+.codicon-debug-breakpoint-function:before { content: '\eb88'; }
+.codicon-debug-breakpoint-function-disabled:before { content: '\eb88'; }
+.codicon-debug-stackframe-active:before { content: '\eb89'; }
+.codicon-debug-stackframe-dot:before { content: '\eb8a'; }
+.codicon-debug-stackframe:before { content: '\eb8b'; }
+.codicon-debug-stackframe-focused:before { content: '\eb8b'; }
+.codicon-debug-breakpoint-unsupported:before { content: '\eb8c'; }
+.codicon-symbol-string:before { content: '\eb8d'; }
+.codicon-debug-reverse-continue:before { content: '\eb8e'; }
+.codicon-debug-step-back:before { content: '\eb8f'; }
+.codicon-debug-restart-frame:before { content: '\eb90'; }
+.codicon-call-incoming:before { content: '\eb92'; }
+.codicon-call-outgoing:before { content: '\eb93'; }
+.codicon-menu:before { content: '\eb94'; }
+.codicon-expand-all:before { content: '\eb95'; }
+.codicon-feedback:before { content: '\eb96'; }
+.codicon-group-by-ref-type:before { content: '\eb97'; }
+.codicon-ungroup-by-ref-type:before { content: '\eb98'; }
+.codicon-account:before { content: '\eb99'; }
+.codicon-bell-dot:before { content: '\eb9a'; }
+.codicon-debug-console:before { content: '\eb9b'; }
+.codicon-library:before { content: '\eb9c'; }
+.codicon-output:before { content: '\eb9d'; }
+.codicon-run-all:before { content: '\eb9e'; }
+.codicon-sync-ignored:before { content: '\eb9f'; }
+.codicon-pinned:before { content: '\eba0'; }
+.codicon-github-inverted:before { content: '\eba1'; }
+.codicon-debug-alt:before { content: '\eb91'; }
+.codicon-server-process:before { content: '\eba2'; }
+.codicon-server-environment:before { content: '\eba3'; }
+.codicon-pass:before { content: '\eba4'; }
+.codicon-stop-circle:before { content: '\eba5'; }
+.codicon-play-circle:before { content: '\eba6'; }
+.codicon-record:before { content: '\eba7'; }
+.codicon-debug-alt-small:before { content: '\eba8'; }
+.codicon-vm-connect:before { content: '\eba9'; }
+.codicon-cloud:before { content: '\ebaa'; }
+.codicon-merge:before { content: '\ebab'; }
+.codicon-export:before { content: '\ebac'; }
+.codicon-graph-left:before { content: '\ebad'; }
+.codicon-magnet:before { content: '\ebae'; }
+.codicon-notebook:before { content: '\ebaf'; }
+.codicon-redo:before { content: '\ebb0'; }
+.codicon-check-all:before { content: '\ebb1'; }
+.codicon-pinned-dirty:before { content: '\ebb2'; }
+.codicon-pass-filled:before { content: '\ebb3'; }
+.codicon-circle-large-filled:before { content: '\ebb4'; }
+.codicon-circle-large-outline:before { content: '\ebb5'; }
+.codicon-combine:before { content: '\ebb6'; }
+.codicon-gather:before { content: '\ebb6'; }
+.codicon-table:before { content: '\ebb7'; }
+.codicon-variable-group:before { content: '\ebb8'; }
+.codicon-type-hierarchy:before { content: '\ebb9'; }
+.codicon-type-hierarchy-sub:before { content: '\ebba'; }
+.codicon-type-hierarchy-super:before { content: '\ebbb'; }
+.codicon-git-pull-request-create:before { content: '\ebbc'; }
+.codicon-run-above:before { content: '\ebbd'; }
+.codicon-run-below:before { content: '\ebbe'; }
+.codicon-notebook-template:before { content: '\ebbf'; }
+.codicon-debug-rerun:before { content: '\ebc0'; }
+.codicon-workspace-trusted:before { content: '\ebc1'; }
+.codicon-workspace-untrusted:before { content: '\ebc2'; }
+.codicon-workspace-unspecified:before { content: '\ebc3'; }
+.codicon-terminal-cmd:before { content: '\ebc4'; }
+.codicon-terminal-debian:before { content: '\ebc5'; }
+.codicon-terminal-linux:before { content: '\ebc6'; }
+.codicon-terminal-powershell:before { content: '\ebc7'; }
+.codicon-terminal-tmux:before { content: '\ebc8'; }
+.codicon-terminal-ubuntu:before { content: '\ebc9'; }
+.codicon-terminal-bash:before { content: '\ebca'; }
+.codicon-arrow-swap:before { content: '\ebcb'; }
+.codicon-copy:before { content: '\ebcc'; }
+.codicon-person-add:before { content: '\ebcd'; }
+.codicon-filter-filled:before { content: '\ebce'; }
+.codicon-wand:before { content: '\ebcf'; }
+.codicon-debug-line-by-line:before { content: '\ebd0'; }
+.codicon-inspect:before { content: '\ebd1'; }
+.codicon-layers:before { content: '\ebd2'; }
+.codicon-layers-dot:before { content: '\ebd3'; }
+.codicon-layers-active:before { content: '\ebd4'; }
+.codicon-compass:before { content: '\ebd5'; }
+.codicon-compass-dot:before { content: '\ebd6'; }
+.codicon-compass-active:before { content: '\ebd7'; }
+.codicon-azure:before { content: '\ebd8'; }
+.codicon-issue-draft:before { content: '\ebd9'; }
+.codicon-git-pull-request-closed:before { content: '\ebda'; }
+.codicon-git-pull-request-draft:before { content: '\ebdb'; }
+.codicon-debug-all:before { content: '\ebdc'; }
+.codicon-debug-coverage:before { content: '\ebdd'; }
+.codicon-run-errors:before { content: '\ebde'; }
+.codicon-folder-library:before { content: '\ebdf'; }
+.codicon-debug-continue-small:before { content: '\ebe0'; }
+.codicon-beaker-stop:before { content: '\ebe1'; }
+.codicon-graph-line:before { content: '\ebe2'; }
+.codicon-graph-scatter:before { content: '\ebe3'; }
+.codicon-pie-chart:before { content: '\ebe4'; }
+.codicon-bracket:before { content: '\eb0f'; }
+.codicon-bracket-dot:before { content: '\ebe5'; }
+.codicon-bracket-error:before { content: '\ebe6'; }
+.codicon-lock-small:before { content: '\ebe7'; }
+.codicon-azure-devops:before { content: '\ebe8'; }
+.codicon-verified-filled:before { content: '\ebe9'; }
+.codicon-newline:before { content: '\ebea'; }
+.codicon-layout:before { content: '\ebeb'; }
+.codicon-layout-activitybar-left:before { content: '\ebec'; }
+.codicon-layout-activitybar-right:before { content: '\ebed'; }
+.codicon-layout-panel-left:before { content: '\ebee'; }
+.codicon-layout-panel-center:before { content: '\ebef'; }
+.codicon-layout-panel-justify:before { content: '\ebf0'; }
+.codicon-layout-panel-right:before { content: '\ebf1'; }
+.codicon-layout-panel:before { content: '\ebf2'; }
+.codicon-layout-sidebar-left:before { content: '\ebf3'; }
+.codicon-layout-sidebar-right:before { content: '\ebf4'; }
+.codicon-layout-statusbar:before { content: '\ebf5'; }
+.codicon-layout-menubar:before { content: '\ebf6'; }
+.codicon-layout-centered:before { content: '\ebf7'; }
+.codicon-target:before { content: '\ebf8'; }
+.codicon-indent:before { content: '\ebf9'; }
+.codicon-record-small:before { content: '\ebfa'; }
+.codicon-error-small:before { content: '\ebfb'; }
+.codicon-arrow-circle-down:before { content: '\ebfc'; }
+.codicon-arrow-circle-left:before { content: '\ebfd'; }
+.codicon-arrow-circle-right:before { content: '\ebfe'; }
+.codicon-arrow-circle-up:before { content: '\ebff'; }
+.codicon-dialog-error:before { content: '\ea87'; }
+.codicon-dialog-warning:before { content: '\ea6c'; }
+.codicon-dialog-info:before { content: '\ea74'; }
+.codicon-dialog-close:before { content: '\ea76'; }
+.codicon-tree-item-expanded:before { content: '\eab4'; }
+.codicon-tree-filter-on-type-on:before { content: '\eb83'; }
+.codicon-tree-filter-on-type-off:before { content: '\eb85'; }
+.codicon-tree-filter-clear:before { content: '\ea76'; }
+.codicon-tree-item-loading:before { content: '\eb19'; }
+.codicon-menu-selection:before { content: '\eab2'; }
+.codicon-menu-submenu:before { content: '\eab6'; }
+.codicon-menubar-more:before { content: '\ea7c'; }
+.codicon-scrollbar-button-left:before { content: '\eb6f'; }
+.codicon-scrollbar-button-right:before { content: '\eb70'; }
+.codicon-scrollbar-button-up:before { content: '\eb71'; }
+.codicon-scrollbar-button-down:before { content: '\eb6e'; }
+.codicon-toolbar-more:before { content: '\ea7c'; }
+.codicon-quick-input-back:before { content: '\ea9b'; }
+.codicon-widget-close:before { content: '\ea76'; }
+.codicon-goto-previous-location:before { content: '\eaa1'; }
+.codicon-goto-next-location:before { content: '\ea9a'; }
+.codicon-marker-navigation-next:before { content: '\ea9a'; }
+.codicon-marker-navigation-previous:before { content: '\eaa1'; }
+.codicon-find-selection:before { content: '\eb85'; }
+.codicon-find-collapsed:before { content: '\eab6'; }
+.codicon-find-expanded:before { content: '\eab4'; }
+.codicon-find-replace:before { content: '\eb3d'; }
+.codicon-find-replace-all:before { content: '\eb3c'; }
+.codicon-find-previous-match:before { content: '\eaa1'; }
+.codicon-find-next-match:before { content: '\ea9a'; }
+.codicon-folding-expanded:before { content: '\eab4'; }
+.codicon-folding-collapsed:before { content: '\eab6'; }
+.codicon-suggest-more-info:before { content: '\eab6'; }
+.codicon-parameter-hints-next:before { content: '\eab4'; }
+.codicon-parameter-hints-previous:before { content: '\eab7'; }
+.codicon-extensions-warning-message:before { content: '\ea6c'; }
+.codicon-diff-review-insert:before { content: '\ea60'; }
+.codicon-diff-review-remove:before { content: '\eb3b'; }
+.codicon-diff-review-close:before { content: '\ea76'; }
+.codicon-diff-insert:before { content: '\ea60'; }
+.codicon-diff-remove:before { content: '\eb3b'; }
+.monaco-editor .accessibilityHelpWidget { background-color: #252526; }
+.monaco-editor .accessibilityHelpWidget { color: #cccccc; }
+.monaco-editor .accessibilityHelpWidget { box-shadow: 0 2px 8px rgba(0, 0, 0, 0.36); }
+.monaco-editor, .monaco-editor-background, .monaco-editor .inputarea.ime-input { background-color: #1e1e1e; }
+.monaco-editor, .monaco-editor .inputarea.ime-input { color: #d4d4d4; }
+.monaco-editor .margin { background-color: #1e1e1e; }
+.monaco-editor .rangeHighlight { background-color: rgba(255, 255, 255, 0.04); }
+.monaco-editor .symbolHighlight { background-color: rgba(234, 92, 0, 0.33); }
+.monaco-editor .mtkw { color: rgba(227, 228, 226, 0.16) !important; }
+.monaco-editor .mtkz { color: rgba(227, 228, 226, 0.16) !important; }
+.monaco-editor .unexpected-closing-bracket { color: rgba(255, 18, 18, 0.8); }
+.monaco-editor .bracket-highlighting-0 { color: #ffd700; }
+.monaco-editor .bracket-highlighting-1 { color: #da70d6; }
+.monaco-editor .bracket-highlighting-2 { color: #179fff; }
+.monaco-editor .bracket-highlighting-3 { color: #ffd700; }
+.monaco-editor .bracket-highlighting-4 { color: #da70d6; }
+.monaco-editor .bracket-highlighting-5 { color: #179fff; }
+.monaco-editor .bracket-highlighting-6 { color: #ffd700; }
+.monaco-editor .bracket-highlighting-7 { color: #da70d6; }
+.monaco-editor .bracket-highlighting-8 { color: #179fff; }
+.monaco-editor .bracket-highlighting-9 { color: #ffd700; }
+.monaco-editor .bracket-highlighting-10 { color: #da70d6; }
+.monaco-editor .bracket-highlighting-11 { color: #179fff; }
+.monaco-editor .bracket-highlighting-12 { color: #ffd700; }
+.monaco-editor .bracket-highlighting-13 { color: #da70d6; }
+.monaco-editor .bracket-highlighting-14 { color: #179fff; }
+.monaco-editor .bracket-highlighting-15 { color: #ffd700; }
+.monaco-editor .bracket-highlighting-16 { color: #da70d6; }
+.monaco-editor .bracket-highlighting-17 { color: #179fff; }
+.monaco-editor .bracket-highlighting-18 { color: #ffd700; }
+.monaco-editor .bracket-highlighting-19 { color: #da70d6; }
+.monaco-editor .bracket-highlighting-20 { color: #179fff; }
+.monaco-editor .bracket-highlighting-21 { color: #ffd700; }
+.monaco-editor .bracket-highlighting-22 { color: #da70d6; }
+.monaco-editor .bracket-highlighting-23 { color: #179fff; }
+.monaco-editor .bracket-highlighting-24 { color: #ffd700; }
+.monaco-editor .bracket-highlighting-25 { color: #da70d6; }
+.monaco-editor .bracket-highlighting-26 { color: #179fff; }
+.monaco-editor .bracket-highlighting-27 { color: #ffd700; }
+.monaco-editor .bracket-highlighting-28 { color: #da70d6; }
+.monaco-editor .bracket-highlighting-29 { color: #179fff; }
+.monaco-editor .bracket-match { background-color: rgba(0, 100, 0, 0.1); }
+.monaco-editor .bracket-match { border: 1px solid #888888; }
+
+		.monaco-editor .contentWidgets .codicon.codicon-light-bulb {
+			color: #ffcc00;
+			background-color: rgba(30, 30, 30, 0.7);
+		}
+
+		.monaco-editor .contentWidgets .codicon.codicon-lightbulb-autofix {
+			color: #75beff;
+			background-color: rgba(30, 30, 30, 0.7);
+		}
+.monaco-editor .line-numbers { color: #858585; }
+.monaco-editor .line-numbers.active-line-number { color: #c6c6c6; }
+.monaco-editor .view-overlays .current-line { border: 2px solid #282828; }
+.monaco-editor .margin-view-overlays .current-line-margin { border: 2px solid #282828; }
+
+			.monaco-scrollable-element > .shadow.top {
+				box-shadow: #000000 0 6px 6px -6px inset;
+			}
+
+			.monaco-scrollable-element > .shadow.left {
+				box-shadow: #000000 6px 0 6px -6px inset;
+			}
+
+			.monaco-scrollable-element > .shadow.top.left {
+				box-shadow: #000000 6px 6px 6px -6px inset;
+			}
+		
+
+			.monaco-scrollable-element > .scrollbar > .slider {
+				background: rgba(121, 121, 121, 0.4);
+			}
+		
+
+			.monaco-scrollable-element > .scrollbar > .slider:hover {
+				background: rgba(100, 100, 100, 0.7);
+			}
+		
+
+			.monaco-scrollable-element > .scrollbar > .slider.active {
+				background: rgba(191, 191, 191, 0.4);
+			}
+		
+.monaco-editor .lines-content .core-guide-indent { box-shadow: 1px 0 0 0 #404040 inset; }
+.monaco-editor .lines-content .core-guide-indent-active { box-shadow: 1px 0 0 0 #707070 inset; }
+.monaco-editor .bracket-indent-guide.lvl-0 { --guide-color: rgba(255, 215, 0, 0.3); --guide-color-active: #ffd700; }
+.monaco-editor .bracket-indent-guide.lvl-1 { --guide-color: rgba(218, 112, 214, 0.3); --guide-color-active: #da70d6; }
+.monaco-editor .bracket-indent-guide.lvl-2 { --guide-color: rgba(23, 159, 255, 0.3); --guide-color-active: #179fff; }
+.monaco-editor .bracket-indent-guide.lvl-3 { --guide-color: rgba(255, 215, 0, 0.3); --guide-color-active: #ffd700; }
+.monaco-editor .bracket-indent-guide.lvl-4 { --guide-color: rgba(218, 112, 214, 0.3); --guide-color-active: #da70d6; }
+.monaco-editor .bracket-indent-guide.lvl-5 { --guide-color: rgba(23, 159, 255, 0.3); --guide-color-active: #179fff; }
+.monaco-editor .bracket-indent-guide.lvl-6 { --guide-color: rgba(255, 215, 0, 0.3); --guide-color-active: #ffd700; }
+.monaco-editor .bracket-indent-guide.lvl-7 { --guide-color: rgba(218, 112, 214, 0.3); --guide-color-active: #da70d6; }
+.monaco-editor .bracket-indent-guide.lvl-8 { --guide-color: rgba(23, 159, 255, 0.3); --guide-color-active: #179fff; }
+.monaco-editor .bracket-indent-guide.lvl-9 { --guide-color: rgba(255, 215, 0, 0.3); --guide-color-active: #ffd700; }
+.monaco-editor .bracket-indent-guide.lvl-10 { --guide-color: rgba(218, 112, 214, 0.3); --guide-color-active: #da70d6; }
+.monaco-editor .bracket-indent-guide.lvl-11 { --guide-color: rgba(23, 159, 255, 0.3); --guide-color-active: #179fff; }
+.monaco-editor .bracket-indent-guide.lvl-12 { --guide-color: rgba(255, 215, 0, 0.3); --guide-color-active: #ffd700; }
+.monaco-editor .bracket-indent-guide.lvl-13 { --guide-color: rgba(218, 112, 214, 0.3); --guide-color-active: #da70d6; }
+.monaco-editor .bracket-indent-guide.lvl-14 { --guide-color: rgba(23, 159, 255, 0.3); --guide-color-active: #179fff; }
+.monaco-editor .bracket-indent-guide.lvl-15 { --guide-color: rgba(255, 215, 0, 0.3); --guide-color-active: #ffd700; }
+.monaco-editor .bracket-indent-guide.lvl-16 { --guide-color: rgba(218, 112, 214, 0.3); --guide-color-active: #da70d6; }
+.monaco-editor .bracket-indent-guide.lvl-17 { --guide-color: rgba(23, 159, 255, 0.3); --guide-color-active: #179fff; }
+.monaco-editor .bracket-indent-guide.lvl-18 { --guide-color: rgba(255, 215, 0, 0.3); --guide-color-active: #ffd700; }
+.monaco-editor .bracket-indent-guide.lvl-19 { --guide-color: rgba(218, 112, 214, 0.3); --guide-color-active: #da70d6; }
+.monaco-editor .bracket-indent-guide.lvl-20 { --guide-color: rgba(23, 159, 255, 0.3); --guide-color-active: #179fff; }
+.monaco-editor .bracket-indent-guide.lvl-21 { --guide-color: rgba(255, 215, 0, 0.3); --guide-color-active: #ffd700; }
+.monaco-editor .bracket-indent-guide.lvl-22 { --guide-color: rgba(218, 112, 214, 0.3); --guide-color-active: #da70d6; }
+.monaco-editor .bracket-indent-guide.lvl-23 { --guide-color: rgba(23, 159, 255, 0.3); --guide-color-active: #179fff; }
+.monaco-editor .bracket-indent-guide.lvl-24 { --guide-color: rgba(255, 215, 0, 0.3); --guide-color-active: #ffd700; }
+.monaco-editor .bracket-indent-guide.lvl-25 { --guide-color: rgba(218, 112, 214, 0.3); --guide-color-active: #da70d6; }
+.monaco-editor .bracket-indent-guide.lvl-26 { --guide-color: rgba(23, 159, 255, 0.3); --guide-color-active: #179fff; }
+.monaco-editor .bracket-indent-guide.lvl-27 { --guide-color: rgba(255, 215, 0, 0.3); --guide-color-active: #ffd700; }
+.monaco-editor .bracket-indent-guide.lvl-28 { --guide-color: rgba(218, 112, 214, 0.3); --guide-color-active: #da70d6; }
+.monaco-editor .bracket-indent-guide.lvl-29 { --guide-color: rgba(23, 159, 255, 0.3); --guide-color-active: #179fff; }
+.monaco-editor .vertical { box-shadow: 1px 0 0 0 var(--guide-color) inset; }
+.monaco-editor .horizontal-top { border-top: 1px solid var(--guide-color); }
+.monaco-editor .horizontal-bottom { border-bottom: 1px solid var(--guide-color); }
+.monaco-editor .vertical.indent-active { box-shadow: 1px 0 0 0 var(--guide-color-active) inset; }
+.monaco-editor .horizontal-top.indent-active { border-top: 1px solid var(--guide-color-active); }
+.monaco-editor .horizontal-bottom.indent-active { border-bottom: 1px solid var(--guide-color-active); }
+.monaco-editor .minimap-slider .minimap-slider-horizontal { background: rgba(121, 121, 121, 0.2); }
+.monaco-editor .minimap-slider:hover .minimap-slider-horizontal { background: rgba(100, 100, 100, 0.35); }
+.monaco-editor .minimap-slider.active .minimap-slider-horizontal { background: rgba(191, 191, 191, 0.2); }
+.monaco-editor .minimap-shadow-visible { box-shadow: #000000 -6px 0 6px -6px inset; }
+.monaco-editor .view-ruler { box-shadow: 1px 0 0 0 #5a5a5a inset; }
+.monaco-editor .scroll-decoration { box-shadow: #000000 0 6px 6px -6px inset; }
+.monaco-editor .focused .selected-text { background-color: #264f78; }
+.monaco-editor .selected-text { background-color: #3a3d41; }
+.monaco-editor .inputarea.ime-input { caret-color: #aeafad; }
+.monaco-editor .cursors-layer .cursor { background-color: #aeafad; border-color: #aeafad; color: #515052; }
+.monaco-editor .squiggly-error { background: url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%206%203'%20enable-background%3D'new%200%200%206%203'%20height%3D'3'%20width%3D'6'%3E%3Cg%20fill%3D'%23f14c4c'%3E%3Cpolygon%20points%3D'5.5%2C0%202.5%2C3%201.1%2C3%204.1%2C0'%2F%3E%3Cpolygon%20points%3D'4%2C0%206%2C2%206%2C0.6%205.4%2C0'%2F%3E%3Cpolygon%20points%3D'0%2C2%201%2C3%202.4%2C3%200%2C0.6'%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E") repeat-x bottom left; }
+.monaco-editor .squiggly-warning { background: url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%206%203'%20enable-background%3D'new%200%200%206%203'%20height%3D'3'%20width%3D'6'%3E%3Cg%20fill%3D'%23cca700'%3E%3Cpolygon%20points%3D'5.5%2C0%202.5%2C3%201.1%2C3%204.1%2C0'%2F%3E%3Cpolygon%20points%3D'4%2C0%206%2C2%206%2C0.6%205.4%2C0'%2F%3E%3Cpolygon%20points%3D'0%2C2%201%2C3%202.4%2C3%200%2C0.6'%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E") repeat-x bottom left; }
+.monaco-editor .squiggly-info { background: url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%206%203'%20enable-background%3D'new%200%200%206%203'%20height%3D'3'%20width%3D'6'%3E%3Cg%20fill%3D'%233794ff'%3E%3Cpolygon%20points%3D'5.5%2C0%202.5%2C3%201.1%2C3%204.1%2C0'%2F%3E%3Cpolygon%20points%3D'4%2C0%206%2C2%206%2C0.6%205.4%2C0'%2F%3E%3Cpolygon%20points%3D'0%2C2%201%2C3%202.4%2C3%200%2C0.6'%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E") repeat-x bottom left; }
+.monaco-editor .squiggly-hint { background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%223%22%20width%3D%2212%22%3E%3Cg%20fill%3D%22rgba(238%2C%20238%2C%20238%2C%200.7)%22%3E%3Ccircle%20cx%3D%221%22%20cy%3D%221%22%20r%3D%221%22%2F%3E%3Ccircle%20cx%3D%225%22%20cy%3D%221%22%20r%3D%221%22%2F%3E%3Ccircle%20cx%3D%229%22%20cy%3D%221%22%20r%3D%221%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E") no-repeat bottom left; }
+.monaco-editor.showUnused .squiggly-inline-unnecessary { opacity: 0.667; }
+.monaco-editor.showDeprecated .squiggly-inline-deprecated { text-decoration: line-through; text-decoration-color: #d4d4d4}
+.monaco-editor .goto-definition-link { color: #4e94ce !important; }
+
+			.monaco-editor .zone-widget .codicon.codicon-error,
+			.markers-panel .marker-icon.codicon.codicon-error,
+			.text-search-provider-messages .providerMessage .codicon.codicon-error,
+			.extensions-viewlet > .extensions .codicon.codicon-error {
+				color: #f14c4c;
+			}
+		
+
+			.monaco-editor .zone-widget .codicon.codicon-warning,
+			.markers-panel .marker-icon.codicon.codicon-warning,
+			.extensions-viewlet > .extensions .codicon.codicon-warning,
+			.extension-editor .codicon.codicon-warning,
+			.text-search-provider-messages .providerMessage .codicon.codicon-warning,
+			.preferences-editor .codicon.codicon-warning {
+				color: #cca700;
+			}
+		
+
+			.monaco-editor .zone-widget .codicon.codicon-info,
+			.markers-panel .marker-icon.codicon.codicon-info,
+			.extensions-viewlet > .extensions .codicon.codicon-info,
+			.text-search-provider-messages .providerMessage .codicon.codicon-info,
+			.extension-editor .codicon.codicon-info {
+				color: #3794ff;
+			}
+		
+.monaco-hover .hover-contents a.code-link span { color: #3794ff; }
+.monaco-hover .hover-contents a.code-link span:hover { color: #3794ff; }
+.monaco-editor .hoverHighlight { background-color: rgba(38, 79, 120, 0.25); }
+.monaco-editor .monaco-hover { background-color: #252526; }
+.monaco-editor .monaco-hover { border: 1px solid #454545; }
+.monaco-editor .monaco-hover .hover-row:not(:first-child):not(:empty) { border-top: 1px solid rgba(69, 69, 69, 0.5); }
+.monaco-editor .monaco-hover hr { border-top: 1px solid rgba(69, 69, 69, 0.5); }
+.monaco-editor .monaco-hover hr { border-bottom: 0px solid rgba(69, 69, 69, 0.5); }
+.monaco-editor .monaco-hover a { color: #3794ff; }
+.monaco-editor .monaco-hover a:hover { color: #3794ff; }
+.monaco-editor .monaco-hover { color: #cccccc; }
+.monaco-editor .monaco-hover .hover-row .actions { background-color: #2c2c2d; }
+.monaco-editor .monaco-hover code { background-color: rgba(10, 10, 10, 0.4); }
+.monaco-editor .findOptionsWidget { background-color: #252526; }
+.monaco-editor .findOptionsWidget { color: #cccccc; }
+.monaco-editor .findOptionsWidget { box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.36); }
+.monaco-editor .findMatch { background-color: rgba(234, 92, 0, 0.33); }
+.monaco-editor .currentFindMatch { background-color: #515c6a; }
+.monaco-editor .findScope { background-color: rgba(58, 61, 65, 0.4); }
+.monaco-editor .find-widget { background-color: #252526; }
+.monaco-editor .find-widget { box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.36); }
+.monaco-editor .find-widget { color: #cccccc; }
+.monaco-editor .find-widget.no-results .matchesCount { color: #f48771; }
+.monaco-editor .find-widget .monaco-sash { background-color: #454545; }
+
+		.monaco-editor .find-widget .button:not(.disabled):hover,
+		.monaco-editor .find-widget .codicon-find-selection:hover {
+			background-color: rgba(90, 93, 94, 0.31) !important;
+		}
+	
+.monaco-editor .find-widget .monaco-inputbox.synthetic-focus { outline-color: #007fd4; }
+.monaco-editor .folded-background { background-color: rgba(38, 79, 120, 0.3); }
+
+		.monaco-editor .cldr.codicon.codicon-folding-expanded,
+		.monaco-editor .cldr.codicon.codicon-folding-collapsed {
+			color: #c5c5c5 !important;
+		}
+		
+.monaco-editor.vs .valueSetReplacement { outline: solid 2px #888888; }
+.codicon.codicon-symbol-array { color: #cccccc; }
+.codicon.codicon-symbol-boolean { color: #cccccc; }
+.codicon.codicon-symbol-class { color: #ee9d28; }
+.codicon.codicon-symbol-method { color: #b180d7; }
+.codicon.codicon-symbol-color { color: #cccccc; }
+.codicon.codicon-symbol-constant { color: #cccccc; }
+.codicon.codicon-symbol-constructor { color: #b180d7; }
+
+			.codicon.codicon-symbol-value,.codicon.codicon-symbol-enum { color: #ee9d28; }
+.codicon.codicon-symbol-enum-member { color: #75beff; }
+.codicon.codicon-symbol-event { color: #ee9d28; }
+.codicon.codicon-symbol-field { color: #75beff; }
+.codicon.codicon-symbol-file { color: #cccccc; }
+.codicon.codicon-symbol-folder { color: #cccccc; }
+.codicon.codicon-symbol-function { color: #b180d7; }
+.codicon.codicon-symbol-interface { color: #75beff; }
+.codicon.codicon-symbol-key { color: #cccccc; }
+.codicon.codicon-symbol-keyword { color: #cccccc; }
+.codicon.codicon-symbol-module { color: #cccccc; }
+.codicon.codicon-symbol-namespace { color: #cccccc; }
+.codicon.codicon-symbol-null { color: #cccccc; }
+.codicon.codicon-symbol-number { color: #cccccc; }
+.codicon.codicon-symbol-object { color: #cccccc; }
+.codicon.codicon-symbol-operator { color: #cccccc; }
+.codicon.codicon-symbol-package { color: #cccccc; }
+.codicon.codicon-symbol-property { color: #cccccc; }
+.codicon.codicon-symbol-reference { color: #cccccc; }
+.codicon.codicon-symbol-snippet { color: #cccccc; }
+.codicon.codicon-symbol-string { color: #cccccc; }
+.codicon.codicon-symbol-struct { color: #cccccc; }
+.codicon.codicon-symbol-text { color: #cccccc; }
+.codicon.codicon-symbol-type-parameter { color: #cccccc; }
+.codicon.codicon-symbol-unit { color: #cccccc; }
+.codicon.codicon-symbol-variable { color: #75beff; }
+.monaco-editor .ghost-text-decoration { color: rgba(255, 255, 255, 0.34) !important; }
+.monaco-editor .ghost-text-decoration-preview { color: rgba(255, 255, 255, 0.34) !important; }
+.monaco-editor .suggest-preview-text .ghost-text { color: rgba(255, 255, 255, 0.34) !important; }
+.monaco-editor .tokens-inspect-widget { border: 1px solid #454545; }
+.monaco-editor .tokens-inspect-widget .tokens-inspect-separator { background-color: #454545; }
+.monaco-editor .tokens-inspect-widget { background-color: #252526; }
+.monaco-editor .tokens-inspect-widget { color: #cccccc; }
+.monaco-editor .linked-editing-decoration { background: rgba(255, 0, 0, 0.3); border-left-color: rgba(255, 0, 0, 0.3); }
+.monaco-editor .detected-link-active { color: #4e94ce !important; }
+.monaco-editor .parameter-hints-widget { border: 1px solid #454545; }
+.monaco-editor .parameter-hints-widget.multiple .body { border-left: 1px solid rgba(69, 69, 69, 0.5); }
+.monaco-editor .parameter-hints-widget .signature.has-docs { border-bottom: 1px solid rgba(69, 69, 69, 0.5); }
+.monaco-editor .parameter-hints-widget { background-color: #252526; }
+.monaco-editor .parameter-hints-widget a { color: #3794ff; }
+.monaco-editor .parameter-hints-widget a:hover { color: #3794ff; }
+.monaco-editor .parameter-hints-widget { color: #cccccc; }
+.monaco-editor .parameter-hints-widget code { background-color: rgba(10, 10, 10, 0.4); }
+.monaco-editor .parameter-hints-widget .parameter.active { color: #18a3ff}
+.monaco-link { color: #3794ff; }
+.monaco-link:hover { color: #3794ff; }
+.monaco-editor .focused .selectionHighlight { background-color: rgba(173, 214, 255, 0.15); }
+.monaco-editor .selectionHighlight { background-color: rgba(173, 214, 255, 0.07); }
+.monaco-editor .wordHighlight { background-color: rgba(87, 87, 87, 0.72); }
+.monaco-editor .wordHighlightStrong { background-color: rgba(0, 73, 114, 0.72); }
+.monaco-diff-editor .diff-review-line-number { color: #858585; }
+.monaco-diff-editor .diff-review-shadow { box-shadow: #000000 0 -6px 6px -6px inset; }
+.monaco-editor .char-insert, .monaco-diff-editor .char-insert { background-color: rgba(155, 185, 85, 0.2); }
+.monaco-editor .line-insert, .monaco-diff-editor .line-insert { background-color: rgba(155, 185, 85, 0.2); }
+.monaco-editor .inline-added-margin-view-zone { background-color: rgba(155, 185, 85, 0.2); }
+.monaco-editor .gutter-insert, .monaco-diff-editor .gutter-insert { background-color: rgba(155, 185, 85, 0.2); }
+.monaco-editor .char-delete, .monaco-diff-editor .char-delete { background-color: rgba(255, 0, 0, 0.2); }
+.monaco-editor .line-delete, .monaco-diff-editor .line-delete { background-color: rgba(255, 0, 0, 0.2); }
+.monaco-editor .inline-deleted-margin-view-zone { background-color: rgba(255, 0, 0, 0.2); }
+.monaco-editor .gutter-delete, .monaco-diff-editor .gutter-delete { background-color: rgba(255, 0, 0, 0.2); }
+.monaco-diff-editor.side-by-side .editor.modified { box-shadow: -6px 0 5px -5px #000000; }
+
+			.monaco-diff-editor .diffViewport {
+				background: rgba(121, 121, 121, 0.4);
+			}
+		
+
+			.monaco-diff-editor .diffViewport:hover {
+				background: rgba(100, 100, 100, 0.7);
+			}
+		
+
+			.monaco-diff-editor .diffViewport:active {
+				background: rgba(191, 191, 191, 0.4);
+			}
+		
+
+	.monaco-editor .diagonal-fill {
+		background-image: linear-gradient(
+			-45deg,
+			rgba(204, 204, 204, 0.2) 12.5%,
+			#0000 12.5%, #0000 50%,
+			rgba(204, 204, 204, 0.2) 50%, rgba(204, 204, 204, 0.2) 62.5%,
+			#0000 62.5%, #0000 100%
+		);
+		background-size: 8px 8px;
+	}
+	
+.monaco-editor { --vscode-foreground: #cccccc;
+--vscode-errorForeground: #f48771;
+--vscode-descriptionForeground: rgba(204, 204, 204, 0.7);
+--vscode-icon-foreground: #c5c5c5;
+--vscode-focusBorder: #007fd4;
+--vscode-textSeparator-foreground: rgba(255, 255, 255, 0.18);
+--vscode-textLink-foreground: #3794ff;
+--vscode-textLink-activeForeground: #3794ff;
+--vscode-textPreformat-foreground: #d7ba7d;
+--vscode-textBlockQuote-background: rgba(127, 127, 127, 0.1);
+--vscode-textBlockQuote-border: rgba(0, 122, 204, 0.5);
+--vscode-textCodeBlock-background: rgba(10, 10, 10, 0.4);
+--vscode-widget-shadow: rgba(0, 0, 0, 0.36);
+--vscode-input-background: #3c3c3c;
+--vscode-input-foreground: #cccccc;
+--vscode-inputOption-activeBorder: rgba(0, 122, 204, 0);
+--vscode-inputOption-hoverBackground: rgba(90, 93, 94, 0.5);
+--vscode-inputOption-activeBackground: rgba(0, 127, 212, 0.4);
+--vscode-inputOption-activeForeground: #ffffff;
+--vscode-input-placeholderForeground: rgba(204, 204, 204, 0.5);
+--vscode-inputValidation-infoBackground: #063b49;
+--vscode-inputValidation-infoBorder: #007acc;
+--vscode-inputValidation-warningBackground: #352a05;
+--vscode-inputValidation-warningBorder: #b89500;
+--vscode-inputValidation-errorBackground: #5a1d1d;
+--vscode-inputValidation-errorBorder: #be1100;
+--vscode-dropdown-background: #3c3c3c;
+--vscode-dropdown-foreground: #f0f0f0;
+--vscode-dropdown-border: #3c3c3c;
+--vscode-checkbox-background: #3c3c3c;
+--vscode-checkbox-foreground: #f0f0f0;
+--vscode-checkbox-border: #3c3c3c;
+--vscode-button-foreground: #ffffff;
+--vscode-button-background: #0e639c;
+--vscode-button-hoverBackground: #1177bb;
+--vscode-button-secondaryForeground: #ffffff;
+--vscode-button-secondaryBackground: #3a3d41;
+--vscode-button-secondaryHoverBackground: #45494e;
+--vscode-badge-background: #4d4d4d;
+--vscode-badge-foreground: #ffffff;
+--vscode-scrollbar-shadow: #000000;
+--vscode-scrollbarSlider-background: rgba(121, 121, 121, 0.4);
+--vscode-scrollbarSlider-hoverBackground: rgba(100, 100, 100, 0.7);
+--vscode-scrollbarSlider-activeBackground: rgba(191, 191, 191, 0.4);
+--vscode-progressBar-background: #0e70c0;
+--vscode-editorError-foreground: #f14c4c;
+--vscode-editorWarning-foreground: #cca700;
+--vscode-editorInfo-foreground: #3794ff;
+--vscode-editorHint-foreground: rgba(238, 238, 238, 0.7);
+--vscode-sash-hoverBorder: #007fd4;
+--vscode-editor-background: #1e1e1e;
+--vscode-editor-foreground: #d4d4d4;
+--vscode-editorWidget-background: #252526;
+--vscode-editorWidget-foreground: #cccccc;
+--vscode-editorWidget-border: #454545;
+--vscode-quickInput-background: #252526;
+--vscode-quickInput-foreground: #cccccc;
+--vscode-quickInputTitle-background: rgba(255, 255, 255, 0.1);
+--vscode-pickerGroup-foreground: #3794ff;
+--vscode-pickerGroup-border: #3f3f46;
+--vscode-keybindingLabel-background: rgba(128, 128, 128, 0.17);
+--vscode-keybindingLabel-foreground: #cccccc;
+--vscode-keybindingLabel-border: rgba(51, 51, 51, 0.6);
+--vscode-keybindingLabel-bottomBorder: rgba(68, 68, 68, 0.6);
+--vscode-editor-selectionBackground: #264f78;
+--vscode-editor-inactiveSelectionBackground: #3a3d41;
+--vscode-editor-selectionHighlightBackground: rgba(173, 214, 255, 0.15);
+--vscode-editor-findMatchBackground: #515c6a;
+--vscode-editor-findMatchHighlightBackground: rgba(234, 92, 0, 0.33);
+--vscode-editor-findRangeHighlightBackground: rgba(58, 61, 65, 0.4);
+--vscode-searchEditor-findMatchBackground: rgba(234, 92, 0, 0.22);
+--vscode-editor-hoverHighlightBackground: rgba(38, 79, 120, 0.25);
+--vscode-editorHoverWidget-background: #252526;
+--vscode-editorHoverWidget-foreground: #cccccc;
+--vscode-editorHoverWidget-border: #454545;
+--vscode-editorHoverWidget-statusBarBackground: #2c2c2d;
+--vscode-editorLink-activeForeground: #4e94ce;
+--vscode-editorInlayHint-foreground: rgba(255, 255, 255, 0.8);
+--vscode-editorInlayHint-background: rgba(77, 77, 77, 0.6);
+--vscode-editorInlayHint-typeForeground: rgba(255, 255, 255, 0.8);
+--vscode-editorInlayHint-typeBackground: rgba(77, 77, 77, 0.6);
+--vscode-editorInlayHint-parameterForeground: rgba(255, 255, 255, 0.8);
+--vscode-editorInlayHint-parameterBackground: rgba(77, 77, 77, 0.6);
+--vscode-editorLightBulb-foreground: #ffcc00;
+--vscode-editorLightBulbAutoFix-foreground: #75beff;
+--vscode-diffEditor-insertedTextBackground: rgba(155, 185, 85, 0.2);
+--vscode-diffEditor-removedTextBackground: rgba(255, 0, 0, 0.2);
+--vscode-diffEditor-diagonalFill: rgba(204, 204, 204, 0.2);
+--vscode-list-focusOutline: #007fd4;
+--vscode-list-activeSelectionBackground: #094771;
+--vscode-list-activeSelectionForeground: #ffffff;
+--vscode-list-inactiveSelectionBackground: #37373d;
+--vscode-list-hoverBackground: #2a2d2e;
+--vscode-list-dropBackground: #062f4a;
+--vscode-list-highlightForeground: #18a3ff;
+--vscode-list-focusHighlightForeground: #18a3ff;
+--vscode-list-invalidItemForeground: #b89500;
+--vscode-list-errorForeground: #f88070;
+--vscode-list-warningForeground: #cca700;
+--vscode-listFilterWidget-background: #653723;
+--vscode-listFilterWidget-outline: rgba(0, 0, 0, 0);
+--vscode-listFilterWidget-noMatchesOutline: #be1100;
+--vscode-list-filterMatchBackground: rgba(234, 92, 0, 0.33);
+--vscode-tree-indentGuidesStroke: #585858;
+--vscode-tree-tableColumnsBorder: rgba(204, 204, 204, 0.13);
+--vscode-tree-tableOddRowsBackground: rgba(204, 204, 204, 0.04);
+--vscode-list-deemphasizedForeground: #8c8c8c;
+--vscode-quickInputList-focusForeground: #ffffff;
+--vscode-quickInputList-focusBackground: #094771;
+--vscode-menu-foreground: #f0f0f0;
+--vscode-menu-background: #3c3c3c;
+--vscode-menu-selectionForeground: #ffffff;
+--vscode-menu-selectionBackground: #094771;
+--vscode-menu-separatorBackground: #bbbbbb;
+--vscode-toolbar-hoverBackground: rgba(90, 93, 94, 0.31);
+--vscode-toolbar-activeBackground: rgba(99, 102, 103, 0.31);
+--vscode-editor-snippetTabstopHighlightBackground: rgba(124, 124, 124, 0.3);
+--vscode-editor-snippetFinalTabstopHighlightBorder: #525252;
+--vscode-breadcrumb-foreground: rgba(204, 204, 204, 0.8);
+--vscode-breadcrumb-background: #1e1e1e;
+--vscode-breadcrumb-focusForeground: #e0e0e0;
+--vscode-breadcrumb-activeSelectionForeground: #e0e0e0;
+--vscode-breadcrumbPicker-background: #252526;
+--vscode-merge-currentHeaderBackground: rgba(64, 200, 174, 0.5);
+--vscode-merge-currentContentBackground: rgba(64, 200, 174, 0.2);
+--vscode-merge-incomingHeaderBackground: rgba(64, 166, 255, 0.5);
+--vscode-merge-incomingContentBackground: rgba(64, 166, 255, 0.2);
+--vscode-merge-commonHeaderBackground: rgba(96, 96, 96, 0.4);
+--vscode-merge-commonContentBackground: rgba(96, 96, 96, 0.16);
+--vscode-editorOverviewRuler-currentContentForeground: rgba(64, 200, 174, 0.5);
+--vscode-editorOverviewRuler-incomingContentForeground: rgba(64, 166, 255, 0.5);
+--vscode-editorOverviewRuler-commonContentForeground: rgba(96, 96, 96, 0.4);
+--vscode-editorOverviewRuler-findMatchForeground: rgba(209, 134, 22, 0.49);
+--vscode-editorOverviewRuler-selectionHighlightForeground: rgba(160, 160, 160, 0.8);
+--vscode-minimap-findMatchHighlight: #d18616;
+--vscode-minimap-selectionOccurrenceHighlight: #676767;
+--vscode-minimap-selectionHighlight: #264f78;
+--vscode-minimap-errorHighlight: rgba(255, 18, 18, 0.7);
+--vscode-minimap-warningHighlight: #cca700;
+--vscode-minimap-foregroundOpacity: #000000;
+--vscode-minimapSlider-background: rgba(121, 121, 121, 0.2);
+--vscode-minimapSlider-hoverBackground: rgba(100, 100, 100, 0.35);
+--vscode-minimapSlider-activeBackground: rgba(191, 191, 191, 0.2);
+--vscode-problemsErrorIcon-foreground: #f14c4c;
+--vscode-problemsWarningIcon-foreground: #cca700;
+--vscode-problemsInfoIcon-foreground: #3794ff;
+--vscode-charts-foreground: #cccccc;
+--vscode-charts-lines: rgba(204, 204, 204, 0.5);
+--vscode-charts-red: #f14c4c;
+--vscode-charts-blue: #3794ff;
+--vscode-charts-yellow: #cca700;
+--vscode-charts-orange: #d18616;
+--vscode-charts-green: #89d185;
+--vscode-charts-purple: #b180d7;
+--vscode-editor-lineHighlightBorder: #282828;
+--vscode-editor-rangeHighlightBackground: rgba(255, 255, 255, 0.04);
+--vscode-editor-symbolHighlightBackground: rgba(234, 92, 0, 0.33);
+--vscode-editorCursor-foreground: #aeafad;
+--vscode-editorWhitespace-foreground: rgba(227, 228, 226, 0.16);
+--vscode-editorIndentGuide-background: #404040;
+--vscode-editorIndentGuide-activeBackground: #707070;
+--vscode-editorLineNumber-foreground: #858585;
+--vscode-editorActiveLineNumber-foreground: #c6c6c6;
+--vscode-editorLineNumber-activeForeground: #c6c6c6;
+--vscode-editorRuler-foreground: #5a5a5a;
+--vscode-editorCodeLens-foreground: #999999;
+--vscode-editorBracketMatch-background: rgba(0, 100, 0, 0.1);
+--vscode-editorBracketMatch-border: #888888;
+--vscode-editorOverviewRuler-border: rgba(127, 127, 127, 0.3);
+--vscode-editorGutter-background: #1e1e1e;
+--vscode-editorUnnecessaryCode-opacity: rgba(0, 0, 0, 0.67);
+--vscode-editorGhostText-foreground: rgba(255, 255, 255, 0.34);
+--vscode-editorOverviewRuler-rangeHighlightForeground: rgba(0, 122, 204, 0.6);
+--vscode-editorOverviewRuler-errorForeground: rgba(255, 18, 18, 0.7);
+--vscode-editorOverviewRuler-warningForeground: #cca700;
+--vscode-editorOverviewRuler-infoForeground: #3794ff;
+--vscode-editorBracketHighlight-foreground1: #ffd700;
+--vscode-editorBracketHighlight-foreground2: #da70d6;
+--vscode-editorBracketHighlight-foreground3: #179fff;
+--vscode-editorBracketHighlight-foreground4: rgba(0, 0, 0, 0);
+--vscode-editorBracketHighlight-foreground5: rgba(0, 0, 0, 0);
+--vscode-editorBracketHighlight-foreground6: rgba(0, 0, 0, 0);
+--vscode-editorBracketHighlight-unexpectedBracket-foreground: rgba(255, 18, 18, 0.8);
+--vscode-editorBracketPairGuide-background1: rgba(0, 0, 0, 0);
+--vscode-editorBracketPairGuide-background2: rgba(0, 0, 0, 0);
+--vscode-editorBracketPairGuide-background3: rgba(0, 0, 0, 0);
+--vscode-editorBracketPairGuide-background4: rgba(0, 0, 0, 0);
+--vscode-editorBracketPairGuide-background5: rgba(0, 0, 0, 0);
+--vscode-editorBracketPairGuide-background6: rgba(0, 0, 0, 0);
+--vscode-editorBracketPairGuide-activeBackground1: rgba(0, 0, 0, 0);
+--vscode-editorBracketPairGuide-activeBackground2: rgba(0, 0, 0, 0);
+--vscode-editorBracketPairGuide-activeBackground3: rgba(0, 0, 0, 0);
+--vscode-editorBracketPairGuide-activeBackground4: rgba(0, 0, 0, 0);
+--vscode-editorBracketPairGuide-activeBackground5: rgba(0, 0, 0, 0);
+--vscode-editorBracketPairGuide-activeBackground6: rgba(0, 0, 0, 0);
+--vscode-editorUnicodeHighlight-border: #bd9b03;
+--vscode-editorOverviewRuler-bracketMatchForeground: #a0a0a0;
+--vscode-peekViewTitle-background: rgba(55, 148, 255, 0.1);
+--vscode-peekViewTitleLabel-foreground: #ffffff;
+--vscode-peekViewTitleDescription-foreground: rgba(204, 204, 204, 0.7);
+--vscode-peekView-border: #3794ff;
+--vscode-peekViewResult-background: #252526;
+--vscode-peekViewResult-lineForeground: #bbbbbb;
+--vscode-peekViewResult-fileForeground: #ffffff;
+--vscode-peekViewResult-selectionBackground: rgba(51, 153, 255, 0.2);
+--vscode-peekViewResult-selectionForeground: #ffffff;
+--vscode-peekViewEditor-background: #001f33;
+--vscode-peekViewEditorGutter-background: #001f33;
+--vscode-peekViewResult-matchHighlightBackground: rgba(234, 92, 0, 0.3);
+--vscode-peekViewEditor-matchHighlightBackground: rgba(255, 143, 0, 0.6);
+--vscode-editorMarkerNavigationError-background: #f14c4c;
+--vscode-editorMarkerNavigationError-headerBackground: rgba(241, 76, 76, 0.1);
+--vscode-editorMarkerNavigationWarning-background: #cca700;
+--vscode-editorMarkerNavigationWarning-headerBackground: rgba(204, 167, 0, 0.1);
+--vscode-editorMarkerNavigationInfo-background: #3794ff;
+--vscode-editorMarkerNavigationInfo-headerBackground: rgba(55, 148, 255, 0.1);
+--vscode-editorMarkerNavigation-background: #1e1e1e;
+--vscode-editor-foldBackground: rgba(38, 79, 120, 0.3);
+--vscode-editorGutter-foldingControlForeground: #c5c5c5;
+--vscode-symbolIcon-arrayForeground: #cccccc;
+--vscode-symbolIcon-booleanForeground: #cccccc;
+--vscode-symbolIcon-classForeground: #ee9d28;
+--vscode-symbolIcon-colorForeground: #cccccc;
+--vscode-symbolIcon-constantForeground: #cccccc;
+--vscode-symbolIcon-constructorForeground: #b180d7;
+--vscode-symbolIcon-enumeratorForeground: #ee9d28;
+--vscode-symbolIcon-enumeratorMemberForeground: #75beff;
+--vscode-symbolIcon-eventForeground: #ee9d28;
+--vscode-symbolIcon-fieldForeground: #75beff;
+--vscode-symbolIcon-fileForeground: #cccccc;
+--vscode-symbolIcon-folderForeground: #cccccc;
+--vscode-symbolIcon-functionForeground: #b180d7;
+--vscode-symbolIcon-interfaceForeground: #75beff;
+--vscode-symbolIcon-keyForeground: #cccccc;
+--vscode-symbolIcon-keywordForeground: #cccccc;
+--vscode-symbolIcon-methodForeground: #b180d7;
+--vscode-symbolIcon-moduleForeground: #cccccc;
+--vscode-symbolIcon-namespaceForeground: #cccccc;
+--vscode-symbolIcon-nullForeground: #cccccc;
+--vscode-symbolIcon-numberForeground: #cccccc;
+--vscode-symbolIcon-objectForeground: #cccccc;
+--vscode-symbolIcon-operatorForeground: #cccccc;
+--vscode-symbolIcon-packageForeground: #cccccc;
+--vscode-symbolIcon-propertyForeground: #cccccc;
+--vscode-symbolIcon-referenceForeground: #cccccc;
+--vscode-symbolIcon-snippetForeground: #cccccc;
+--vscode-symbolIcon-stringForeground: #cccccc;
+--vscode-symbolIcon-structForeground: #cccccc;
+--vscode-symbolIcon-textForeground: #cccccc;
+--vscode-symbolIcon-typeParameterForeground: #cccccc;
+--vscode-symbolIcon-unitForeground: #cccccc;
+--vscode-symbolIcon-variableForeground: #75beff;
+--vscode-editorSuggestWidget-background: #252526;
+--vscode-editorSuggestWidget-border: #454545;
+--vscode-editorSuggestWidget-foreground: #d4d4d4;
+--vscode-editorSuggestWidget-selectedForeground: #ffffff;
+--vscode-editorSuggestWidget-selectedBackground: #094771;
+--vscode-editorSuggestWidget-highlightForeground: #18a3ff;
+--vscode-editorSuggestWidget-focusHighlightForeground: #18a3ff;
+--vscode-editorSuggestWidgetStatus-foreground: rgba(212, 212, 212, 0.5);
+--vscode-editor-linkedEditingBackground: rgba(255, 0, 0, 0.3);
+--vscode-editorHoverWidget-highlightForeground: #18a3ff;
+--vscode-editor-wordHighlightBackground: rgba(87, 87, 87, 0.72);
+--vscode-editor-wordHighlightStrongBackground: rgba(0, 73, 114, 0.72);
+--vscode-editorOverviewRuler-wordHighlightForeground: rgba(160, 160, 160, 0.8);
+--vscode-editorOverviewRuler-wordHighlightStrongForeground: rgba(192, 160, 192, 0.8); }
+
+.mtk1 { color: #d4d4d4; }
+.mtk2 { color: #1e1e1e; }
+.mtk3 { color: #cc6666; }
+.mtk4 { color: #9cdcfe; }
+.mtk5 { color: #ce9178; }
+.mtk6 { color: #b5cea8; }
+.mtk7 { color: #608b4e; }
+.mtk8 { color: #569cd6; }
+.mtk9 { color: #dcdcdc; }
+.mtk10 { color: #808080; }
+.mtk11 { color: #f44747; }
+.mtk12 { color: #c586c0; }
+.mtk13 { color: #a79873; }
+.mtk14 { color: #dd6a6f; }
+.mtk15 { color: #5bb498; }
+.mtk16 { color: #909090; }
+.mtk17 { color: #778899; }
+.mtk18 { color: #ff00ff; }
+.mtk19 { color: #b46695; }
+.mtk20 { color: #ff0000; }
+.mtk21 { color: #4f76ac; }
+.mtk22 { color: #3dc9b0; }
+.mtk23 { color: #74b0df; }
+.mtk24 { color: #4864aa; }
+.mtki { font-style: italic; }
+.mtkb { font-weight: bold; }
+.mtku { text-decoration: underline; text-underline-position: under; }
+.mtks { text-decoration: line-through; }
+.mtks.mtku { text-decoration: underline line-through; text-underline-position: under; }</style><style type="text/css" media="screen">
+		.monaco-editor .codelens-decoration._ee1f61 { line-height: 22px; font-size: 14px; padding-right: 7px; font-feature-settings: var(--codelens-font-features_ee1f61) }
+		.monaco-editor .codelens-decoration._ee1f61 span.codicon { line-height: 22px; font-size: 14px; }
+		</style><script charset="utf-8" src="./프로그래머스_files/186-c241c77bc4285db0724b.chunk.js.다운로드"></script><script charset="utf-8" src="./프로그래머스_files/55-83a5f1dcd18b88b935f4.chunk.js.다운로드"></script><style type="text/css" media="screen">
+		.monaco-editor .codelens-decoration._ee1f62 { line-height: 22px; font-size: 14px; padding-right: 7px; font-feature-settings: var(--codelens-font-features_ee1f62) }
+		.monaco-editor .codelens-decoration._ee1f62 span.codicon { line-height: 22px; font-size: 14px; }
+		</style><script charset="utf-8" src="./프로그래머스_files/202-46eb748eb21b111fc0b5.chunk.js.다운로드"></script></head>
+<body class="tests tests-with-setting-spa" data-ns="" data-controller="tests" data-action="with_setting_spa" data-defaultlocale="ko" data-locale="ko">
+
+
+
+
+
+<div class="main ">
+  <div testid="45949" challengetype="algorithms" challengeid="12297"><div token="3d50ac4e99df0c2164f574cb2d7263a4" mobilegatewayurl="https://programmers.co.kr/g" hostname="programmers.co.kr" testid="45949"><div class="_2jh3BdulFoYOf-Nj0L0Abi"><div class="_3zqfGu6aoNUjTTmi3T_43g"><header><!----> <div class="_3V_njIhIfjuj7-VrRbagyX"><div class="_1VmuNoo0UX_kdqqKKe320N"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="ic-18"><use href="/packs/media/svgs/svg-defs-93dbf824.svg#ic-back"></use></svg>
+      테스트 재설정
+      <hr class="_38m0P2BBOxyrAtkX0dYS1J"></div> <div class="_179kAlE7thh4Mo-kqhXDsg mr-3">
+      1차 문제집 for 이상우 
+    </div> <!----> <div class="pr-1 _3cumQmFJ87QOWMNjsLulEb"><a target="_blank" href="https://devdocs.programmers.co.kr/python~3.8/" class="mr-3">
+      Python3 레퍼런스
+    </a> <a class="mr-3">
+      컴파일 옵션
+    </a> <button id="btn-finish" class="btn btn-sm btn-primary"><span>테스트 종료</span></button> <!----></div> <div><div id="modal-container-b3b48c4c-1c90-48c7-bead-512ba3223248" role="document" class="modal fade tw-text-text--primary"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><div class="tw-flex tw-items-center tw-text-2.5xl tw-font-bold tw-antialiased"><span>컴파일 옵션</span> <div class="tw-flex tw-cursor-pointer tw-ml-auto"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="ic-24 tw-fill-current tw-text-text--secondary"><use href="/packs/media/svgs/svg-defs-93dbf824.svg#ic-clear"></use></svg></div></div></div> <div class="modal-body"><table class="table table-striped table-hover"><thead><tr><th>언어</th> <th>컴파일러</th> <th>컴파일 커맨드</th></tr></thead> <tbody><tr><td>swift</td> <td>Swift 5.2.5</td> <td></td></tr><tr><td>scala</td> <td>Scala 2.13.3</td> <td>scalac -target:jvm-1.8 -encoding UTF-8</td></tr><tr><td>go</td> <td>Go 1.16.9</td> <td></td></tr><tr><td>ruby</td> <td>Ruby 2.7.0</td> <td></td></tr><tr><td>python3</td> <td>Python 3.8.5</td> <td></td></tr><tr><td>python</td> <td>Python 2.7.18</td> <td></td></tr><tr><td>kotlin</td> <td>Kotlin 1.6.10</td> <td>kotlinc -jvm-target 1.8 -include-runtime</td></tr><tr><td>csharp</td> <td>Mono C# Compiler 6.10.0</td> <td></td></tr><tr><td>cpp</td> <td>Clang++ 10.0 (C++17)</td> <td>clang++ -std=c++17 -O2 -Wno-unused-result -o FILENAME</td></tr><tr><td>r</td> <td>R 3.5.1</td> <td></td></tr><tr><td>c</td> <td>Clang 10.0</td> <td>clang -O2 -o FILENAME</td></tr><tr><td>javascript</td> <td>Node.js 12.18.3</td> <td></td></tr><tr><td>java</td> <td>OpenJDK 14.0.2</td> <td>javac -encoding UTF-8 -g:none -Xlint:deprecation FILENAME</td></tr></tbody></table></div> <footer class="modal-footer"><button type="button" class="btn btn-primary">
+            확인
+          </button></footer></div></div></div></div> <div class="challenge-finish-modal tw-text-black"><div id="modal-container-d9f246d7-9148-465c-9c6e-02d265224969" role="document" class="modal fade"><div class="modal-dialog modal-overflow-scroll"><div class="modal-content"><div class="modal-header"><div class="tw-flex tw-items-center tw-text-2.5xl tw-font-bold tw-antialiased"><span>답안을 최종 제출하시겠습니까?</span> <div class="tw-flex tw-cursor-pointer tw-ml-auto"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="ic-24 tw-fill-current tw-text-text--secondary"><use href="/packs/media/svgs/svg-defs-93dbf824.svg#ic-clear"></use></svg></div></div></div> <div class="modal-body"><div><div class="tw-text-base tw-mb-10 tw-bottom"><span>
+          테스트를 종료하면 제출한 내용을 수정할 수 없으며 채점을 수행한 코드 중 최고 점수가 최종 결과로 제출됩니다.
+        </span></div> <div class="_3IPm_X3o1GA7tN-6PDM5Ye"> <!----></div></div></div> <footer class="modal-footer"><div class="_3Xu3u2Xhb1MDMjf6pPimfn"><label class="_1tC8sjGmC5sunMcC7ZNBEq"><input type="checkbox"> <span class="tw-text-base">
+          시험을 종료하겠습니다.
+        </span></label> <div><button type="button" class="btn btn-light">
+          취소
+        </button> <button type="button" disabled="disabled" class="btn btn-primary">
+          확인
+        </button></div></div></footer></div></div></div></div> <div class="tw-text-black"><div id="modal-container-f71501e2-4003-4549-91fb-7f0922fbfa78" role="document" class="modal fade"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h3 class="modal-title">
+            시험 결과로 이동 중입니다.
+          </h3></div> <div class="modal-body"><div><div class="progress progress-striped active"><div class="progress-bar tw-w-full"></div></div></div></div> <footer class="modal-footer"><div></div></footer></div></div></div></div> <div class="tw-text-text--primary"><div id="modal-container-3b33376c-0fc7-4788-a8ac-09a75d5d62b5" role="document" class="modal fade"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h3 class="modal-title">
+            조기퇴실 안내
+          </h3></div> <div class="modal-body"><div>
+      본 시험은 [missing %{allowed_early_exit_time} value] 이후부터 테스트를 종료할 수 있습니다. 해당 시간 전에 화면 끄기 등의 방법으로 테스트 이탈 상태가 지속되면 미응시로 처리될 수 있으니 주의해주시기 바랍니다.
+    </div></div> <footer class="modal-footer"><button type="button" class="btn btn-primary">
+            확인
+          </button></footer></div></div></div></div> <div class="challenge-timeout-finish-modal tw-text-black"><div id="modal-container-c2d03ba5-8b7c-4ccf-b697-dd218ceb929d" role="document" class="modal fade"><div class="modal-dialog modal-overflow-scroll"><div class="modal-content"><div class="modal-header"><h3 class="modal-title">
+            테스트 시간 만료
+          </h3></div> <div class="modal-body"><div class="tw-mb-10 _2fq8qUvCIjcmwmf0smQbS4">주어진 테스트 시간이 만료되어 시험이 종료되었습니다.<br>답안은 아래 내용 대로 최종 제촐됩니다.</div> <div class="_3IPm_X3o1GA7tN-6PDM5Ye"> <!----></div></div> <footer class="modal-footer"><div class="_2lts-O6ArJDIVYwf5iVD4B">
+        위 내용대로 답안이 제출되며
+        <span class="_2hvPPPki-bNnXBVsfb5HaT"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="ic-20"><use href="/packs/media/svgs/svg-defs-93dbf824.svg#ic-timer"></use></svg>60
+        </span>초 후에 이 창이 닫힙니다.
+      </div> <button type="button" class="btn btn-primary">
+        확인
+      </button></footer></div></div></div></div></div></header> <main class="_1gZFS02ouAxwyHMz-3WRpd"><div><div class="_1lZuLNlLzuCpcUvG-azmIx"><div class="_2FoBwNknmngSQVcaBVp2Pz"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="ic-20"><use href="/packs/media/svgs/svg-defs-93dbf824.svg#ic-keyboard-arrow-right"></use></svg></div></div> <nav id="challenges-nav" class="_3GwIghNHCnlH8pqiNEXqmx borderable pt-3"><div class="_1w0v20nHaYzE0gEjjPGeBh"><div class="_3aqc7cdiC87dQTCYGKU0VZ"><div><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="ic-20 _4PvHpzC0RWcXh-TVFRkyF"><use href="/packs/media/svgs/svg-defs-93dbf824.svg#ic-algorithm"></use></svg></div> <div class="mt-3 _2AVy_RcQ0mzvLh4qtJk5t_ _2kWaYfHkYy-lA_OTEO7Rdt"><!----> <!----> <button class="_25b86VfiGGfmlNSll0rgEv">
+    1
+  </button> <span class="_3hkjl_FMDHRUsZQzMEz1cl">- / 100</span></div><div class="mt-3 _2AVy_RcQ0mzvLh4qtJk5t_"><!----> <!----> <button class="_25b86VfiGGfmlNSll0rgEv">
+    2
+  </button> <span class="_3hkjl_FMDHRUsZQzMEz1cl">- / 100</span></div><div class="mt-3 _2AVy_RcQ0mzvLh4qtJk5t_"><!----> <!----> <button class="_25b86VfiGGfmlNSll0rgEv">
+    3
+  </button> <span class="_3hkjl_FMDHRUsZQzMEz1cl">- / 100</span></div><div class="mt-3 _2AVy_RcQ0mzvLh4qtJk5t_"><!----> <!----> <button class="_25b86VfiGGfmlNSll0rgEv">
+    4
+  </button> <span class="_3hkjl_FMDHRUsZQzMEz1cl">- / 100</span></div> <!----></div></div></nav></div> <div class="wrXa4rtiIQy4eD9THCqrI XHdgrqKLMxBc_1Kln7cut"><header class="_3Dv2G71KYL7hrQo3RzW2ft p-3"><div class="_2RxBNMS_0t8gpv5oGWOMnz"><div class="_1FenwGwCqQ_NOCc26y75AJ mr-3"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="ic-18"><use href="/packs/media/svgs/svg-defs-93dbf824.svg#ic-keyboard-arrow-left"></use></svg></div> <span>1.
+    프로그래밍
+    <span>
+      (- / 100)
+    </span></span> <div class="_1FenwGwCqQ_NOCc26y75AJ ml-3"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="ic-18"><use href="/packs/media/svgs/svg-defs-93dbf824.svg#ic-keyboard-arrow-right"></use></svg></div></div> <div id="timer-wrapper" class="_3Dmo5tPkY2FnbNFZ8kSU8T"><!----> <div class="_2iDccY8PRCsAXOZvvQfuLq mr-2"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="ic-16 q558yZQSBuxouIIV21DYz"><use href="/packs/media/svgs/svg-defs-93dbf824.svg#ic-timer"></use></svg> <span>종료까지</span></div> <div class="_3gjZYpXtQ-yif-cM7nvMJ">
+    02:57:59
+  </div> <div class="tw-text-text--primary"><div id="modal-container-8b76fbc2-aa74-485d-9104-797d07772f58" role="document" class="modal fade"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><div class="tw-flex tw-items-center tw-text-2.5xl tw-font-bold tw-antialiased"><span>시험 시작 안내</span> <div class="tw-flex tw-cursor-pointer tw-ml-auto"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="ic-24 tw-fill-current tw-text-text--secondary hover:tw-text-blue-grey-600"><use href="/packs/media/svgs/svg-defs-93dbf824.svg#ic-clear"></use></svg></div></div></div> <div class="modal-body"><div><p>테스트 시작 시간이 되었습니다.<br>이 페이지를 닫고, 설정 페이지로 돌아가 테스트(시험) 시작 버튼을 눌러주세요.</p></div></div> <footer class="modal-footer"><div><button type="button" class="btn btn-primary">
+        체험하기 종료
+      </button></div></footer></div></div></div></div></div></header> <div class="LMkCqJ1Df7lDwEmfkAjb6"><div class="_1zqBydVpwSQNEud6RM63qd"><div class="_2fk2TmYH60PW27lBkZTYrS challenge-content _3gz-LnnsupTAiWA3sW_bQG"><div id="pr-description" class="_5lzBn1Y9xgyRo9nGh6yn guide-section py-3" style="width: calc(40% - 7px);"><div class="_1QOQKLz38xASaZ1pYuRFxN px-3 challenge-type-wrapper"><div class="_3LKLypSBaTQrOXFBiVfd5- mr-2"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="ic-16 mr-1 _1hu9BwBwjcU6KMOZ4t8bPI"><use href="/packs/media/svgs/svg-defs-93dbf824.svg#ic-algorithm"></use></svg>
+    프로그래밍
+  </div> <div class="_3TWMd_d0lhuLmjiyR-whBo"><span class="mr-1">다시 풀 문제</span> <svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="ic-16 _2_W0xOPXMpanC90KVfaYRc"><use href="/packs/media/svgs/svg-defs-93dbf824.svg#ic-flag-fill"></use></svg></div></div> <div class="p-3"><h6 class="mb-3 _2c1lVVXCA5xmsDOxsZ0_k9">
+      문제 설명
+    </h6> <div class="challenge-markdown"><div class="markdown solarized-dark"><p>두 정수 <code>X</code>, <code>Y</code>의 임의의 자리에서 공통으로 나타나는 정수 k(0 ≤ k ≤ 9)들을 이용하여 만들 수 있는 가장 큰 정수를 두 수의 짝꿍이라 합니다(단, 공통으로 나타나는 정수 중 서로 짝지을 수 있는 숫자만 사용합니다). <code>X</code>, <code>Y</code>의 짝꿍이 존재하지 않으면, 짝꿍은 -1입니다. <code>X</code>, <code>Y</code>의 짝꿍이 0으로만 구성되어 있다면, 짝꿍은 0입니다.</p>
+
+<p>예를 들어, <code>X</code> = 3403이고 <code>Y</code> = 13203이라면, <code>X</code>와 <code>Y</code>의 짝꿍은 <code>X</code>와 <code>Y</code>에서 공통으로 나타나는 3, 0, 3으로 만들 수 있는 가장 큰 정수인 330입니다. 다른 예시로 <code>X</code> = 5525이고 <code>Y</code> = 1255이면 <code>X</code>와 <code>Y</code>의 짝꿍은 <code>X</code>와 <code>Y</code>에서 공통으로 나타나는 2, 5, 5로 만들 수 있는 가장 큰 정수인 552입니다(<code>X</code>에는 5가 3개, <code>Y</code>에는 5가 2개 나타나므로 남는 5 한 개는 짝 지을 수 없습니다.)<br>
+두 정수 <code>X</code>, <code>Y</code>가 주어졌을 때, <code>X</code>, <code>Y</code>의 짝꿍을 return하는 solution 함수를 완성해주세요.</p>
+
+<h5>제한사항</h5>
+
+<ul>
+<li>3 ≤ <code>X</code>, <code>Y</code>의 길이(자릿수) ≤ 3,000,000입니다.</li>
+<li><code>X</code>, <code>Y</code>는 0으로 시작하지 않습니다.</li>
+<li><code>X</code>, <code>Y</code>의 짝꿍은 상당히 큰 정수일 수 있으므로, 문자열로 반환합니다.</li>
+</ul>
+
+<hr>
+
+<h5>입출력 예</h5>
+<table class="table">
+        <thead><tr>
+<th>X</th>
+<th>Y</th>
+<th>result</th>
+</tr>
+</thead>
+        <tbody><tr>
+<td>"100"</td>
+<td>"2345"</td>
+<td>"-1"</td>
+</tr>
+<tr>
+<td>"100"</td>
+<td>"203045"</td>
+<td>"0"</td>
+</tr>
+<tr>
+<td>"100"</td>
+<td>"123450"</td>
+<td>"10"</td>
+</tr>
+<tr>
+<td>"12321"</td>
+<td>"42531"</td>
+<td>"321"</td>
+</tr>
+<tr>
+<td>"5525"</td>
+<td>"1255"</td>
+<td>"552"</td>
+</tr>
+</tbody>
+      </table>
+<hr>
+
+<h5>입출력 예 설명</h5>
+
+<p><strong>입출력 예 #1</strong></p>
+
+<ul>
+<li><code>X</code>, <code>Y</code>의 짝꿍은 존재하지 않습니다. 따라서 "-1"을 return합니다.</li>
+</ul>
+
+<p><strong>입출력 예 #2</strong></p>
+
+<ul>
+<li><code>X</code>, <code>Y</code>의 공통된 숫자는 0으로만 구성되어 있기 때문에, 두 수의 짝꿍은 정수 0입니다. 따라서 "0"을 return합니다.</li>
+</ul>
+
+<p><strong>입출력 예 #3</strong></p>
+
+<ul>
+<li><code>X</code>, <code>Y</code>의 짝꿍은 10이므로, "10"을 return합니다.</li>
+</ul>
+
+<p><strong>입출력 예 #4</strong></p>
+
+<ul>
+<li><code>X</code>, <code>Y</code>의 짝꿍은 321입니다. 따라서 "321"을 return합니다.</li>
+</ul>
+
+<p><strong>입출력 예 #5</strong></p>
+
+<ul>
+<li>지문에 설명된 예시와 같습니다.</li>
+</ul>
+</div></div></div></div> <div class="gutter gutter-horizontal" style="width: 14px;"></div><div class="Aps_j2lKXF_tTL9qR-t-H run-section" style="width: calc(60% - 7px);"><div class="_1RNOgHm0h2ilFkZZd4kacr editor-section" style="height: calc(65% - 7px);"><div class="TDzGXajowT4Y-vHSk8rtM"><div id="pr-language" class="dropdown b-dropdown btn-group _2-2YZ0bIG573aSbc_FlHap"><!----><button id="pr-language__BV_toggle_" aria-haspopup="true" aria-expanded="false" type="button" class="btn dropdown-toggle btn-secondary">Python3</button><ul role="menu" tabindex="-1" aria-labelledby="pr-language__BV_toggle_" class="dropdown-menu" style=""><li role="presentation"><a value="cpp" role="menuitem" href="https://programmers.co.kr/app/with_setting/tests/45949/challenges/algorithms/12297?language=python3#" target="_self" class="dropdown-item">
+    C++
+  </a></li><li role="presentation"><a value="java" role="menuitem" href="https://programmers.co.kr/app/with_setting/tests/45949/challenges/algorithms/12297?language=python3#" target="_self" class="dropdown-item">
+    Java
+  </a></li><li role="presentation"><a value="javascript" role="menuitem" href="https://programmers.co.kr/app/with_setting/tests/45949/challenges/algorithms/12297?language=python3#" target="_self" class="dropdown-item">
+    Javascript
+  </a></li><li role="presentation"><a value="python3" role="menuitem" href="https://programmers.co.kr/app/with_setting/tests/45949/challenges/algorithms/12297?language=python3#" target="_self" class="dropdown-item active">
+    Python3
+  </a></li></ul></div> <!----></div> <!----> <!----> <div id="monaco-editor" class="_1jE4wVpshQ8DVVUXOC95Av"><div id="pr-editor" class="monaco _38KaDUjgwvP9dIlShqFTEM" data-keybinding-context="2" data-mode-id="python" style="--codelens-font-features_ee1f62:&quot;liga&quot; off, &quot;calt&quot; off;"><div class="monaco-editor no-user-select  showUnused showDeprecated vs-dark focused" role="code" data-uri="inmemory://model/2" style="width: 725px; height: 231px;"><div data-mprt="3" class="overflow-guard" style="width: 725px; height: 231px;"><div class="margin" role="presentation" aria-hidden="true" style="position: absolute; transform: translate3d(0px, 0px, 0px); contain: strict; top: 0px; height: 297px; width: 70px;"><div class="glyph-margin" style="left: 0px; width: 0px; height: 297px;"></div><div class="margin-view-zones" role="presentation" aria-hidden="true" style="position: absolute;"></div><div class="margin-view-overlays focused" role="presentation" aria-hidden="true" style="position: absolute; width: 70px; font-family: Consolas, &quot;Courier New&quot;, monospace; font-weight: normal; font-size: 16px; font-feature-settings: &quot;liga&quot; 0, &quot;calt&quot; 0; line-height: 22px; letter-spacing: 0px; height: 341px;"><div style="position:absolute;top:0px;width:100%;height:22px;"><div class="cldr codicon codicon-folding-expanded" style="left:44px;width:26px;"></div><div class="line-numbers" style="left:0px;width:44px;">1</div></div><div style="position:absolute;top:22px;width:100%;height:22px;"><div class="line-numbers" style="left:0px;width:44px;">2</div></div><div style="position:absolute;top:44px;width:100%;height:22px;"><div class="line-numbers" style="left:0px;width:44px;">3</div></div><div style="position:absolute;top:66px;width:100%;height:22px;"><div class="line-numbers" style="left:0px;width:44px;">4</div></div><div style="position:absolute;top:88px;width:100%;height:22px;"><div class="current-line current-line-margin-both" style="width:70px; height:22px;"></div><div class="active-line-number line-numbers" style="left:0px;width:44px;">5</div></div><div style="position:absolute;top:110px;width:100%;height:22px;"><div class="line-numbers" style="left:0px;width:44px;">6</div></div></div></div><div class="monaco-scrollable-element editor-scrollable vs-dark" role="presentation" data-mprt="5" style="position: absolute; overflow: hidden; left: 70px; width: 655px; height: 231px;"><div class="lines-content monaco-editor-background" style="position: absolute; overflow: hidden; width: 1e+06px; height: 1e+06px; transform: translate3d(0px, 0px, 0px); contain: strict; top: 0px; left: 0px;"><div class="view-overlays focused" role="presentation" aria-hidden="true" style="position: absolute; height: 0px; width: 655px;"><div style="position:absolute;top:0px;width:100%;height:22px;"></div><div style="position:absolute;top:22px;width:100%;height:22px;"><div class="core-guide core-guide-indent-active vertical" style="left:0px;height:22px;width:8.796875px"></div></div><div style="position:absolute;top:44px;width:100%;height:22px;"><div class="core-guide core-guide-indent-active vertical" style="left:0px;height:22px;width:8.796875px"></div></div><div style="position:absolute;top:66px;width:100%;height:22px;"><div class="core-guide core-guide-indent-active vertical" style="left:0px;height:22px;width:8.796875px"></div></div><div style="position:absolute;top:88px;width:100%;height:22px;"><div class="current-line" style="width:655px; height:22px;"></div><div class="core-guide core-guide-indent-active vertical" style="left:0px;height:22px;width:8.796875px"></div></div><div style="position:absolute;top:110px;width:100%;height:22px;"><div class="core-guide core-guide-indent-active vertical" style="left:0px;height:22px;width:8.796875px"></div></div></div><div role="presentation" aria-hidden="true" class="view-rulers"></div><div class="view-zones" role="presentation" aria-hidden="true" style="position: absolute;"></div><div class="view-lines monaco-mouse-cursor-text" role="presentation" aria-hidden="true" data-mprt="7" style="position: absolute; font-family: Consolas, &quot;Courier New&quot;, monospace; font-weight: normal; font-size: 16px; font-feature-settings: &quot;liga&quot; 0, &quot;calt&quot; 0; line-height: 22px; letter-spacing: 0px; width: 655px; height: 341px;"><div style="top:0px;height:22px;" class="view-line"><span><span class="mtk8">def</span><span class="mtk1">&nbsp;solution</span><span class="mtk9">(</span><span class="mtk1">X</span><span class="mtk9">,</span><span class="mtk1">&nbsp;Y</span><span class="mtk9">):</span></span></div><div style="top:22px;height:22px;" class="view-line"><span><span class="mtk1">&nbsp;&nbsp;&nbsp;&nbsp;answer&nbsp;=&nbsp;</span><span class="mtk5">''</span></span></div><div style="top:44px;height:22px;" class="view-line"><span><span class="mtk1">&nbsp;&nbsp;&nbsp;&nbsp;x_digit&nbsp;=&nbsp;</span><span class="mtk9">[</span><span class="mtk6">0</span><span class="mtk9">]</span><span class="mtk1">&nbsp;*&nbsp;</span><span class="mtk6">10</span></span></div><div style="top:66px;height:22px;" class="view-line"><span><span class="mtk1">&nbsp;&nbsp;&nbsp;&nbsp;y_digit&nbsp;=&nbsp;</span><span class="mtk9">[</span><span class="mtk6">0</span><span class="mtk9">]</span><span class="mtk1">&nbsp;*&nbsp;</span><span class="mtk6">10</span></span></div><div style="top:88px;height:22px;" class="view-line"><span><span class="mtk1">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="mtk8">for</span><span class="mtk1">&nbsp;i&nbsp;</span><span class="mtk8">in</span><span class="mtk1">&nbsp;ran</span></span></div><div style="top:110px;height:22px;" class="view-line"><span><span class="mtk1">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="mtk8">return</span><span class="mtk1">&nbsp;answer</span></span></div></div><div data-mprt="1" class="contentWidgets" style="position: absolute; top: 0px;"></div><div role="presentation" aria-hidden="true" class="cursors-layer cursor-line-style cursor-solid"><div class="cursor monaco-mouse-cursor-text " style="height: 22px; top: 88px; left: 141px; font-family: Consolas, &quot;Courier New&quot;, monospace; font-weight: normal; font-size: 16px; font-feature-settings: &quot;liga&quot; 0, &quot;calt&quot; 0; line-height: 22px; letter-spacing: 0px; display: block; visibility: inherit; width: 1.45455px;"></div></div></div><div role="presentation" aria-hidden="true" class="invisible scrollbar horizontal fade" style="position: absolute; width: 641px; height: 12px; left: 0px; bottom: 0px;"><div class="slider" style="position: absolute; top: 0px; left: 0px; height: 12px; transform: translate3d(0px, 0px, 0px); contain: strict; width: 641px;"></div></div><canvas class="decorationsOverviewRuler" aria-hidden="true" width="19" height="317" style="position: absolute; transform: translate3d(0px, 0px, 0px); contain: strict; top: 0px; right: 0px; width: 14px; height: 231px; display: block;"></canvas><div role="presentation" aria-hidden="true" class="visible scrollbar vertical" style="position: absolute; width: 14px; height: 231px; right: 0px; top: 0px;"><div class="slider" style="position: absolute; top: 0px; left: 0px; width: 14px; transform: translate3d(0px, 0px, 0px); contain: strict; height: 156px;"></div></div></div><div role="presentation" aria-hidden="true" style="width: 725px;"></div><textarea data-mprt="6" class="inputarea monaco-mouse-cursor-text" wrap="off" autocorrect="off" autocapitalize="off" autocomplete="off" spellcheck="false" aria-label="Editor content;Press Alt+F1 for Accessibility Options." tabindex="0" role="textbox" aria-roledescription="editor" aria-multiline="true" aria-haspopup="false" aria-autocomplete="both" style="font-family: Consolas, &quot;Courier New&quot;, monospace; font-weight: normal; font-size: 16px; font-feature-settings: &quot;liga&quot; 0, &quot;calt&quot; 0; line-height: 22px; letter-spacing: 0px; top: 88px; left: 211px; width: 1px; height: 1px;"></textarea><div class="monaco-editor-background textAreaCover line-numbers" style="position: absolute; top: 0px; left: 0px; width: 0px; height: 0px;"></div><div data-mprt="4" class="overlayWidgets" style="width: 725px;"><div class="accessibilityHelpWidget" role="dialog" aria-hidden="true" widgetid="editor.contrib.accessibilityHelpWidget" style="display: none; position: absolute;"><div role="document"></div></div><div widgetid="editor.contrib.quickInputWidget" style="position: absolute; top: 0px; right: 50%;"></div></div><div data-mprt="8" class="minimap slider-mouseover" role="presentation" aria-hidden="true" style="position: absolute; left: 0px; width: 0px; height: 231px;"><div class="minimap-shadow-hidden" style="height: 231px;"></div><canvas width="0" height="317" style="position: absolute; left: 0px; width: 0px; height: 231px;"></canvas><canvas class="minimap-decorations-layer" width="0" height="317" style="position: absolute; left: 0px; width: 0px; height: 231px;"></canvas><div class="minimap-slider" style="position: absolute; transform: translate3d(0px, 0px, 0px); contain: strict; width: 0px;"><div class="minimap-slider-horizontal" style="position: absolute; width: 0px; height: 0px;"></div></div></div></div><div data-mprt="2" class="overflowingContentWidgets"><div class="monaco-editor rename-box" widgetid="__renameInputWidget" style="background-color: rgb(37, 37, 38); box-shadow: rgba(0, 0, 0, 0.36) 0px 0px 8px 2px; color: rgb(204, 204, 204); position: absolute; display: none; visibility: hidden; max-width: 1396px;"><input class="rename-input" type="text" aria-label="Rename input. Type new name and press Enter to commit." style="font-family: Consolas, &quot;Courier New&quot;, monospace; font-weight: normal; font-size: 16px; background-color: rgb(60, 60, 60); border-width: 0px; border-style: none;"><div class="rename-label" style="font-size: 12.8px;">Enter to Rename, Shift+Enter to Preview</div></div><div class="monaco-hover hidden" tabindex="0" role="tooltip" widgetid="editor.contrib.contentHoverWidget" style="position: absolute; display: none; visibility: hidden; max-width: 1396px;"><div class="monaco-scrollable-element " role="presentation" style="position: relative; overflow: hidden;"><div class="monaco-hover-content" style="overflow: hidden; font-size: 16px; line-height: 1.375; max-height: 250px; max-width: 500px;"></div><div role="presentation" aria-hidden="true" class="invisible scrollbar horizontal" style="position: absolute;"><div class="slider" style="position: absolute; top: 0px; left: 0px; height: 10px; transform: translate3d(0px, 0px, 0px); contain: strict;"></div></div><div role="presentation" aria-hidden="true" class="invisible scrollbar vertical" style="position: absolute;"><div class="slider" style="position: absolute; top: 0px; left: 0px; width: 10px; transform: translate3d(0px, 0px, 0px); contain: strict;"></div></div><div class="shadow"></div><div class="shadow"></div><div class="shadow"></div></div></div></div></div></div> <div class="Mr8yRr4z7foTG0XGW65GA"></div></div></div> <div class="gutter gutter-vertical" style="height: 14px;"></div><div id="pr-result" class="_38AF-tj62JQ-LCtFyMYMyv result-section" style="height: calc(35% - 7px);"><div class="_3gSQNFWa9kt_as-rENRVGP px-3"><span>실행 결과</span> <!----></div> <div class="tw-p-4 tw-overflow-y-auto xkAazpgctLWVKXCx4wBGJ"><div class="tw-text-blue-grey-500">
+      실행 결과가 여기에 표시됩니다.
+    </div></div> <div id="modal-container-d44a38a1-84aa-4433-9251-484883853cf2" role="document" class="modal fade tw-text-black"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h3 class="modal-title">
+            채점 완료
+          </h3></div> <div class="modal-body"><div><span>테스트 시간이 만료되기 전 언제든지 다시 채점할 수 있습니다.</span></div></div> <footer class="modal-footer"><div><button class="btn btn-primary">
+      문제로 돌아가기
+    </button></div></footer></div></div></div></div></div></div> <div class="_ur9KsfD0tijk_5u_vN3v p-3"><button class="mr-auto btn btn-md btn-dark">
+    테스트 케이스 추가하기
+  </button> <button id="pr-log" class="mr-2 btn btn-md btn-dark">
+    내 답안
+  </button> <button id="reset-code" class="mr-2 btn btn-md btn-dark">
+    코드 초기화
+  </button> <!----> <span id="pr-run" class="mr-2"><button class="btn btn-md btn-dark">
+      코드 실행
+    </button></span> <!----> <span id="pr-submit" class=""><button class="btn btn-md btn-primary">
+      제출 후 채점하기
+    </button></span> <!----> <!----> <!----></div> <div id="applicant-testcase-modal" role="document" class="modal fade"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><div class="_1kA32JB9taY_o8oKhV_31e"><span>테스트 케이스 추가</span> <svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="ic-20 mb-auto ml-2 _2ir7vUQ621ovf5MDKC4G9_" id="testcase-help"><use href="/packs/media/svgs/svg-defs-93dbf824.svg#ic-help"></use></svg> <!----> <div class="_2HrGIza1fCNusAJpJjiX7L"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="ic-24"><use href="/packs/media/svgs/svg-defs-93dbf824.svg#ic-clear"></use></svg></div></div></div> <div class="modal-body"><form id="custom-testcase-form"><div class="applicant-testcase"><div class="panel panel-default input"><div class="panel-heading"><h5>Parameters</h5> <button type="button" class="btn btn-primary btn-sm">
+          + 추가
+        </button></div> <div class="panel-body"><table class="form-group table-testcase"><tbody><tr class="label--parameters"></tr>  </tbody></table></div></div> <div class="panel panel-default output"><div class="panel-heading"><h5>
+          Return
+        </h5></div> <div class="panel-body"><table id="testcase-output" class="form-group table-testcase"><tbody><tr class="label--parameters"><td class="control-label">
+                Return
+              </td></tr>  </tbody></table></div></div></div> <!----></form></div> <footer class="modal-footer"><button type="button" class="btn btn-light">
+      취소
+    </button> <button type="submit" form="custom-testcase-form" class="btn btn-primary">
+      저장
+    </button></footer></div></div></div></div> <div id="challenges-toolbar" class="p-3 _2o7VBTDYd1PLU4oMWw4oGH"><div class="challenge-toolbar-settings"><button class="_1PpZAdTrdhp29GGkb0uvcU"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="ic-20"><use href="/packs/media/svgs/svg-defs-93dbf824.svg#ic-setting-filled"></use></svg></button> <div class="_151q9XwMBbS8oLK_V_P88s"><div id="modal-container-fe22493f-89ee-47bc-b0e8-d5014f9cbf08" role="document" class="modal fade"><div class="modal-dialog modal-overflow-scroll w9axScembee-3WvNdEL0e"><div class="modal-content"><div class="modal-header"><div class="_1kA32JB9taY_o8oKhV_31e"><span>설정</span>  <div class="_2HrGIza1fCNusAJpJjiX7L"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="ic-24"><use href="/packs/media/svgs/svg-defs-93dbf824.svg#ic-clear"></use></svg></div></div></div> <div class="modal-body"><div><div class="za13n_CB-8lV0aCvbG2BC"><div class="_3VjiPVjEaCGWHDKIy_U1lD">
+    언어
+  </div> <div class="_3oh1UXYoY_mnpEftWHvnhm">서비스 언어를 선택해주세요.<br> 서비스 언어가 변경되더라도 출제 문제가 해당 언어로 입력되지 않는 경우, 기존 언어로 제공될 수 있습니다.</div> <fieldset class="form-group" id="__BVID__174"><!----><div><div class="_2_8zIQCnKgZRiyRumqUeE5"><div class="custom-control custom-radio"><input type="radio" name="language" class="custom-control-input" value="en" id="__BVID__175"><label class="custom-control-label" for="__BVID__175"><div class="_1_NL4DatIqxS4ywj7T6vm6 ml-1"><img alt="en" src="./프로그래머스_files/footer-flag-en-c081fffe.png" class="_16S11un2mrAm7pmNs9A9bL mr-2"> <span>English</span></div></label></div></div> <div class="_2_8zIQCnKgZRiyRumqUeE5 mt-2 _2U5b-9Wnb92_DreburC-l9"><div class="custom-control custom-radio"><input type="radio" name="language" class="custom-control-input" value="ko" id="__BVID__176"><label class="custom-control-label" for="__BVID__176"><div class="_1_NL4DatIqxS4ywj7T6vm6 ml-1"><img alt="en" src="./프로그래머스_files/footer-flag-ko-60b95b05.png" class="_16S11un2mrAm7pmNs9A9bL mr-2"> <span>한글</span></div></label></div></div><!----><!----><!----></div></fieldset></div> <div class="_3A5onSuBFmz76W8Xi2IvCM"><div class="_2VIjIuShjYBVoTDdcGTILC">
+    테마
+  </div> <div class="_2TirWH6SeErlOrCgUVxV7r">
+    배경화면 테마를 선택해주세요.
+  </div> <fieldset class="form-group" id="__BVID__178"><!----><div><div class="_6cMGgY8uDlC2IkW3Tc2EX _9FLtn-rAXYi7PCI6p8WkX"><div class="custom-control custom-radio"><input type="radio" name="theme" class="custom-control-input" value="dark" id="__BVID__179"><label class="custom-control-label" for="__BVID__179"><div class="_36g072Bn6qdsoPx-ye9jCE ml-1"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="ic-24 _3mwBwSKDVhcfE2GDiy3i-0"><use href="/packs/media/svgs/svg-defs-93dbf824.svg#ic-dark-mode"></use></svg> <span>Dark</span></div></label></div></div> <div class="_6cMGgY8uDlC2IkW3Tc2EX mt-2"><div class="custom-control custom-radio"><input type="radio" name="theme" class="custom-control-input" value="light" id="__BVID__181"><label class="custom-control-label" for="__BVID__181"><div class="_36g072Bn6qdsoPx-ye9jCE ml-1"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="ic-24 _3mwBwSKDVhcfE2GDiy3i-0"><use href="/packs/media/svgs/svg-defs-93dbf824.svg#ic-light-mode"></use></svg> <span>Light</span></div></label></div></div><!----><!----><!----></div></fieldset></div> <div><div class="_3TNkwQYV8qJ1_4etImcOCP">
+    코드 에디터 모드
+  </div> <div class="_2DsiPiVETqYQwKyUX7NVgh">
+    코드 에디터 모드를 선택해주세요.
+  </div> <fieldset class="form-group" id="__BVID__184"><!----><div><div class="_3Sve9ZfZTsqjYy1FZzFfwo _1iy_P_AeNjcQ1gHaneglk_"><div class="custom-control custom-radio"><input type="radio" name="editorMode" class="custom-control-input" value="vsc" id="__BVID__185"><label class="custom-control-label" for="__BVID__185"><div class="MrNUhJCQONf44yKYU1Cbj ml-1"><span>Visual Studio Code</span></div></label></div></div> <div class="_3Sve9ZfZTsqjYy1FZzFfwo mt-2"><div class="custom-control custom-radio"><input type="radio" name="editorMode" class="custom-control-input" value="vim" id="__BVID__186"><label class="custom-control-label" for="__BVID__186"><div class="MrNUhJCQONf44yKYU1Cbj ml-1"><span>Vim</span></div></label></div></div> <div class="_3Sve9ZfZTsqjYy1FZzFfwo mt-2"><div class="custom-control custom-radio"><input type="radio" name="editorMode" class="custom-control-input" value="emacs" id="__BVID__187"><label class="custom-control-label" for="__BVID__187"><div class="MrNUhJCQONf44yKYU1Cbj ml-1"><span>Emacs</span></div></label></div></div><!----><!----><!----></div></fieldset></div></div></div> <footer class="modal-footer"><div><button type="button" class="btn btn-primary">
+        닫기
+      </button></div></footer></div></div></div></div></div> <!----> <div><button class="_2j88m9YmXKdvrKnouBOZHN"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="ic-20"><use href="/packs/media/svgs/svg-defs-93dbf824.svg#ic-megaphone"></use></svg></button></div> <div><button class="_1YlVBfMzYh10krwO_uBYz"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="ic-20"><use href="/packs/media/svgs/svg-defs-93dbf824.svg#ic-local-library"></use></svg></button></div> <!----> <hr class="my-2 _3c0xX20bpWtHFxvSCsmOhc"> <div class="_25Lun1xLFNY3gTgaLK2dDk"><div><button class="_1z-wnN5eVTQ5IDoU8vQjLY"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="ic-20"><use href="/packs/media/svgs/svg-defs-93dbf824.svg#ic-sticky-note"></use></svg></button> <div class="_3oMvoKgazicNiC9o8oDkN7" style="display: none; top: 305px;"><div class="SURcQKNGPO6Pp78oeTHXi py-1 px-2">
+    메모장
+    <div class="_1n-gk3pBYmKdwmB90qYisE"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="ic-16"><use href="/packs/media/svgs/svg-defs-93dbf824.svg#ic-clear"></use></svg></div></div> <div class="_3Wlt8MM0eKZ07fukQHJnBf"><div id="monaco-editor" class="_1jE4wVpshQ8DVVUXOC95Av"><div class="_38KaDUjgwvP9dIlShqFTEM _3oRk_nbgVSwuvO25H4ve1T notepad" data-keybinding-context="1" data-mode-id="python" style="--codelens-font-features_ee1f61:&quot;liga&quot; off, &quot;calt&quot; off;"><div class="monaco-editor no-user-select  showUnused showDeprecated vs-dark" role="code" data-uri="inmemory://model/1" style="width: 5px; height: 5px;"><div data-mprt="3" class="overflow-guard" style="width: 5px; height: 5px;"><div class="margin" role="presentation" aria-hidden="true" style="position: absolute; transform: translate3d(0px, 0px, 0px); contain: strict; top: 0px; height: 22px; width: 26px;"><div class="glyph-margin" style="left: 0px; width: 0px; height: 22px;"></div><div class="margin-view-zones" role="presentation" aria-hidden="true" style="position: absolute;"></div><div class="margin-view-overlays" role="presentation" aria-hidden="true" style="position: absolute; width: 26px; font-family: Consolas, &quot;Courier New&quot;, monospace; font-weight: normal; font-size: 16px; font-feature-settings: &quot;liga&quot; 0, &quot;calt&quot; 0; line-height: 22px; letter-spacing: 0px; height: 22px;"><div style="position:absolute;top:0px;width:100%;height:22px;"><div class="current-line current-line-margin-both" style="width:26px; height:22px;"></div></div></div></div><div class="monaco-scrollable-element editor-scrollable vs-dark" role="presentation" data-mprt="5" style="position: absolute; overflow: hidden; left: 26px; height: 5px;"><div class="lines-content monaco-editor-background" style="position: absolute; overflow: hidden; width: 1e+06px; height: 1e+06px; transform: translate3d(0px, 0px, 0px); contain: strict; top: 0px; left: 0px;"><div class="view-overlays" role="presentation" aria-hidden="true" style="position: absolute; height: 0px; width: 44px;"><div style="position:absolute;top:0px;width:100%;height:22px;"><div class="current-line" style="width:44px; height:22px;"></div></div></div><div role="presentation" aria-hidden="true" class="view-rulers"></div><div class="view-zones" role="presentation" aria-hidden="true" style="position: absolute;"></div><div class="view-lines monaco-mouse-cursor-text" role="presentation" aria-hidden="true" data-mprt="7" style="position: absolute; font-family: Consolas, &quot;Courier New&quot;, monospace; font-weight: normal; font-size: 16px; font-feature-settings: &quot;liga&quot; 0, &quot;calt&quot; 0; line-height: 22px; letter-spacing: 0px; width: 44px; height: 22px;"><div style="top:0px;height:22px;" class="view-line"><span><span></span></span></div></div><div data-mprt="1" class="contentWidgets" style="position: absolute; top: 0px;"></div><div role="presentation" aria-hidden="true" class="cursors-layer cursor-line-style cursor-solid"><div class="cursor monaco-mouse-cursor-text " style="height: 22px; top: 0px; left: 0px; font-family: Consolas, &quot;Courier New&quot;, monospace; font-weight: normal; font-size: 16px; font-feature-settings: &quot;liga&quot; 0, &quot;calt&quot; 0; line-height: 22px; letter-spacing: 0px; display: block; visibility: hidden; width: 1.45455px;"></div></div></div><div role="presentation" aria-hidden="true" class="invisible scrollbar horizontal fade" style="position: absolute; width: 0px; height: 12px; left: 0px; bottom: 0px;"><div class="slider" style="position: absolute; top: 0px; left: 0px; height: 12px; transform: translate3d(0px, 0px, 0px); contain: strict; width: 20px;"></div></div><canvas class="decorationsOverviewRuler" aria-hidden="true" width="19" height="6" style="position: absolute; transform: translate3d(0px, 0px, 0px); contain: strict; top: 0px; right: 0px; width: 14px; height: 5px; display: block;"></canvas><div role="presentation" aria-hidden="true" class="invisible scrollbar vertical fade" style="position: absolute; width: 14px; height: 5px; right: 0px; top: 0px;"><div class="slider" style="position: absolute; top: 0px; left: 0px; width: 14px; transform: translate3d(0px, 0px, 0px); contain: strict; height: 20px;"></div></div></div><div role="presentation" aria-hidden="true" style="width: 5px;"></div><textarea data-mprt="6" class="inputarea monaco-mouse-cursor-text" wrap="off" autocorrect="off" autocapitalize="off" autocomplete="off" spellcheck="false" aria-label="Editor content;Press Alt+F1 for Accessibility Options." tabindex="0" role="textbox" aria-roledescription="editor" aria-multiline="true" aria-haspopup="false" aria-autocomplete="both" style="font-family: Consolas, &quot;Courier New&quot;, monospace; font-weight: normal; font-size: 16px; font-feature-settings: &quot;liga&quot; 0, &quot;calt&quot; 0; line-height: 22px; letter-spacing: 0px; top: 0px; left: 0px; width: 1px; height: 1px;"></textarea><div class="monaco-editor-background textAreaCover" style="position: absolute; top: 0px; left: 0px; width: 1px; height: 1px;"></div><div data-mprt="4" class="overlayWidgets" style="width: 5px;"><div class="accessibilityHelpWidget" role="dialog" aria-hidden="true" widgetid="editor.contrib.accessibilityHelpWidget" style="display: none; position: absolute;"><div role="document"></div></div><div widgetid="editor.contrib.quickInputWidget" style="position: absolute; top: 0px; right: 50%;"></div></div><div data-mprt="8" class="minimap slider-mouseover" role="presentation" aria-hidden="true" style="position: absolute; left: 0px; width: 0px; height: 5px;"><div class="minimap-shadow-hidden" style="height: 5px;"></div><canvas width="0" height="6" style="position: absolute; left: 0px; width: 0px; height: 5px;"></canvas><canvas class="minimap-decorations-layer" width="0" height="6" style="position: absolute; left: 0px; width: 0px; height: 5px;"></canvas><div class="minimap-slider" style="position: absolute; transform: translate3d(0px, 0px, 0px); contain: strict; width: 0px;"><div class="minimap-slider-horizontal" style="position: absolute; width: 0px; height: 0px;"></div></div></div></div><div data-mprt="2" class="overflowingContentWidgets"><div class="monaco-editor rename-box" widgetid="__renameInputWidget" style="background-color: rgb(37, 37, 38); box-shadow: rgba(0, 0, 0, 0.36) 0px 0px 8px 2px; color: rgb(204, 204, 204); position: absolute; display: none; visibility: hidden; max-width: 1396px;"><input class="rename-input" type="text" aria-label="Rename input. Type new name and press Enter to commit." style="font-family: Consolas, &quot;Courier New&quot;, monospace; font-weight: normal; font-size: 16px; background-color: rgb(60, 60, 60); border-width: 0px; border-style: none;"><div class="rename-label" style="font-size: 12.8px;">Enter to Rename, Shift+Enter to Preview</div></div></div></div></div> <div class="Mr8yRr4z7foTG0XGW65GA"></div></div></div></div></div> <!----></div></div> <div class="submit-log-modal"><div id="modal-container-4172a1e3-c167-4032-a96a-e62bbcb7a54f" role="document" class="modal fade"><div class="modal-dialog modal-overflow-scroll"><div class="modal-content"><div class="modal-header"><div class="_1kA32JB9taY_o8oKhV_31e"><span>내 답안</span>  <div class="_2HrGIza1fCNusAJpJjiX7L"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="ic-24"><use href="/packs/media/svgs/svg-defs-93dbf824.svg#ic-clear"></use></svg></div></div></div> <div class="modal-body"><div class="_3IPm_X3o1GA7tN-6PDM5Ye"> <!----></div></div> <footer class="modal-footer"><div><button type="button" class="btn btn-primary">
+        닫기
+      </button></div></footer></div></div></div></div></div> <!----></div> <!----></main> <div class="container error-device-mobile"><div class="error-device-mobile__inner"><h1 class="emoticon">
+        :-(
+      </h1> <h1 class="body">
+        화면 크기가 너무 작습니다.
+      </h1> <h3 class="description">
+        브라우저 창을 최대로 키워주시고, 이미 최대라면 글꼴 크기를 줄여주세요. 시험 응시에 필요한 최소 화면 너비는 가로 992px 입니다.
+      </h3></div></div> <!----> <div class="tw-text-black tw-text-text--primary"><div id="modal-container-01cef261-0a6e-4070-b07e-669cf5f1e18f" role="document" class="modal fade"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><div class="tw-flex tw-items-center tw-text-2.5xl tw-font-bold tw-antialiased"><span>체험하기 테스트 종료</span> <div class="tw-flex tw-cursor-pointer tw-ml-auto"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="ic-24 tw-fill-current tw-text-text--secondary hover:tw-text-blue-grey-600"><use href="/packs/media/svgs/svg-defs-93dbf824.svg#ic-clear"></use></svg></div></div></div> <div class="modal-body"><div><p class="tw-text-base">
+        체험하기 테스트가 종료되었습니다.
+      </p></div></div> <footer class="modal-footer"><button type="button" class="btn btn-primary">
+            확인
+          </button></footer></div></div></div></div></div></div> <div class="challenge-toolbar-notice"><div id="modal-container-24c1e2f2-1cfc-4483-b431-34da1f33f389" role="document" class="modal fade"><div class="modal-dialog modal-overflow-scroll"><div class="modal-content"><div class="modal-header"><div class="_1kA32JB9taY_o8oKhV_31e"><span>공지사항</span>  <div class="_2HrGIza1fCNusAJpJjiX7L"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="ic-24"><use href="/packs/media/svgs/svg-defs-93dbf824.svg#ic-clear"></use></svg></div></div></div> <div class="modal-body"><div><div class="_3HXBEV_tbM3By3uXITf4uu"><div class="_1y_4JDHfTjZqWJBgQ9_DQ2"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="mb-2 ic-40"><use href="/packs/media/svgs/svg-defs-93dbf824.svg#ic-inbox-message"></use></svg>
+    등록된 공지사항이 없습니다.
+  </div></div></div></div> <footer class="modal-footer"><div><button type="button" class="btn btn-primary">
+        닫기
+      </button></div></footer></div></div></div></div></div> <div class="vue-notification-group" style="width: 300px; bottom: 0px; right: 0px;"><span></span></div></div>
+<script src="./프로그래머스_files/runtime_AppTestWithSetting-6c159e879ed43cbe10d6.js.다운로드"></script>
+<script src="./프로그래머스_files/vendors_AppBusinessCareer_AppCareer_AppChallengeQuiz_AppChallengeableEditor_AppChallengeableEditorTa_29b8a28f-6abc2f3c70e7afd3c625.chunk.js.다운로드"></script>
+<script src="./프로그래머스_files/1-e70fead71bed3481df5e.chunk.js.다운로드"></script>
+<script src="./프로그래머스_files/2-5dc706ce6ae38bfaf5e2.chunk.js.다운로드"></script>
+<script src="./프로그래머스_files/4-57cd2bd782dd7894aafa.chunk.js.다운로드"></script>
+<script src="./프로그래머스_files/5-f986fa14482c286de01c.chunk.js.다운로드"></script>
+<script src="./프로그래머스_files/6-d2dfbdb77d8674d4c680.chunk.js.다운로드"></script>
+<script src="./프로그래머스_files/vendors_AppBusinessCareer_AppCareer_AppChallengeQuiz_AppChallengeableEditor_AppChallengeableEditorTa_a25cfb4c-476cdfd23e67f65d8ada.chunk.js.다운로드"></script>
+<script src="./프로그래머스_files/vendors_AppBusinessCareer_AppCareer_AppChallengeQuiz_AppChallengeableEditor_AppChallengeableEditorTa_7e7f6e94-09d6a6a8da4ba548f447.chunk.js.다운로드"></script>
+<script src="./프로그래머스_files/9-0973a99b907df7066078.chunk.js.다운로드"></script>
+<script src="./프로그래머스_files/10-5d9d6c00454aaf1d2c03.chunk.js.다운로드"></script>
+<script src="./프로그래머스_files/vendors_AppCareer_AppChallengeQuiz_AppChallengeableEditor_AppChallengeableEditorTabUI_AppPosts_AppPr_b6e78147-5d6774314437b53b83e2.chunk.js.다운로드"></script>
+<script src="./프로그래머스_files/vendors_AppBusinessCareer_AppCareer_AppChallengeQuiz_AppChallengeableEditor_AppChallengeableEditorTa_d88dd77f-1550ac8761d4abd364fa.chunk.js.다운로드"></script>
+<script src="./프로그래머스_files/vendors_AppBusinessCareer_AppCareer_AppChallengeQuiz_AppChallengeableEditorTabUI_AppProctor_AppTest__56bf1ead-57302657a9f1cb78c8ba.chunk.js.다운로드"></script>
+<script src="./프로그래머스_files/vendors_AppBusinessCareer_AppCareer_AppChallengeQuiz_AppProctor_AppTest_AppTestForm_AppTestToken_App_7e5b3994-9011de0e1e49416ff4e7.chunk.js.다운로드"></script>
+<script src="./프로그래머스_files/17-dc06d52f9ce0f33483d3.chunk.js.다운로드"></script>
+<script src="./프로그래머스_files/vendors_AppChallengeQuiz_AppChallengeableEditorTabUI_AppProctor_AppTest_AppTestForm_AppTestToken_App_5087eae6-65bd4df7db434c614a49.chunk.js.다운로드"></script>
+<script src="./프로그래머스_files/vendors_AppBusinessCareer_AppCareer_AppChallengeableEditor_AppTest_AppTestToken_AppTestWithSetting_A_4b800f76-c9e6dacf1cbc49f4db85.chunk.js.다운로드"></script>
+<script src="./프로그래머스_files/20-0c93455ab617cfc4840e.chunk.js.다운로드"></script>
+<script src="./프로그래머스_files/App-2585efc4a0b72a76d1a3.chunk.js.다운로드"></script>
+<script src="./프로그래머스_files/App-6ab205aec9570b93eaa9.chunk.js.다운로드"></script>
+<script src="./프로그래머스_files/vendors_AppBusinessCareer_AppCareer_AppTest_AppTestToken_AppTestWithSetting_AppTryouts-02712c41c94e07cfc000.chunk.js.다운로드"></script>
+<script src="./프로그래머스_files/App-22f9317db0073d3e8e56.chunk.js.다운로드"></script>
+<script src="./프로그래머스_files/vendors_AppTest_AppTestToken_AppTestWithSetting_AppTryouts-822a19812bb44219dcae.chunk.js.다운로드"></script>
+<script src="./프로그래머스_files/vendors_AppTest_AppTestWithSetting-d84883c9f192a33d8132.chunk.js.다운로드"></script>
+<script src="./프로그래머스_files/3-2655a830168bfd884fd6.chunk.js.다운로드"></script>
+<script src="./프로그래머스_files/AppChallengeQuiz_AppChallengeableEditor_AppChallengeableEditorTabUI_AppTest_AppTestForm_AppTestToken_005431ce-506eaf3bd7cce23438d1.chunk.js.다운로드"></script>
+<script src="./프로그래머스_files/25-1643501de688be462385.chunk.js.다운로드"></script>
+<script src="./프로그래머스_files/AppTest_AppTestLanding_AppTestToken_AppTestWithSetting_AppTryouts-74be713febed026246d1.chunk.js.다운로드"></script>
+<script src="./프로그래머스_files/AppTest_AppTestToken_AppTestWithSetting_AppTryouts-0e82c753fd2565235507.chunk.js.다운로드"></script>
+<script src="./프로그래머스_files/AppTestWithSetting-03907fa6df11f8fa8511.chunk.js.다운로드"></script>
+<link rel="stylesheet" media="screen" href="./프로그래머스_files/vendors_AppBusinessCareer_AppCareer_AppChallengeQuiz_AppChallengeableEditor_AppChallengeableEditorTa_d88dd77f-045195b1.chunk.css">
+<link rel="stylesheet" media="screen" href="./프로그래머스_files/App-64ea9eb5.chunk.css">
+<link rel="stylesheet" media="screen" href="./프로그래머스_files/vendors_AppTest_AppTestToken_AppTestWithSetting_AppTryouts-eb5d9236.chunk.css">
+<link rel="stylesheet" media="screen" href="./프로그래머스_files/AppChallengeQuiz_AppChallengeableEditor_AppChallengeableEditorTabUI_AppTest_AppTestForm_AppTestToken_005431ce-14e06fe8.chunk.css">
+<link rel="stylesheet" media="screen" href="./프로그래머스_files/25-d1192b3b.chunk.css">
+<link rel="stylesheet" media="screen" href="./프로그래머스_files/AppTest_AppTestLanding_AppTestToken_AppTestWithSetting_AppTryouts-fb8b043c.chunk.css">
+<link rel="stylesheet" media="screen" href="./프로그래머스_files/AppTest_AppTestToken_AppTestWithSetting_AppTryouts-bc596bbb.chunk.css">
+
+</div>
+<script type="text/javascript" id="">!function(b,e,f,g,a,c,d){b.fbq||(a=b.fbq=function(){a.callMethod?a.callMethod.apply(a,arguments):a.queue.push(arguments)},b._fbq||(b._fbq=a),a.push=a,a.loaded=!0,a.version="2.0",a.queue=[],c=e.createElement(f),c.async=!0,c.src=g,d=e.getElementsByTagName(f)[0],d.parentNode.insertBefore(c,d))}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","2050250308523590");fbq("track","PageView");</script>
+<noscript>
+  <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2050250308523590&amp;ev=PageView&amp;noscript=1">
+</noscript>
+<div class="tui-tooltip" style="display: none;"><div class="arrow"></div><span class="text"></span></div><div class="tui-tooltip" style="display: none;"><div class="arrow"></div><span class="text"></span></div>
+
+
+
+<div class="modal fade" id="modal-dialog" tabindex="-1" role="dialog" aria-hidden="true"></div>
+
+  <script src="./프로그래머스_files/library-b52bcfc84feda2e61bbf17fd4c547f8e05a2096b8eef934c1f276372b140f1c9.js.다운로드" debug="false"></script><div class="tui-tooltip" style="display: none;"><div class="arrow"></div><span class="text"></span></div><div class="tui-tooltip" style="display: none;"><div class="arrow"></div><span class="text"></span></div>
+  <script>
+//<![CDATA[
+    I18n.defaultLocale = "ko";
+    I18n.locale = "ko";
+    I18n.fallbacks = true;
+
+//]]>
+</script>  <script src="./프로그래머스_files/application-931aff1122a2191930eae86a3c021121c94a10ac66cb39314284743ab383e8b6.js.다운로드"></script>
+
+
+<script>
+//<![CDATA[
+window.addEventListener('load', function() {});
+//]]>
+</script>
+  <script src="./프로그래머스_files/all.js.다운로드" type="text/javascript">
+    cloudinary.setCloudName('eightcruz');
+  </script>
+
+  <script src="./프로그래머스_files/loader.js.다운로드" type="text/javascript"></script>
+
+  <script type="text/javascript">
+    Sentry.init({
+      environment: "production",
+      dsn: "https://96f9fc1ff3f44acbb98a9c156338d14b@o1070092.ingest.sentry.io/6136918",
+      integrations: [new Sentry.Integrations.BrowserTracing()],
+      initialScope: {
+        code_version: "b80592292df5fc4725321656e4129f3f17c734c6",
+        user: {
+          id: 367914,
+          username: "이*우",
+          email: "sa********@hanmail.net"
+        },
+      },
+      // Set tracesSampleRate to 1.0 to capture 100%
+      // of transactions for performance monitoring.
+      // We recommend adjusting this value in production
+      tracesSampleRate: 0.01,
+      beforeSend: function beforeSend(event) {
+        const firstException = (event.exception && event.exception.values || [])[0];
+        const isBuggyBrowser = /Chrome\/10[2-4]/.test(navigator.userAgent);
+        const error = event.exception && event.exception.values && event.exception.values[0];
+        const isKnownBrowserBug =
+          isBuggyBrowser &&
+          (error && error.type === 'EvalError' &&
+            error.value && error.value.includes('Possible side-effect in debug-evaluate')) ||
+          (error && error.type === 'SyntaxError' && error.value &&
+            (error.value.includes('Unexpected end of input') ||
+             error.value.includes('Unexpected token \'{\'') ||
+             error.value.includes('Unexpected token \'}\'') ||
+             error.value.includes('Unexpected token \'(\'') ||
+             error.value.includes('Unexpected token \')\'') ||
+             error.value.includes('Unexpected token \'[\'') ||
+             error.value.includes('Unexpected token \']\'') ||
+             error.value.includes('Invalid or unexpected token') ||
+             error.value.includes('missing ) after argument list')));
+
+        if (firstException) {
+          const mechanism = firstException.mechanism;
+          const stacktrace = firstException.stacktrace;
+          const isOnError = () => mechanism && mechanism.type === 'onerror';
+          const hasAnonymousFilename = () => Boolean(
+            stacktrace && stacktrace.frames && stacktrace.frames.some(
+              ({ filename }) => filename && filename.includes('anonymous'),
+            ),
+          );
+
+          /* console의 예외는 sentry에 보내지 않는다. #4226 */
+          if (isOnError() && hasAnonymousFilename())
+            return null;
+        }
+
+        if (isKnownBrowserBug) {
+          return null;
+        }
+        return event;
+      },
+    });
+  </script>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NT8HLJD"
+          height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<script type="text/javascript" charset="utf-8">
+  window.addEventListener('afterprint', function() {
+      $.ajax({
+          type: 'POST',
+          url: '/api/action_trackings/print_screen',
+          data: {
+              current_path: window.location.href
+          }
+      })
+  })
+</script>
+
+
+
+
+<noscript>
+  이 사이트의 기능을 모두 활용하기 위해서는 자바스크립트를 활성화할 필요가 있습니다.
+  <a href="http://www.enable-javascript.com/ko/" target="_blank">
+    브라우저에서 자바스크립트를 활성화하는 방법</a>을 참고하세요.
+</noscript>
+
+
+
+
+<div id="snackbar-container"></div><div id="ch-plugin"><div id="ch-plugin-core"><style data-styled="active" data-styled-version="5.1.1"></style></div><div id="ch-plugin-script" style="display:none"><iframe id="ch-plugin-script-iframe" style="position:relative!important;height:100%;width:100%!important;border:none!important;" src="./프로그래머스_files/saved_resource.html"></iframe></div></div><style data-styled="active" data-styled-version="5.1.1"></style>
+<script type="text/javascript" id="">!function(b,e,f,g,a,c,d){b.fbq||(a=b.fbq=function(){a.callMethod?a.callMethod.apply(a,arguments):a.queue.push(arguments)},b._fbq||(b._fbq=a),a.push=a,a.loaded=!0,a.version="2.0",a.queue=[],c=e.createElement(f),c.async=!0,c.src=g,d=e.getElementsByTagName(f)[0],d.parentNode.insertBefore(c,d))}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","2050250308523590");fbq("track","PageView");</script>
+<noscript>
+  <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2050250308523590&amp;ev=PageView&amp;noscript=1">
+</noscript>
+
+<script type="text/javascript" id="">!function(b,e,f,g,a,c,d){b.fbq||(a=b.fbq=function(){a.callMethod?a.callMethod.apply(a,arguments):a.queue.push(arguments)},b._fbq||(b._fbq=a),a.push=a,a.loaded=!0,a.version="2.0",a.queue=[],c=e.createElement(f),c.async=!0,c.src=g,d=e.getElementsByTagName(f)[0],d.parentNode.insertBefore(c,d))}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","2050250308523590");fbq("track","PageView");</script>
+<noscript>
+  <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2050250308523590&amp;ev=PageView&amp;noscript=1">
+</noscript>
+<div class="monaco-aria-container"><div class="monaco-alert" role="alert" aria-atomic="true"></div><div class="monaco-alert" role="alert" aria-atomic="true"></div><div class="monaco-status" role="complementary" aria-live="polite" aria-atomic="true"></div><div class="monaco-status" role="complementary" aria-live="polite" aria-atomic="true"></div></div>
+<script type="text/javascript" id="">!function(b,e,f,g,a,c,d){b.fbq||(a=b.fbq=function(){a.callMethod?a.callMethod.apply(a,arguments):a.queue.push(arguments)},b._fbq||(b._fbq=a),a.push=a,a.loaded=!0,a.version="2.0",a.queue=[],c=e.createElement(f),c.async=!0,c.src=g,d=e.getElementsByTagName(f)[0],d.parentNode.insertBefore(c,d))}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","2050250308523590");fbq("track","PageView");</script>
+<noscript>
+  <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2050250308523590&amp;ev=PageView&amp;noscript=1">
+</noscript>
+
+<script type="text/javascript" id="">!function(b,e,f,g,a,c,d){b.fbq||(a=b.fbq=function(){a.callMethod?a.callMethod.apply(a,arguments):a.queue.push(arguments)},b._fbq||(b._fbq=a),a.push=a,a.loaded=!0,a.version="2.0",a.queue=[],c=e.createElement(f),c.async=!0,c.src=g,d=e.getElementsByTagName(f)[0],d.parentNode.insertBefore(c,d))}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","2050250308523590");fbq("track","PageView");</script>
+<noscript>
+  <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2050250308523590&amp;ev=PageView&amp;noscript=1">
+</noscript>
+
+<script type="text/javascript" id="">!function(b,e,f,g,a,c,d){b.fbq||(a=b.fbq=function(){a.callMethod?a.callMethod.apply(a,arguments):a.queue.push(arguments)},b._fbq||(b._fbq=a),a.push=a,a.loaded=!0,a.version="2.0",a.queue=[],c=e.createElement(f),c.async=!0,c.src=g,d=e.getElementsByTagName(f)[0],d.parentNode.insertBefore(c,d))}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","2050250308523590");fbq("track","PageView");</script>
+<noscript>
+  <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2050250308523590&amp;ev=PageView&amp;noscript=1">
+</noscript>
+
+<script type="text/javascript" id="">!function(b,e,f,g,a,c,d){b.fbq||(a=b.fbq=function(){a.callMethod?a.callMethod.apply(a,arguments):a.queue.push(arguments)},b._fbq||(b._fbq=a),a.push=a,a.loaded=!0,a.version="2.0",a.queue=[],c=e.createElement(f),c.async=!0,c.src=g,d=e.getElementsByTagName(f)[0],d.parentNode.insertBefore(c,d))}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","2050250308523590");fbq("track","PageView");</script>
+<noscript>
+  <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2050250308523590&amp;ev=PageView&amp;noscript=1">
+</noscript>
+
+<script type="text/javascript" id="">!function(b,e,f,g,a,c,d){b.fbq||(a=b.fbq=function(){a.callMethod?a.callMethod.apply(a,arguments):a.queue.push(arguments)},b._fbq||(b._fbq=a),a.push=a,a.loaded=!0,a.version="2.0",a.queue=[],c=e.createElement(f),c.async=!0,c.src=g,d=e.getElementsByTagName(f)[0],d.parentNode.insertBefore(c,d))}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","2050250308523590");fbq("track","PageView");</script>
+<noscript>
+  <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2050250308523590&amp;ev=PageView&amp;noscript=1">
+</noscript>
+</body></html>

@@ -77,6 +77,20 @@ app.get('/todolist', (req, res) => {
   })
 })
 
+// :id 이렇게 pathVariable 전달이 가능함
+app.get('/detail/:id', (req, res) => {
+  const id = Number(req.params.id);
+  db.collection('post').findOne({_id: id}, (err, data) => {
+    // 요청한 쿼리문에 맞는 데이터가 없으면 에러발생 안하고 null을 반환한다. err 어따쓰는데??
+    if (data == null) {
+      res.status(404).send("Not Found");
+    } else {
+      res.render('detail.ejs', {data: data});
+    }
+
+  })
+})
+
 
 // TODO 추가
 app.post('/add', (req, res) => {
@@ -102,6 +116,16 @@ app.post('/add', (req, res) => {
   // req.body.title, req.body.date 이런식으로 object 타입 꺼내쓰듯이 꺼내 쓰면 된다
 })
 
+app.delete('/delete', (req, res) => {
+  // JSON 은 문자열 형태이므로, 숫자로 변환해주어야함
+  const boardId = Number(req.body._id);
+  const result = res
+  // deleteOne(데이터 찾는 쿼리문, (err, res)=>{}) 삭제 방법
+  db.collection('post').deleteOne({_id: boardId}, (err, res) => {
+    console.log("삭제 완료");
+    result.status(200).send({message: '성공'});
+  })
+})
 
 MongoClient.connect(myUrl, function(err, client){
   if (err) {
